@@ -16,13 +16,19 @@ import javax.persistence.Id;
  * @author zain
  */
 @Entity
-public class Contact implements Serializable {
+public class ContactAdmin implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String fullName;
+    private String emailAddress;
+    private String contactNumber;
+    private String shortTitle;
+    private String message;
 
+    
     public Long getId() {
         return id;
     }
@@ -31,6 +37,51 @@ public class Contact implements Serializable {
         this.id = id;
     }
 
+    
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    public String getShortTitle() {
+        return shortTitle;
+    }
+
+    
+    public void setShortTitle(String shortTitle) {
+        this.shortTitle = shortTitle;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -41,10 +92,10 @@ public class Contact implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Contact)) {
+        if (!(object instanceof ContactAdmin)) {
             return false;
         }
-        Contact other = (Contact) object;
+        ContactAdmin other = (ContactAdmin) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

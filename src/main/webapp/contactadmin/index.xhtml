@@ -1,12 +1,53 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>The Contact List</title>
+        <link href="resources/css/ex1.css" rel="stylesheet" type="text/css" />
     </h:head>
-    <h:body>
-        Hello from Facelets
+    <h:body> 
+        <h1>Add New Message</h1>
+        <h:form>             
+            <div class="form-field">
+                <h:outputLabel value="First Name:"/>
+                <h:inputText value="#{contactAdminController.messsage.fullName}" 
+                             required="true"
+                             requiredMessage="Please enter a first name."/>
+            </div>         
+            <div>
+                <h:outputLabel value="Email:"/>
+                <h:inputText value="#{contactAdminController.messsage.emailAddress}"
+                             required="true"
+                             requiredMessage="Please enter an email."
+                             validatorMessage="Please give a valid email format.">
+                    <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+                </h:inputText>
+            </div>
+            <div class="form-field">
+                <h:outputLabel value="Contact No:"/>
+                <h:inputText value="#{contactAdminController.messsage.contactNumber}"
+                             required="true"
+                             requiredMessage="Please enter a phone number."
+                             validatorMessage="Please enter a valid phone number.">
+                    <f:validateRegex pattern="[0-9]*"/>
+                </h:inputText>
+            </div>         
+            <div class="form-field">
+                <h:outputLabel value="Short Title:"/>
+                <h:inputText value="#{contactAdminController.messsage.shortTitle}" 
+                             required="true"
+                             requiredMessage="Please enter a title name."/>
+            </div> 
+            <div class="form-field">
+                <h:outputLabel value="Message:"/>
+                <h:inputTextarea value="#{contactAdminController.messsage.message}" 
+                             required="true"
+                             requiredMessage="Please enter a your message."/>
+            </div>               
+            <h:commandButton action="#{contactAdminController.createMessage}" value="Submit"/>
+        </h:form>
     </h:body>
 </html>
 

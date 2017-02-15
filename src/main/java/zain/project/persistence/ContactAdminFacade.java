@@ -8,14 +8,14 @@ package zain.project.persistence;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import zain.project.entitites.Contact;
+import zain.project.entitites.ContactAdmin;
 
 /**
  *
  * @author zain
  */
 @Stateless
-public class ContactFacade extends AbstractFacade<Contact> {
+public class ContactAdminFacade extends AbstractFacade<ContactAdmin> {
 
     @PersistenceContext(unitName = "PU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class ContactFacade extends AbstractFacade<Contact> {
         return em;
     }
 
-    public ContactFacade() {
-        super(Contact.class);
+    public ContactAdminFacade() {
+        super(ContactAdmin.class);
     }
     
 }
