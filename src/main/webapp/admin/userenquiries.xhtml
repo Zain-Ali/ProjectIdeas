@@ -6,7 +6,7 @@
         <title>User Enquiry</title>
     </h:head>
     <h:body>
-        <h:dataTable value="#{contactAdminController.messageList}" var="item">
+        <h:dataTable value="#{contactAdminController.contactAdminMessageList}" var="item">
             <h:column>
                 <h:outputText value="Ref ID "/>
                 <h:outputText value="#{item.id}"/>
@@ -33,7 +33,7 @@
             </h:column>             
             <h:column>
                 <h:form>
-                    <h:commandButton value="delete" action="#{contactAdminController.deleteMessages(item)}"/>
+                    <h:commandButton value="delete" action="#{contactAdminController.deleteMessageByAdmin(item)}"/>
                 </h:form>
             </h:column>            
         </h:dataTable>     

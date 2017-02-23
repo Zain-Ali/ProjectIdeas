@@ -4,21 +4,21 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>The Contact List</title>
+        <title>User Enquiries List</title>
         <link href="resources/css/ex1.css" rel="stylesheet" type="text/css" />
     </h:head>
     <h:body> 
         <h1>Add New Message</h1>
         <h:form>             
             <div class="form-field">
-                <h:outputLabel value="First Name:"/>
-                <h:inputText value="#{contactAdminController.messsage.fullName}" 
+                <h:outputLabel value="Full Name:"/>
+                <h:inputText value="#{contactAdminController.messageFromContactAdmin.fullName}" 
                              required="true"
                              requiredMessage="Please enter a first name."/>
             </div>         
             <div>
                 <h:outputLabel value="Email:"/>
-                <h:inputText value="#{contactAdminController.messsage.emailAddress}"
+                <h:inputText value="#{contactAdminController.messageFromContactAdmin.emailAddress}"
                              required="true"
                              requiredMessage="Please enter an email."
                              validatorMessage="Please give a valid email format.">
@@ -27,7 +27,7 @@
             </div>
             <div class="form-field">
                 <h:outputLabel value="Contact No:"/>
-                <h:inputText value="#{contactAdminController.messsage.contactNumber}"
+                <h:inputText value="#{contactAdminController.messageFromContactAdmin.contactNumber}"
                              required="true"
                              requiredMessage="Please enter a phone number."
                              validatorMessage="Please enter a valid phone number.">
@@ -36,13 +36,13 @@
             </div>         
             <div class="form-field">
                 <h:outputLabel value="Short Title:"/>
-                <h:inputText value="#{contactAdminController.messsage.shortTitle}" 
+                <h:inputText value="#{contactAdminController.messageFromContactAdmin.shortTitle}" 
                              required="true"
                              requiredMessage="Please enter a title name."/>
             </div> 
             <div class="form-field">
                 <h:outputLabel value="Message:"/>
-                <h:inputTextarea value="#{contactAdminController.messsage.message}" 
+                <h:inputTextarea value="#{contactAdminController.messageFromContactAdmin.message}" 
                              required="true"
                              requiredMessage="Please enter a your message."/>
             </div>               

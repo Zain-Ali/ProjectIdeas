@@ -12,7 +12,7 @@ import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import zain.project.business.ContactAdminService;
 import zain.project.entitites.ContactAdmin;
 
@@ -21,61 +21,65 @@ import zain.project.entitites.ContactAdmin;
  * @author zain
  */
 @Named(value = "contactAdminController")
-@ManagedBean
-@RequestScoped
+@SessionScoped
 public class ContactAdminController implements Serializable 
 {
     @EJB
-    protected ContactAdminService contactAdminService;
-    protected ContactAdmin message = new ContactAdmin();
-    List<ContactAdmin> messageList = new ArrayList<>();
+    private ContactAdminService contactAdminService;
+    private ContactAdmin contactAdminForMessage;
+    List<ContactAdmin> contactAdminMessageList = new ArrayList<>();
+
 
     /**
      * Creates a new instance of ContactController
      */
     public ContactAdminController() 
     {
-        this.message = new ContactAdmin();
+        this.contactAdminForMessage = new ContactAdmin();
     }
     
-    public List<ContactAdmin> getMessageList() 
+    
+    public List<ContactAdmin> getContactAdminMessageList() 
     {
-        return messageList;
+        return contactAdminMessageList;
     }
     
     public void setMessageList(ArrayList<ContactAdmin> messageList) 
     {
-        this.messageList = messageList;
+        this.contactAdminMessageList = messageList;
     }
     
-    public ContactAdmin getMesssage() 
+    
+    public void setContactAdminMessageList(List<ContactAdmin> contactAdminMessageList) 
     {
-        return message;
+        this.contactAdminMessageList = contactAdminMessageList;
     }
     
-    public void setMessage(ContactAdmin message) 
+    
+    public ContactAdmin getMessageFromContactAdmin() 
     {
-        this.message = message;
+        return contactAdminForMessage;
     }
+    
+    public void setMessageFromContactAdmin(ContactAdmin message) 
+    {
+        this.contactAdminForMessage = message;
+    }
+
     
     public String createMessage() 
     {
-        contactAdminService.createMessage(message);
-        contactAdminService.findAllMessages();
-        return "";//this is to stay on same page
+        contactAdminService.createMessage(contactAdminForMessage);
+        contactAdminMessageList = contactAdminService.findAllMessages();
+        return "index.xhtml";
     }
     
-    public String deleteMessages(ContactAdmin message) 
+    
+    public String deleteMessageByAdmin (ContactAdmin message) 
     {
         contactAdminService.deleteMessage(message);
-        contactAdminService.findAllMessages();
-        return "";
+        contactAdminMessageList = contactAdminService.findAllMessages();
+        return "userenquiries.xhtml";
     }
-        
-    @PostConstruct
-    public void init() 
-    {
-        messageList = contactAdminService.findAllMessages();
-    }
- 
+    
 }
