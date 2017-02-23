@@ -70,6 +70,7 @@ public class ContactAdminController implements Serializable
     public String createMessage() 
     {
         contactAdminService.createMessage(contactAdminForMessage);
+        contactAdminForMessage = new ContactAdmin();
         contactAdminMessageList = contactAdminService.findAllMessages();
         return "index.xhtml";
     }
@@ -78,8 +79,15 @@ public class ContactAdminController implements Serializable
     public String deleteMessageByAdmin (ContactAdmin message) 
     {
         contactAdminService.deleteMessage(message);
+        
         contactAdminMessageList = contactAdminService.findAllMessages();
         return "userenquiries.xhtml";
+    }
+    
+    @PostConstruct
+    public void init() 
+    {
+        contactAdminMessageList = contactAdminService.findAllMessages();
     }
     
 }

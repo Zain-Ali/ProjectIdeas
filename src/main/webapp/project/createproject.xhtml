@@ -1,12 +1,48 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Create Project</title>
+        <link href="resources/css/ex1.css" rel="stylesheet" type="text/css" />
     </h:head>
-    <h:body>
-        Hello from Facelets
+    <h:body> 
+        <h1>Add New Project</h1>
+        <h:form>             
+            <div class="form-field">
+                <h:outputLabel value="Project Title:"/>
+                <h:inputText value="#{projectController.project.title}" 
+                             required="true"
+                             requiredMessage="Please enter a title name."/>
+            </div>         
+            <div>
+                <h:outputLabel value="Aim and Objectives:"/>
+                <h:inputText value="#{projectController.project.aimsAndObjectives}"
+                             required="true"
+                             requiredMessage="Please enter an Aims and Objectives.">
+                </h:inputText>
+            </div>        
+            <div class="form-field">
+                <h:outputLabel value="Academic question to be answered:"/>
+                <h:inputTextarea value="#{projectController.project.academicQuestionsToBeAnswered}" 
+                             required="true"
+                             requiredMessage="Please enter Academic question to be answered."/>
+            </div>  
+             <div class="form-field">
+                <h:outputLabel value="Anticipated Deliverables:"/>
+                <h:inputTextarea value="#{projectController.project.anticipatedDeliverables}" 
+                             required="true"
+                             requiredMessage="Please enter Anticipated Deliverables."/>
+            </div>  
+            <div class="form-field">
+                <h:outputLabel value="Project Status"/>
+                <h:inputText value="#{projectController.project.status}" 
+                             required="true"
+                             requiredMessage="Please type status."/>
+            </div>              
+            <h:commandButton action="#{projectController.createProject()}" value="Submit"/>
+        </h:form>
     </h:body>
 </html>
 

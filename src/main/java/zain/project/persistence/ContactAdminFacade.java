@@ -15,17 +15,20 @@ import zain.project.entitites.ContactAdmin;
  * @author zain
  */
 @Stateless
-public class ContactAdminFacade extends AbstractFacade<ContactAdmin> {
+public class ContactAdminFacade extends AbstractFacade<ContactAdmin> 
+{
 
     @PersistenceContext(unitName = "PU")
     private EntityManager em;
 
     @Override
-    protected EntityManager getEntityManager() {
+    protected EntityManager getEntityManager() 
+    {
         return em;
     }
 
-    public ContactAdminFacade() {
+    public ContactAdminFacade() 
+    {
         super(ContactAdmin.class);
     }
     
