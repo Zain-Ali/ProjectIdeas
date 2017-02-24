@@ -22,6 +22,13 @@ public class Organisation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String organisationName;
+    private String postalAddress;
+    private String postCode;
+    private String outLineOfWhatYourOrganisationDoes;
+    private String contactName;
+    private int telePhone;
+    private String emailAddress;
 
     public Long getId() {
         return id;

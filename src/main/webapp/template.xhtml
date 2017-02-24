@@ -6,45 +6,39 @@
         <title>Home</title>
     </h:head>
     <h:body>
-        <h:dataTable value="#{projectController.projectList}" var="item">
             <h:column>
                 <h:outputText value="Ref ID "/>
-                <h:outputText value="#{item.id}"/>
+                <h:outputText value="#{projectController.project.id}"/>
             </h:column>            
             <h:column>
                 <h:outputText value="Project Title"/>
-                <h:outputText value="#{item.title}"/>
+                <h:outputText value="#{projectController.project.title}"/>
             </h:column>
             <h:column>
                 <h:outputText value="Aims and Objective: "/>
-                <h:outputText value="#{item.aimsAndObjectives}"/>
+                <h:outputText value="#{projectController.project.aimsAndObjectives}"/>
             </h:column>
             <h:column>
                 <h:outputText value="Academic Question to be Answered "/>
-                <h:outputText value="#{item.academicQuestionsToBeAnswered}"/>
+                <h:outputText value="#{projectController.project.academicQuestionsToBeAnswered}"/>
             </h:column>
              <h:column>
                 <h:outputText value="Anticipated Deliverables: "/>
-                <h:outputText value="#{item.anticipatedDeliverables}"/>
-            </h:column>  
-<!--             <h:column>
-                <h:outputText value="Student for who project has been devised: "/>
-                <h:outputText value="#{item}"/>
-            </h:column>             -->
+                <h:outputText value="#{projectController.project.anticipatedDeliverables}"/>
+            </h:column>              
              <h:column>
                 <h:outputText value="Status "/>
-                <h:outputText value="#{item.status}"/>
+                <h:outputText value="#{projectController.project.status}"/>
             </h:column>  
              <h:column>
                 <h:outputText value="Date Submitted / Last Updated: "/>
-                <h:outputText value="#{item.lastUpdated}"/>
+                <h:outputText value="#{projectController.project.lastUpdated}"/>
             </h:column> 
             <h:column>
                 <h:form>
-                    <h:commandButton value="View" action="#{projectController.viewProject(item)}"/>
+                    <h:commandButton value="delete" action="#{contactAdminController.deleteMessageByAdmin(item)}"/>
                 </h:form>
-            </h:column>    
-        </h:dataTable>     
+            </h:column>            
     </h:body>
 </html>
 

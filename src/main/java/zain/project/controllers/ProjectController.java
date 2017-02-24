@@ -48,6 +48,8 @@ public class ProjectController  implements Serializable
         this.projectList = projectList;
     }
     
+
+    
     public Project getProject() 
     {
         return project;
@@ -66,6 +68,7 @@ public class ProjectController  implements Serializable
         project = new Project();
         projectList = projectService.findAllProjects();
         return "createproject.xhtml"; 
+        //return "index.xhtml";
     }
     
     
@@ -88,6 +91,13 @@ public class ProjectController  implements Serializable
         projectService.editProject(project);
         this.setProject(new Project());
         return "index.xhtml";
+    }
+
+    public String viewProject(Project project) 
+    {
+        this.project = project;
+        //return "start.xhtml";
+        return "template.xhtml";
     }
     
         
