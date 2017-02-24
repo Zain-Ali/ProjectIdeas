@@ -21,11 +21,13 @@ public class ProjectFacade extends AbstractFacade<Project> {
     private EntityManager em;
 
     @Override
-    protected EntityManager getEntityManager() {
+    protected EntityManager getEntityManager() 
+    {
         return em;
     }
 
-    public ProjectFacade() {
+    public ProjectFacade() 
+    {
         super(Project.class);
     }
     

@@ -67,7 +67,7 @@ public class ProjectController  implements Serializable
         projectService.createProject(project);
         project = new Project();
         projectList = projectService.findAllProjects();
-        return "createproject.xhtml"; 
+        return "createproject.xhtml";
         //return "index.xhtml";
     }
     

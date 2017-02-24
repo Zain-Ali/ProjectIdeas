@@ -15,17 +15,20 @@ import zain.project.entitites.Organisation;
  * @author zain
  */
 @Stateless
-public class OrganisationFacade extends AbstractFacade<Organisation> {
+public class OrganisationFacade extends AbstractFacade<Organisation> 
+{
 
     @PersistenceContext(unitName = "PU")
     private EntityManager em;
 
     @Override
-    protected EntityManager getEntityManager() {
+    protected EntityManager getEntityManager() 
+    {
         return em;
     }
 
-    public OrganisationFacade() {
+    public OrganisationFacade() 
+    {
         super(Organisation.class);
     }
     
