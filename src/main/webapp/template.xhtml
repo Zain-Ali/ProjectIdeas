@@ -36,9 +36,19 @@
             </h:column> 
             <h:column>
                 <h:form>
-                    <h:commandButton value="delete" action="#{contactAdminController.deleteMessageByAdmin(item)}"/>
+                    <h:commandButton value="Delete" action="#{projectController.deleteProject(item)}"/>
                 </h:form>
-            </h:column>            
+            </h:column> 
+            <h:column>
+                <h:form>
+                    <h:commandButton value="Select Project" action="#{projectController}"/>
+                </h:form>
+                </h:column>    
+                <h:column>
+                    <h:form>
+                        <h:commandButton value="Withdraw Project" action="#{projectController}"/>
+                </h:form>
+            </h:column> 
     </h:body>
 </html>
 

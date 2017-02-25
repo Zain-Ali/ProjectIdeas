@@ -5,6 +5,7 @@
  */
 package zain.project.business;
 
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -24,6 +25,8 @@ public class ProjectService
     public Project createProject (Project project) 
     {
         projectFacade.create(project);
+        Date date = new Date();
+        project.setLastUpdated(date);
         return project;
     }
     
@@ -37,6 +40,8 @@ public class ProjectService
     public void editProject (Project project) 
     {
         projectFacade.edit(project);
+        Date date = new Date();
+        project.setLastUpdated(date);
     }
     
     public List<Project> findAllProjects() 

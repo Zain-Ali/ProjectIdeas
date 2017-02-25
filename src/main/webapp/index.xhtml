@@ -1,50 +1,62 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Home</title>
+        <title>Project Idea: Home</title>
     </h:head>
     <h:body>
-        <h:dataTable value="#{projectController.projectList}" var="item">
-            <h:column>
-                <h:outputText value="Ref ID "/>
-                <h:outputText value="#{item.id}"/>
-            </h:column>            
-            <h:column>
-                <h:outputText value="Project Title"/>
-                <h:outputText value="#{item.title}"/>
-            </h:column>
-            <h:column>
-                <h:outputText value="Aims and Objective: "/>
-                <h:outputText value="#{item.aimsAndObjectives}"/>
-            </h:column>
-            <h:column>
-                <h:outputText value="Academic Question to be Answered "/>
-                <h:outputText value="#{item.academicQuestionsToBeAnswered}"/>
-            </h:column>
-             <h:column>
-                <h:outputText value="Anticipated Deliverables: "/>
-                <h:outputText value="#{item.anticipatedDeliverables}"/>
-            </h:column>  
-<!--             <h:column>
-                <h:outputText value="Student for who project has been devised: "/>
-                <h:outputText value="#{item}"/>
-            </h:column>             -->
-             <h:column>
-                <h:outputText value="Status "/>
-                <h:outputText value="#{item.status}"/>
-            </h:column>  
-             <h:column>
-                <h:outputText value="Date Submitted / Last Updated: "/>
-                <h:outputText value="#{item.lastUpdated}"/>
-            </h:column> 
-            <h:column>
+        <article>
+            <header>
+                <img src="resources/images/logo.png" height="100"/>
                 <h:form>
-                    <h:commandButton value="View" action="#{projectController.viewProject(item)}"/>
+                    <div id="login">
+                        <h:outputLabel value="Username"/>
+                        <h:inputText p:autocomplete="off"/>
+                        <h:outputLabel value="Password"/>
+                        <h:inputText p:autocomplete="off"/>  
+                        <h:commandButton action="#{placeholder}" value="Login"/>
+                        <h:commandButton action="#{placeholder}" value="Sign up"/>
+                    </div>    
                 </h:form>
-            </h:column>    
-        </h:dataTable>     
+                <h:form>
+                    <div id="login">
+                        <h:outputLabel value="Search"/>
+                        <h:inputText p:autocomplete="on"/>                       
+                    </div>    
+                </h:form>
+            </header>
+            <section>
+                <h:panelGroup>
+                    <h:form>
+                        <h:dataTable value="#{projectController.projectList}" var="project">
+                            <h:column>
+                                <f:facet name="header">Ref</f:facet>
+                                <h:outputText value="#{project.id}"/>
+                            </h:column> 
+                           <h:column>
+                                <f:facet name="header">Project Title</f:facet>
+                                <h:outputText value="#{project.title}"/>
+                            </h:column> 
+                           <h:column>
+                                <f:facet name="header">Project Owner</f:facet>
+                                <h:outputText value="#{project.projectOwner}"/>
+                            </h:column>     
+                            <h:column>
+                                <f:facet name="header">Date</f:facet>
+                                <h:outputText value="#{project.lastUpdated}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">Status</f:facet>
+                                <h:outputText value="#{project.status}"/>
+                            </h:column>                            
+                        </h:dataTable> 
+                    </h:form>
+                </h:panelGroup>
+            </section>
+        </article>
     </h:body>
 </html>
 

@@ -29,11 +29,13 @@ public class Project implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id; //reference number
     private String title;
+    private String projectOwner;
+    private String language;
     private String aimsAndObjectives;
     private String academicQuestionsToBeAnswered;
     private String anticipatedDeliverables;
     //private User user;
-    private String status = "s";
+    private String status;
     @Temporal(TemporalType.DATE)
     private Date lastUpdated;
     
@@ -65,7 +67,26 @@ public class Project implements Serializable {
             this.title = title;
         }
     }
-        
+    
+    public String getProjectOwner() 
+    {
+        return projectOwner;
+    }
+
+    public void setProjectOwner(String projectOwner) 
+    {
+        this.projectOwner = projectOwner;
+    }      
+    
+    public String getLanguage() 
+    {
+        return language;
+    }
+
+    public void setLanguage(String language) 
+    {
+        this.language = language;
+    }
 
     public String getAimsAndObjectives() 
     {
