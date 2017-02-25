@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Create Project</title>
+        <link href="../resources/css/globalStyleSheet.css" rel="stylesheet" type="text/css" />
+
+    </h:head>
+    <h:body> 
+        <article>
+            <header>
+                
+            </header>
+            <section>     
+                <h1>Add New Project</h1>
+                <h:form> 
+                    <table>
+                        <td>
+                            <li><h:outputLabel value="Project Title:"/></li>
+                            <h:inputText value="#{projectController.project.title}" 
+                                         required="true"
+                                         requiredMessage="Please enter a title name."/>
+                        </td>
+                        <td>
+                            <li><h:outputLabel value="Project Owner"/></li>
+                            <h:inputText value="#{projectController.project.projectOwner}" 
+                                         required="true"
+                                         requiredMessage="Please enter a owner name."/>
+                        </td>    
+                        <td>
+                            <li><h:outputLabel value="Language"/></li>
+                            <h:inputText value="#{projectController.project.language}" 
+                                         required="true"
+                                         requiredMessage="Please enter a owner name."/>
+                        </td>                
+                        <td>
+                            <h:outputLabel value="Aim and Objectives:"/>
+                            <h:inputText value="#{projectController.project.aimsAndObjectives}"
+                                         required="true"
+                                         requiredMessage="Please enter an Aims and Objectives.">
+                            </h:inputText>
+                        </td>        
+                        <td class="form-field">
+                            <h:outputLabel value="Academic question to be answered:"/>
+                            <h:inputTextarea value="#{projectController.project.academicQuestionsToBeAnswered}" 
+                                         required="true"
+                                         requiredMessage="Please enter Academic question to be answered."/>
+                        </td>  
+                         <td class="form-field">
+                            <h:outputLabel value="Anticipated Deliverables:"/>
+                            <h:inputTextarea value="#{projectController.project.anticipatedDeliverables}" 
+                                         required="true"
+                                         requiredMessage="Please enter Anticipated Deliverables."/>
+                        </td>  
+                        <td class="form-field">
+                            <h:outputLabel value="Project Status"/>
+                            <h:inputTextarea value="#{projectController.project.status}" 
+                                         required="true"
+                                         requiredMessage="Please type status."/>
+                        </td>   
+                        <h:commandButton action="#{projectController.createProject()}" value="Submit"/>
+                    </table>
+                </h:form>
+            </section>
+        </article>
+    </h:body>
+</html>
+

@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Create Organisation</title>
+        <link href="../resources/css/globalStyleSheet.css" rel="stylesheet" type="text/css" />
+
+    </h:head>
+    <h:body> 
+        <article>
+            <header>
+                
+            </header>
+            <section>     
+                <h1>Add New Organisation</h1>
+                <h:form> 
+                    <table>
+                        <td>
+                            <li><h:outputLabel value="Organisation Name"/></li>
+                            <h:inputText value="#{organisationController.organisation.organisationName}" 
+                                         required="true"
+                                         requiredMessage="Please enter a Organisaiton name."/>
+                        </td>
+                        <td>
+                            <li><h:outputLabel value="Address"/></li>
+                            <h:inputTextarea value="#{organisationController.organisation.postalAddress}" 
+                                         required="true"
+                                         requiredMessage="Please enter a address name."/>
+                        </td>    
+                        <td>
+                            <li><h:outputLabel value="Postcode:"/></li>
+                            <h:inputText value="#{organisationController.organisation.postCode}" 
+                                         required="true"
+                                         requiredMessage="Please enter a postCode."/>
+                        </td>                
+                        <td>
+                            <h:outputLabel value="Type of Organisation:"/>
+                            <h:inputText value="#{organisationController.organisation.outLineOfWhatYourOrganisationDoes}"
+                                         required="true"
+                                         requiredMessage="Please enter an Aims and Objectives.">
+                            </h:inputText>
+                        </td>        
+                        <td class="form-field">
+                            <h:outputLabel value="Telephone:"/>
+                            <h:inputText value="#{organisationController.organisation.telePhone}" 
+                                         required="true"
+                                         requiredMessage="Please enter telephone."/>
+                        </td>  
+                        <td class="form-field">
+                            <h:outputLabel value="Email"/>
+                            <h:inputText value="#{organisationController.organisation.emailAddress}" 
+                                         required="true"
+                                         requiredMessage="Please enter emailAddress."/>
+                        </td>
+                        <h:commandButton action="#{organisationController.createOrganisation()}" value="Submit"/>
+                    </table>
+                </h:form>
+            </section>
+        </article>
+    </h:body>
+</html>
+

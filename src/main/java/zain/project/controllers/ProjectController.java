@@ -95,7 +95,6 @@ public class ProjectController  implements Serializable
     public String viewProject(Project project) 
     {
         this.project = project;
-        //return "start.xhtml";
         return "template.xhtml";
     }
     

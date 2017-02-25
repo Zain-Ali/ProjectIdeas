@@ -15,17 +15,20 @@ import zain.project.entitites.User;
  * @author zain
  */
 @Stateless
-public class UserFacade extends AbstractFacade<User> {
+public class UserFacade extends AbstractFacade<User> 
+{
 
     @PersistenceContext(unitName = "PU")
     private EntityManager em;
 
     @Override
-    protected EntityManager getEntityManager() {
+    protected EntityManager getEntityManager() 
+    {
         return em;
     }
 
-    public UserFacade() {
+    public UserFacade() 
+    {
         super(User.class);
     }
     
