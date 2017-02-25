@@ -11,6 +11,7 @@ package zain.project.business;
  */
 public class PrivilegeLevel 
 {
-    //private final int priviledgeLevel;
-    
+    int STUDENT = 0;
+    int Staff = 1;
+    int Admin = 5;
 }

@@ -5,15 +5,40 @@
  */
 package zain.project.business;
 
+import java.util.List;
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import zain.project.entitites.User;
+import zain.project.persistence.UserFacade;
 
 /**
  *
  * @author zain
  */
 @Stateless
-public class UserService {
+public class UserService 
+{
+    @EJB
+    private UserFacade userFacade;
+    
+    public List<User> finalAllUsers() 
+    {
+        return userFacade.findAll();
+    }
+    
+    public void createUser(User user) 
+    {
+        userFacade.create(user);
+    }
+    
+    public User updateUser(User user) 
+    {
+        return userFacade.edit(user);
+    }
+    
+    public void deleteUser(User user) 
+    {
+        userFacade.remove(user);
+    }
 
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
 }
