@@ -3,6 +3,7 @@
   <persistence-unit name="PU" transaction-type="JTA">
     <jta-data-source>java:app/jdbc/ProjectIdeas</jta-data-source>
     <class>zain.project.entitites.ContactAdmin</class>
+    <class>zain.project.entitites.Organisation</class>
     <class>zain.project.entitites.Project</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>

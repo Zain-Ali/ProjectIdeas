@@ -30,13 +30,13 @@ public class Project implements Serializable {
     private Long id; //reference number
     private String title;
     private String projectOwner;
-    private String language;
+    private String languages;
     private String aimsAndObjectives;
     private String academicQuestionsToBeAnswered;
     private String anticipatedDeliverables;
     //private User user;
     private String status;
-    @Temporal(TemporalType.DATE)
+    //@Temporal(TemporalType.DATE)
     private Date lastUpdated;
     
     
@@ -78,14 +78,14 @@ public class Project implements Serializable {
         this.projectOwner = projectOwner;
     }      
     
-    public String getLanguage() 
+    public String getLanguages() 
     {
-        return language;
+        return languages;
     }
 
-    public void setLanguage(String language) 
+    public void setLanguages(String languages) 
     {
-        this.language = language;
+        this.languages = languages;
     }
 
     public String getAimsAndObjectives() 

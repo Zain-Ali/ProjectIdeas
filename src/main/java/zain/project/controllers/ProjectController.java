@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package zain.project.controllers;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +68,7 @@ public class ProjectController  implements Serializable
         projectService.createProject(project);
         project = new Project();
         projectList = projectService.findAllProjects();
-        return "createproject.xhtml";
+        return "/index.xhtml";
     }
     
     
