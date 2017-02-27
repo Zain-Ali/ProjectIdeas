@@ -16,28 +16,10 @@
             </header>
             <section>
                 <h:form>
-                    <table>
                         <div>
                             <h:outputLabel value="Title:"/>
                             <h:inputText value="#{projectController.project.title}"/>
-                        </div>
-                        <div>
-                            <h:outputLabel value="Aims and Objective:"/>
-                            <h:inputTextarea value="#{projectController.project.aimsAndObjectives}"/>
-                        </div>
-                        <div>
-                            <h:outputLabel value="Question to be Answered"/>
-                            <h:inputTextarea value="#{projectController.project.academicQuestionsToBeAnswered}"/>
-                        </div>
-                        <div>
-                            <h:outputLabel value="Anticipated Deliverables"/>
-                            <h:inputTextarea value="#{projectController.project.anticipatedDeliverables}"/>
-                        </div>
-                        <div>
-                            <h:outputLabel value="Status"/>
-                            <h:inputText value="#{projectController.project.status}"/>
-                        </div>                      
-                    </table>
+                        </div>                     
                     <h:commandButton action="#{projectController.createProject()}" value= "Submit">
                         <f:param name="id" value="#{projectController.project.id}"/>
                     </h:commandButton>

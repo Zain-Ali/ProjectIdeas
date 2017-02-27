@@ -36,7 +36,7 @@ public class Project implements Serializable {
     private String anticipatedDeliverables;
     //private User user;
     private String status;
-    //@Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE)
     private Date lastUpdated;
     
     

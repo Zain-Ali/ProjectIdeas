@@ -68,7 +68,7 @@ public class ProjectController  implements Serializable
         projectService.createProject(project);
         project = new Project();
         projectList = projectService.findAllProjects();
-        return "/index.xhtml";
+        return "/index?faces-redirect=true";
     }
     
     
@@ -76,27 +76,27 @@ public class ProjectController  implements Serializable
     {
         projectService.deleteProject(project);
         projectList = projectService.findAllProjects();
-        return "index.xhtml";
+        return "/index?faces-redirect=true";
     }
     
     
     public String editProject(Project project) 
     {
         this.project = project;
-        return "editproject.xhtml";
+        return "/project/editproject?faces-redirect=true";
     }
     
     public String backToIndex()//update 
     {
         projectService.editProject(project);
         this.setProject(new Project());
-        return "index.xhtml";
+        return "/index?faces-redirect=true";
     }
 
     public String viewProject(Project project) 
     {
         this.project = project;
-        return "template.xhtml";
+        return "/project/template?faces-redirect=true";
     }
     
         

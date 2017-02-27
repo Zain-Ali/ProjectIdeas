@@ -5,7 +5,7 @@
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Project Idea: Home</title>
+        <title>View Project</title>
     </h:head>
     <h:body>
         <article>
@@ -16,16 +16,6 @@
                 </div>
                 <h:form>
                     <div id="login">
-                        <h:outputLabel value="Username"/>
-                        <h:inputText p:autocomplete="off"/>
-                        <h:outputLabel value="Password"/>
-                        <h:inputText p:autocomplete="off"/>  
-                        <h:commandButton action="#{placeholder}" value="Login"/>
-                        <h:commandButton action="#{placeholder}" value="Sign up"/>
-                    </div>    
-                </h:form>
-                <h:form>
-                    <div id="login">
                         <h:outputLabel value="Search"/>
                         <h:inputText p:autocomplete="on"/>                       
                     </div>    
@@ -34,31 +24,30 @@
             <section>
                 <h:panelGroup>
                     <h:form>
-                        <h:dataTable value="#{projectController.projectList}" var="project">
                            <h:column>
                                 <f:facet name="header">Ref</f:facet>
-                                <h:outputText value="#{project.id}"/>
+                                <h:outputText value="#{projectController.project.id}"/>
                             </h:column> 
                            <h:column>
                                 <f:facet name="header">Project Title</f:facet>
-                                <h:outputText value="#{project.title}"/>
+                                <h:outputText value="#{projectController.project.title}"/>
                             </h:column> 
                             <h:column>
                                 <f:facet name="header">Project Owner</f:facet>
-                                <h:outputText value="#{project.projectOwner}"/>
+                                <h:outputText value="#{projectController.project.projectOwner}"/>
                             </h:column>     
                             <h:column>
                                 <f:facet name="header">Date</f:facet>
-                                <h:outputText value="#{project.lastUpdated}"/>
+                                <h:outputText value="#{projectController.project.lastUpdated}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">Status</f:facet>
-                                <h:outputText value="#{project.status}"/>
+                                <h:outputText value="#{projectController.project.status}"/>
                             </h:column>
                             <h:column>
-                                <h:commandButton value="View" action="#{projectController.viewProject(project)}"/>
+                                <h:commandButton value="Edit" action="#{projectController.editProject(project)}"/>
+                                    <h:commandButton value="View" action="#{projectController.viewProject(item)}"/>
                             </h:column>
-                        </h:dataTable> 
                     </h:form> 
                 </h:panelGroup>
             </section>
