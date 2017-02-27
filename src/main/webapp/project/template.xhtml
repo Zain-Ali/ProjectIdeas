@@ -45,8 +45,8 @@
                                 <h:outputText value="#{projectController.project.status}"/>
                             </h:column>
                             <h:column>
-                                <h:commandButton value="Edit" action="#{projectController.editProject(project)}"/>
-                                    <h:commandButton value="View" action="#{projectController.viewProject(item)}"/>
+                                <h:commandButton value="Edit" action="#{projectController.editProject(projectController.project)}"/>
+                                <h:commandButton value="View" action="#{projectController.viewProject(projectController.project)}"/>
                             </h:column>
                     </h:form> 
                 </h:panelGroup>
