@@ -5,6 +5,7 @@
     <class>zain.project.entitites.ContactAdmin</class>
     <class>zain.project.entitites.Organisation</class>
     <class>zain.project.entitites.Project</class>
+    <class>zain.project.entitites.Users</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>

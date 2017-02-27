@@ -21,7 +21,7 @@ import zain.project.business.PrivilegeLevel;
  */
 @Entity
 @Table(name="Users")
-public class User implements Serializable 
+public class Users implements Serializable 
 {
 
     private static final long serialVersionUID = 1L;
@@ -34,7 +34,7 @@ public class User implements Serializable
     private String firstname;
     private String lastName;
     private String phoneNumber;
-    private PrivilegeLevel privielegeLevel;
+    //private PrivilegeLevel privielegeLevel;
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Organisation organisation;
 
@@ -97,16 +97,16 @@ public class User implements Serializable
     {
         this.phoneNumber = phoneNumber;
     }
-
-    public PrivilegeLevel getPrivielegeLevel() 
-    {
-        return privielegeLevel;
-    }
-
-    public void setPrivielegeLevel(PrivilegeLevel privielegeLevel) 
-    {
-        this.privielegeLevel = privielegeLevel;
-    }
+//
+//    public PrivilegeLevel getPrivielegeLevel() 
+//    {
+//        return privielegeLevel;
+//    }
+//
+//    public void setPrivielegeLevel(PrivilegeLevel privielegeLevel) 
+//    {
+//        this.privielegeLevel = privielegeLevel;
+//    }
 
     public Organisation getOrganisation() 
     {
@@ -140,11 +140,11 @@ public class User implements Serializable
     public boolean equals(Object object) 
     {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User)) 
+        if (!(object instanceof Users)) 
         {
             return false;
         }
-        User other = (User) object;
+        Users other = (Users) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) 
         {
             return false;
