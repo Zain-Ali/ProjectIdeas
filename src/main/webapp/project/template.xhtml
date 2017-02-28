@@ -26,60 +26,60 @@
             <section>
                 <h:panelGroup>
                     <h:form>
-                           <h:column>
-                                <f:facet name="header">Ref</f:facet>
-                                <h:outputText value="#{projectController.project.id}"/>
-                            </h:column> 
-                           <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Project Title"/>
-                                </f:facet>
-                                <h:outputText value="#{projectController.project.title}"/>
-                            </h:column>
-                           <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Preferred Language"/>
-                                </f:facet>
-                               <h:outputText value="#{projectController.project.languages}"/>
-                            </h:column>                         
-                            <h:column>
-                                <f:facet name="header">Project Owner: </f:facet>
-                                <h:outputText value="#{projectController.project.projectOwner}"/>
-                            </h:column>     
-                            <h:column>
-                                <f:facet name="header">Aims and Objectives: </f:facet>
-                                <h:outputText value="#{projectController.project.aimsAndObjectives}"/>
-                            </h:column>   
-                            <h:column>
-                                <f:facet name="header">Academic Question to be answered: </f:facet>
-                                <h:outputText value="#{projectController.project.academicQuestionsToBeAnswered}"/>
-                            </h:column> 
-                            <h:column>
-                                <f:facet name="header">Anticipated Deliverables: </f:facet>
-                                <h:outputText value="#{projectController.project.anticipatedDeliverables}"/>
-                            </h:column> 
-                            <h:column>
-                                <f:facet name="header">Student for Who this Project has been devised: </f:facet>
-                                <h:outputText value="#{projectController.project.studentForWhoProjectHasBeenDevised}"/>
-                            </h:column>    
-                            <h:column>
-                                <f:facet name="header">Status: </f:facet>
-                                <h:outputText value="#{projectController.project.status}"/>
-                            </h:column>                          
-                            <h:column>
-                                <f:facet name="header">Date</f:facet>
-                                <h:outputText value="#{projectController.project.lastUpdated}">
-                                    <f:convertDateTime pattern="dd-MM-yyyy"/>
-                                </h:outputText>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Status</f:facet>
-                                <h:outputText value="#{projectController.project.status}"/>
-                            </h:column>
-                            <h:column>
-                                <h:commandButton value="Edit" action="#{projectController.updateProject(projectController.project)}"/>
-                                <h:commandButton value="Withdraw"  action="#{projectController.deleteProject(projectController.project)}"/>
-                            </h:column>
+                        <h:column>
+                            <f:facet name="header">Ref</f:facet>
+                            <h:outputText value="#{projectController.project.id}"/>
+                        </h:column> 
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Project Title"/>
+                            </f:facet>
+                            <h:outputText value="#{projectController.project.title}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Preferred Language"/>
+                            </f:facet>
+                        <h:outputText value="#{projectController.project.languages}"/>
+                        </h:column>                         
+                        <h:column>
+                            <f:facet name="header">Project Owner: </f:facet>
+                            <h:outputText value="#{projectController.project.projectOwner}"/>
+                        </h:column>     
+                        <h:column>
+                            <f:facet name="header">Aims and Objectives: </f:facet>
+                            <h:outputText value="#{projectController.project.aimsAndObjectives}"/>
+                        </h:column>   
+                        <h:column>
+                            <f:facet name="header">Academic Question to be answered: </f:facet>
+                            <h:outputText value="#{projectController.project.academicQuestionsToBeAnswered}"/>
+                        </h:column> 
+                        <h:column>
+                            <f:facet name="header">Anticipated Deliverables: </f:facet>
+                            <h:outputText value="#{projectController.project.anticipatedDeliverables}"/>
+                        </h:column> 
+                        <h:column>
+                            <f:facet name="header">Student for Who this Project has been devised: </f:facet>
+                            <h:outputText value="#{projectController.project.studentForWhoProjectHasBeenDevised}"/>
+                        </h:column>    
+                        <h:column>
+                            <f:facet name="header">Status: </f:facet>
+                            <h:outputText value="#{projectController.project.status}"/>
+                        </h:column>                          
+                        <h:column>
+                            <f:facet name="header">Date</f:facet>
+                            <h:outputText value="#{projectController.project.lastUpdated}">
+                            <f:convertDateTime pattern="dd-MM-yyyy"/>
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Status</f:facet>
+                            <h:outputText value="#{projectController.project.status}"/>
+                        </h:column>
+                        <h:column>
+                            <h:commandButton value="Edit" action="#{projectController.updateProject(projectController.project)}"/>
+                            <h:commandButton value="Withdraw"  action="#{projectController.deleteProject(projectController.project)}"/>
+                        </h:column>
                     </h:form> 
                 </h:panelGroup>
             </section>

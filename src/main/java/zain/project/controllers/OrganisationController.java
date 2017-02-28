@@ -77,7 +77,7 @@ public class OrganisationController implements Serializable
     public String updateOrganisation(Organisation organisation) 
     {
         this.organisation = organisation;
-        return "";
+        return "/organisation/editorganisation?faces-redirect=true";
     }
     
     public String backToIndex()//update 
@@ -90,7 +90,7 @@ public class OrganisationController implements Serializable
     public String viewOrganisation(Organisation organisation) 
     {
         this.organisation = organisation;
-        return "";
+        return "/organisation/listoforganisation?faces-redirect=true";
     }
     
         
