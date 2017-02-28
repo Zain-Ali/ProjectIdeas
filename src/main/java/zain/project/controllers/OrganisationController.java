@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package zain.project.controllers;
 
 import java.io.Serializable;
@@ -86,7 +82,7 @@ public class OrganisationController implements Serializable
     
     public String backToIndex()//update 
     {
-        organisationService.editOrganisation(organisation);
+        organisationService.updateOrganisation(organisation);
         this.setOrganisation(new Organisation());
         return "/index?faces-redirect=true";
     }

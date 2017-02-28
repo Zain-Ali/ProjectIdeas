@@ -17,15 +17,27 @@
             <section>
                 <h:form>
                         <div>
-                            <h:outputLabel value="User Name"/>
-                            <h:inputText value="#{usersController.users.username}"/>
-                        </div>  
+                            <h:outputLabel value="First Name: "/>
+                            <h:inputText value="#{usersController.users.firstname}"/>
+                        </div>
                         <div>
-                            <h:outputLabel value="Password"/>
+                            <h:outputLabel value="Last Name: "/>
+                            <h:inputText value="#{usersController.users.lastName}"/>
+                        </div> 
+                        <div>
+                            <h:outputLabel value="Contact Number: "/>
+                            <h:inputText value="#{usersController.users.phoneNumber}"/>
+                        </div>                    
+                         <div>
+                            <h:outputLabel value="User Name: "/>
+                            <h:inputText value="#{usersController.users.username}"/>
+                        </div>                    
+                        <div>
+                            <h:outputLabel value="Password: "/>
                             <h:inputSecret value="#{usersController.users.password}"/>
                         </div>                    
                         <div>
-                            <h:outputLabel value="type : "/>
+                            <h:outputLabel value="type: "/>
                             <h:selectOneMenu id="status" value="#{usersController.users.typeOfUser}">
                                 <f:selectItem itemValue="Student" />
                                 <f:selectItem itemValue="Staff/Tutor" />
