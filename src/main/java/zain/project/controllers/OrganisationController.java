@@ -66,7 +66,7 @@ public class OrganisationController implements Serializable
         organisationService.createOrganisation(organisation);
         organisation = new Organisation();
         organisationList = organisationService.findAllOrganisation();
-        return "createproject.xhtml"; 
+        return "/index?faces-redirect=true"; 
     }
     
     
@@ -74,28 +74,27 @@ public class OrganisationController implements Serializable
     {
         organisationService.deleteOrganisation(organisation);
         organisationList = organisationService.findAllOrganisation();
-        return "index.xhtml";
+        return "/index?faces-redirect=true";
     }
     
     
-    public String editOrganisation(Organisation organisation) 
+    public String updateOrganisation(Organisation organisation) 
     {
         this.organisation = organisation;
-        return "editproject.xhtml";
+        return "";
     }
     
     public String backToIndex()//update 
     {
         organisationService.editOrganisation(organisation);
         this.setOrganisation(new Organisation());
-        return "index.xhtml";
+        return "/index?faces-redirect=true";
     }
 
-    public String viewProject(Organisation organisation) 
+    public String viewOrganisation(Organisation organisation) 
     {
         this.organisation = organisation;
-        //return "start.xhtml";
-        return "template.xhtml";
+        return "";
     }
     
         
