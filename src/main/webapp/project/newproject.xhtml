@@ -17,9 +17,41 @@
             <section>
                 <h:form>
                         <div>
-                            <h:outputLabel value="Title:"/>
+                            <h:outputLabel value="Title: "/>
                             <h:inputText value="#{projectController.project.title}"/>
+                        </div> 
+                        <div>
+                            <h:outputLabel value="Preferred Language (blanf if unknown): "/>
+                            <h:inputText value="#{projectController.project.languages}"/>
+                        </div> 
+                        <div>
+                            <h:outputLabel value="Project Owner: "/>
+                            <h:inputText value="#{projectController.project.projectOwner}"/>
                         </div>                     
+                        <div>
+                            <h:outputLabel value="Aims and Objectives: "/>
+                            <h:inputTextarea value="#{projectController.project.aimsAndObjectives}"/>
+                        </div>  
+                        <div>
+                            <h:outputLabel value="Academic Question to be answered (blank if unknown): "/>
+                            <h:inputTextarea value="#{projectController.project.aimsAndObjectives}"/>
+                        </div> 
+                        <div>
+                            <h:outputLabel value="Anticipated Deliverables: "/>
+                            <h:inputTextarea value="#{projectController.project.anticipatedDeliverables}"/>
+                        </div> 
+                        <div>
+                            <h:outputLabel value="Student for Who this Project has been devised (blank if unknown): "/>
+                            <h:inputText value="#{projectController.project.studentForWhoProjectHasBeenDevised}"/>
+                        </div>
+                        <div>
+                            <h:outputLabel value="Status : "/>
+                            <h:selectOneMenu id="status">
+                                <f:selectItem itemValue="Approved" />
+                                <f:selectItem itemValue="Provisional" />
+                                <f:selectItem itemValue="Withdrawn" />
+                            </h:selectOneMenu>
+                        </div>                      
                     <h:commandButton action="#{projectController.createProject()}" value= "Submit">
                         <f:param name="id" value="#{projectController.project.id}"/>
                     </h:commandButton>

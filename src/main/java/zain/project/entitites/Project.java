@@ -22,18 +22,20 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name="Projects")
-public class Project implements Serializable {
+public class Project implements Serializable 
+{
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id; //reference number
     private String title;
+    private String languages;    
     private String projectOwner;
-    private String languages;
     private String aimsAndObjectives;
     private String academicQuestionsToBeAnswered;
     private String anticipatedDeliverables;
+    private String studentForWhoProjectHasBeenDevised;
     //private User user;
     private String status;
     @Temporal(TemporalType.DATE)
@@ -67,16 +69,7 @@ public class Project implements Serializable {
             this.title = title;
         }
     }
-    
-    public String getProjectOwner() 
-    {
-        return projectOwner;
-    }
-
-    public void setProjectOwner(String projectOwner) 
-    {
-        this.projectOwner = projectOwner;
-    }      
+        
     
     public String getLanguages() 
     {
@@ -87,6 +80,17 @@ public class Project implements Serializable {
     {
         this.languages = languages;
     }
+    
+    
+        public String getProjectOwner() 
+    {
+        return projectOwner;
+    }
+
+    public void setProjectOwner(String projectOwner) 
+    {
+        this.projectOwner = projectOwner;
+    } 
 
     public String getAimsAndObjectives() 
     {
@@ -141,7 +145,18 @@ public class Project implements Serializable {
         }
     }
     
+    
+    public String getStudentForWhoProjectHasBeenDevised() 
+    {
+        return studentForWhoProjectHasBeenDevised;
+    }
 
+    public void setStudentForWhoProjectHasBeenDevised(String studentForWhoProjectHasBeenDevised) 
+    {
+        this.studentForWhoProjectHasBeenDevised = studentForWhoProjectHasBeenDevised;
+    }
+    
+    
     public String getStatus() 
     {
         return status;

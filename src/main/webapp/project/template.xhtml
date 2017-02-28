@@ -5,7 +5,7 @@
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>View Project</title>
+        <title>Project: #{projectController.project.title}</title>
     </h:head>
     <h:body>
         <article>
@@ -29,13 +29,41 @@
                                 <h:outputText value="#{projectController.project.id}"/>
                             </h:column> 
                            <h:column>
-                                <f:facet name="header">Project Title</f:facet>
+                                <f:facet name="header">
+                                    <h:outputText value="Project Title"/>
+                                </f:facet>
                                 <h:outputText value="#{projectController.project.title}"/>
-                            </h:column> 
+                            </h:column>
+                           <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Preferred Language"/>
+                                </f:facet>
+                               <h:outputText value="#{projectController.project.languages}"/>
+                            </h:column>                         
                             <h:column>
-                                <f:facet name="header">Project Owner</f:facet>
+                                <f:facet name="header">Project Owner: </f:facet>
                                 <h:outputText value="#{projectController.project.projectOwner}"/>
                             </h:column>     
+                            <h:column>
+                                <f:facet name="header">Aims and Objectives: </f:facet>
+                                <h:outputText value="#{projectController.project.aimsAndObjectives}"/>
+                            </h:column>   
+                            <h:column>
+                                <f:facet name="header">Academic Question to be answered: </f:facet>
+                                <h:outputText value="#{projectController.project.academicQuestionsToBeAnswered}"/>
+                            </h:column> 
+                            <h:column>
+                                <f:facet name="header">Anticipated Deliverables: </f:facet>
+                                <h:outputText value="#{projectController.project.anticipatedDeliverables}"/>
+                            </h:column> 
+                            <h:column>
+                                <f:facet name="header">Student for Who this Project has been devised: </f:facet>
+                                <h:outputText value="#{projectController.project.studentForWhoProjectHasBeenDevised}"/>
+                            </h:column>    
+                            <h:column>
+                                <f:facet name="header">Status: </f:facet>
+                                <h:outputText value="#{projectController.project.status}"/>
+                            </h:column>                          
                             <h:column>
                                 <f:facet name="header">Date</f:facet>
                                 <h:outputText value="#{projectController.project.lastUpdated}">
@@ -47,8 +75,8 @@
                                 <h:outputText value="#{projectController.project.status}"/>
                             </h:column>
                             <h:column>
-                                <h:commandButton value="Edit" rendered="#{usersController.users.id != null}" action="#{projectController.editProject(projectController.project)}"/>
-                                <h:commandButton value="View" rendered="#{usersController.users.id != null}" action="#{projectController.viewProject(projectController.project)}"/>
+                                <h:commandButton value="Edit" action="#{projectController.updateProject(projectController.project)}"/>
+                                <h:commandButton value="Withdraw"  action="#{projectController.deleteProject(projectController.project)}"/>
                             </h:column>
                     </h:form> 
                 </h:panelGroup>
