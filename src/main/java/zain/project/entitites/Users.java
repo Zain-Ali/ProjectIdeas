@@ -14,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import zain.project.business.PrivilegeLevel;
+import zain.project.entitites.exceptions.InvalidInputException;
 
 /**
  *
@@ -35,9 +36,22 @@ public class Users implements Serializable
     private String lastName;
     private String phoneNumber;
     //private PrivilegeLevel privielegeLevel;
-    @ManyToOne(cascade = CascadeType.PERSIST)
-    private Organisation organisation;
+    //@ManyToOne(cascade = CascadeType.PERSIST)
+    //private Organisation organisation;
+    private String typeOfUser;
 
+
+    public Long getId() 
+    {
+        return id;
+    }
+
+    public void setId(Long id) 
+    {
+        this.id = id;
+    }
+    
+    
     public String getUsername() 
     {
         return username;
@@ -48,6 +62,7 @@ public class Users implements Serializable
         this.username = username;
     }
 
+    
     public String getPassword() 
     {
         return password;
@@ -58,6 +73,7 @@ public class Users implements Serializable
         this.password = password;
     }
 
+    
     public String getEmail() 
     {
         return email;
@@ -73,6 +89,7 @@ public class Users implements Serializable
         return firstname;
     }
 
+    
     public void setFirstname(String firstname) 
     {
         this.firstname = firstname;
@@ -83,6 +100,7 @@ public class Users implements Serializable
         return lastName;
     }
 
+    
     public void setLastName(String lastName) 
     {
         this.lastName = lastName;
@@ -97,6 +115,8 @@ public class Users implements Serializable
     {
         this.phoneNumber = phoneNumber;
     }
+    
+    
 //
 //    public PrivilegeLevel getPrivielegeLevel() 
 //    {
@@ -108,26 +128,35 @@ public class Users implements Serializable
 //        this.privielegeLevel = privielegeLevel;
 //    }
 
-    public Organisation getOrganisation() 
+//    public Organisation getOrganisation() 
+//    {
+//        return organisation;
+//    }
+//
+//    public void setOrganisation(Organisation organisation) 
+//    {
+//        this.organisation = organisation;
+//    }
+    
+    public String getTypeOfUser() 
     {
-        return organisation;
+        return typeOfUser;
     }
 
-    public void setOrganisation(Organisation organisation) 
+    public void setTypeOfUser(String typeOfUser) throws InvalidInputException
     {
-        this.organisation = organisation;
+        switch(typeOfUser)
+        {
+            case "Student":
+            case "Staff/Tutor":
+            case "Admin":
+                this.typeOfUser = typeOfUser;
+                break;
+                default:
+                throw new InvalidInputException("Only Select ");
+        }
     }
-
-    public Long getId() 
-    {
-        return id;
-    }
-
-    public void setId(Long id) 
-    {
-        this.id = id;
-    }
-
+    
     @Override
     public int hashCode() 
     {

@@ -23,12 +23,16 @@
                         <div>
                             <h:outputLabel value="Password"/>
                             <h:inputSecret value="#{usersController.users.password}"/>
-                        </div>     
+                        </div>                    
                         <div>
-                            <h:outputLabel value="Type"/>
-                            <
-                            <h:inputSecret value="#{usersController.users.password}"/>
-                        </div>                     
+                            <h:outputLabel value="type : "/>
+                            <h:selectOneMenu id="status" value="#{usersController.users.typeOfUser}">
+                                <f:selectItem itemValue="Student" />
+                                <f:selectItem itemValue="Staff/Tutor" />
+                                <f:selectItem itemValue="Admin" />
+                            </h:selectOneMenu>
+                        </div>   
+                    
                     <h:commandButton action="#{usersController.createUsers()}" value= "Submit">
                         <f:param name="id" value="#{usersController.users.id}"/>
                     </h:commandButton>

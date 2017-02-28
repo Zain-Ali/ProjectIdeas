@@ -12,7 +12,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
-import zain.project.business.UserService;
+import zain.project.business.UsersService;
 import zain.project.entitites.Users;
 
 /**
@@ -25,7 +25,7 @@ public class usersController implements Serializable
 {
 
     @EJB
-    private UserService usersService;
+    private UsersService usersService;
     private Users users;
     
     private List<Users> results;

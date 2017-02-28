@@ -17,7 +17,7 @@ import zain.project.entitites.Users;
  * @author zain
  */
 @Stateless
-public class UserFacade extends AbstractFacade<Users> 
+public class UsersFacade extends AbstractFacade<Users> 
 {
 
     @PersistenceContext(unitName = "PU")
@@ -29,7 +29,7 @@ public class UserFacade extends AbstractFacade<Users>
         return em;
     }
 
-    public UserFacade() 
+    public UsersFacade() 
     {
         super(Users.class);
     }

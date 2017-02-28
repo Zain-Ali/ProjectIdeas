@@ -166,13 +166,13 @@ public class Project implements Serializable
     {
         switch(status) 
         {
-            case "A": //Approved
-            case "P": // Provisional 
-            case "W": // WithDrawn
+            case "Approved": //Approved
+            case "Provisional": // Provisional 
+            case "Withdrawn": // WithDrawn
                 this.status = status;
                 break;
             default:
-                throw new InvalidInputException("Only Select \"A\", \"P\", \"W\" ");
+                throw new InvalidInputException("Only Select \"Approved\", \"Provisional\", \"Withdrawn\" ");
         }
     }
     

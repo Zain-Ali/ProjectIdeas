@@ -30,6 +30,7 @@ public class Organisation implements Serializable {
     private int telePhone;
     private String emailAddress;
 
+
     public Long getId() 
     {
         return id;
@@ -114,7 +115,7 @@ public class Organisation implements Serializable {
     {
         this.emailAddress = emailAddress;
     }
-
+    
 
     @Override
     public int hashCode() 

@@ -9,17 +9,17 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import zain.project.entitites.Users;
-import zain.project.persistence.UserFacade;
+import zain.project.persistence.UsersFacade;
 
 /**
  *
  * @author zain
  */
 @Stateless
-public class UserService 
+public class UsersService 
 {
     @EJB
-    private UserFacade userFacade;
+    private UsersFacade userFacade;
     
     public List<Users> finalAllUsers() 
     {
