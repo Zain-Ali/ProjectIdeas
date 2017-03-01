@@ -16,14 +16,14 @@
             </header>
             <section>
                 <h:form>
-                        <div>
-                            <h:outputLabel value="User Name"/>
-                            <h:inputText value="#{usersController.users.username}"/>
-                        </div>  
-                        <div>
-                            <h:outputLabel value="Password"/>
-                            <h:inputText value="#{usersController.users.password}"/>
-                        </div>                      
+                    <div>
+                        <h:outputLabel value="User Name"/>
+                        <h:inputText value="#{usersController.users.username}"/>
+                    </div>  
+                    <div>
+                        <h:outputLabel value="Password"/>
+                        <h:inputText value="#{usersController.users.password}"/>
+                    </div>                      
                     <h:commandButton action="#{usersController.login()}" value= "Submit">
                         <f:param name="id" value="#{usersController.users.id}"/>
                     </h:commandButton>

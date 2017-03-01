@@ -4,10 +4,12 @@ package zain.project.entitites;
 import zain.project.entitites.exceptions.InvalidInputException;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -36,6 +38,10 @@ public class Project implements Serializable
     private String status;
     @Temporal(TemporalType.DATE)
     private Date lastUpdated;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    private Organisation organisation;
+
+
     
     
     public Long getId() 
@@ -170,6 +176,16 @@ public class Project implements Serializable
             default:
                 throw new InvalidInputException("Only Select \"Approved\", \"Provisional\", \"Withdrawn\" ");
         }
+    }
+    
+    public Organisation getOrganisation() 
+    {
+        return organisation;
+    }
+
+    public void setOrganisation(Organisation organisation) 
+    {
+        this.organisation = organisation;
     }
     
 

@@ -48,7 +48,7 @@
                         </div>
                         <div>
                             <h:outputLabel value="Status : "/>
-                            <h:selectOneMenu id="status">
+                            <h:selectOneMenu id="status" value="#{projectController.project.status}">
                                 <f:selectItem itemValue="Approved" />
                                 <f:selectItem itemValue="Provisional" />
                                 <f:selectItem itemValue="Withdrawn" />

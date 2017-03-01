@@ -9,6 +9,7 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import zain.project.business.ProjectService;
+import zain.project.entitites.Organisation;
 import zain.project.entitites.Project;
 
 /**
@@ -61,6 +62,7 @@ public class ProjectController  implements Serializable
     
     public String createProject() 
     {
+//        project.setOrganisation(organisation);
         projectService.createProject(project);
         project = new Project();
         projectList = projectService.findAllProjects();
