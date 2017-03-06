@@ -26,10 +26,6 @@
                     <div>
                         <h:outputLabel value="Preferred Language (blanf if unknown): "/>
                         <h:inputText value="#{projectController.project.languages}"/>
-                    </div> 
-                    <div>
-                        <h:outputLabel value="Project Owner: "/>
-                        <h:inputText value="#{projectController.project.projectOwner}"/>
                     </div>                     
                     <div>
                         <h:outputLabel value="Aims and Objectives: "/>
@@ -55,7 +51,7 @@
                             <f:selectItem itemValue="Withdrawn" />
                         </h:selectOneMenu>
                     </div>                      
-                    <h:commandButton action="#{projectController.createProject()}" value= "Submit">
+                    <h:commandButton action="#{projectController.createProject(usersController.users)}" value= "Submit">
                         <f:param name="id" value="#{projectController.project.id}"/>
                     </h:commandButton>
                 </h:form>

@@ -23,7 +23,6 @@ public class usersController implements Serializable
     @EJB
     private UsersService usersService;
     private Users users;
-    
     private List<Users> results;
     List<Users> usersList = new ArrayList<>();
     
@@ -92,6 +91,12 @@ public class usersController implements Serializable
     {
         results = usersService.login(users.getUsername(), users.getPassword());
         users = results.get(0);
+        return "/index?faces-redirect=true";
+    }
+    
+    public String logout() 
+    {
+        users = new Users();
         return "/index?faces-redirect=true";
     }
     

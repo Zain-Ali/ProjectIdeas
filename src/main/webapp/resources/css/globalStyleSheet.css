@@ -8,3 +8,35 @@ and open the template in the editor.
     Author     : zain
 */
 
+* {
+    padding: 0em;
+    margin: 0em;
+}
+
+.clear  {
+    clear: both;
+}
+
+header {
+    -webkit-border-radius:1em;    
+    -moz-border-radius: 1em;
+    border-radius: 0px;
+    padding-top: 50px;
+    margin: auto;
+    width: 85%;
+    border-bottom: dotted;
+}
+
+img {
+    clear: both;
+}
+
+.images {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+}
+
+body {
+    background-color: white;
+}

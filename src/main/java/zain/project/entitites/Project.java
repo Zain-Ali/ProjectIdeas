@@ -29,7 +29,8 @@ public class Project implements Serializable
     private Long id; //reference number
     private String title;
     private String languages;    
-    private String projectOwner;
+    @ManyToOne
+    private Users projectOwner;
     private String aimsAndObjectives;
     private String academicQuestionsToBeAnswered;
     private String anticipatedDeliverables;
@@ -84,12 +85,12 @@ public class Project implements Serializable
     }
     
     
-        public String getProjectOwner() 
+        public Users getProjectOwner() 
     {
         return projectOwner;
     }
 
-    public void setProjectOwner(String projectOwner) 
+    public void setProjectOwner(Users projectOwner) 
     {
         this.projectOwner = projectOwner;
     } 

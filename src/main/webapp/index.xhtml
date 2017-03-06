@@ -6,6 +6,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Project Idea: Home</title>
+        <h:outputStylesheet library="css" name="globalStyleSheet.css"    /> 
     </h:head>
     <h:body>
         <article>
@@ -22,6 +23,7 @@
                         <h:inputText p:autocomplete="off"/>  
                         <h:commandButton action="#{placeholder}" value="Login"/>
                         <h:commandButton action="#{placeholder}" value="Sign up"/>
+                        <h:commandButton action="#{usersController.logout()}" value="logout"/>
                     </div>    
                 </h:form>
                 <h:form>

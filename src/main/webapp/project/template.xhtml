@@ -77,8 +77,8 @@
                             <h:outputText value="#{projectController.project.status}"/>
                         </h:column>
                         <h:column>
-                            <h:commandButton value="Edit" action="#{projectController.updateProject(projectController.project)}"/>
-                            <h:commandButton value="Withdraw"  action="#{projectController.deleteProject(projectController.project)}"/>
+                            <h:commandButton value="Edit" rendered="#{usersController.users.typeOfUser == 'Admin' or usersController.users == projectController.project.projectOwner}" action="#{projectController.updateProject(projectController.project)}"/>
+                            <h:commandButton value="Withdraw"  rendered="#{usersController.users.typeOfUser == 'Admin' or usersController.users == projectController.project.projectOwner}" action="#{projectController.deleteProject(projectController.project)}"/>
                         </h:column>
                     </h:form> 
                 </h:panelGroup>

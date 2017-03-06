@@ -11,6 +11,7 @@ import javax.enterprise.context.SessionScoped;
 import zain.project.business.ProjectService;
 import zain.project.entitites.Organisation;
 import zain.project.entitites.Project;
+import zain.project.entitites.Users;
 
 /**
  *
@@ -23,6 +24,7 @@ public class ProjectController  implements Serializable
     @EJB
     private ProjectService projectService;
     private Project project;
+    
     
     List<Project> projectList = new ArrayList<>();
 
@@ -60,8 +62,10 @@ public class ProjectController  implements Serializable
     }
     
     
-    public String createProject() 
+    public String createProject(Users user) 
     {
+        
+        project.setProjectOwner(user);
 //        project.setOrganisation(organisation);
         projectService.createProject(project);
         project = new Project();
