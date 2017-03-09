@@ -143,9 +143,9 @@ public class Users implements Serializable
     {
         switch(typeOfUser)
         {
-            case "Student":
-            case "Staff/Tutor":
             case "Admin":
+            case "Student":
+            case "Staff/Tutor":    
                 this.typeOfUser = typeOfUser;
                 break;
                 default:
