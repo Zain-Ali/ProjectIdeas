@@ -31,11 +31,15 @@
                     <h:form styleClass="navbar-form navbar-right">
                         
                         <div class="form-group">
-                            <b:inputText placeholder="username" fieldSize="sm" value="#{usersController.users.username}"/>
+                            <b:inputText placeholder="username" fieldSize="sm" value="#{usersController.users.username}"
+                                        required="true"
+                                        requiredMessage="Please enter a User Name."/>
                         </div>  
                         
                         <div class="form-group">
-                            <b:inputText placeholder="password" fieldSize="sm" value="#{usersController.users.password}"/>
+                            <b:inputText placeholder="password" fieldSize="sm" value="#{usersController.users.password}"
+                                        required="true"
+                                        requiredMessage="Please enter a password"/>
                         </div>    
                         
                         <b:commandButton action="#{usersController.login()}" value= "Login">
@@ -69,7 +73,7 @@
                 
                 <h:panelGroup>
                     <h:form>        
-                        <h:dataTable value="#{projectController.projectList}" var="project"> 
+                        <h:dataTable class="table" value="#{projectController.projectList}" var="project"> 
                            <h:column>
                                 <f:facet name="header">Ref</f:facet>
                                 <h:outputText value="#{project.id}"/>
