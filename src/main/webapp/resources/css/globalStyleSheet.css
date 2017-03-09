@@ -50,6 +50,11 @@ body {
     top: 60px;
 }
 
+.accountInfo {
+    left: 110px;
+}
+
+
 .searchBar {
     position: absolute;
     clear: both;
@@ -59,6 +64,7 @@ body {
 }
 
 .table {
+    
     background: #f5f5f5;
     border-collapse: separate;
     margin: 20px auto;

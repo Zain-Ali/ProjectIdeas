@@ -21,7 +21,7 @@
                         </b:dropMenu>
                         
                         <b:dropMenu value="Organisations    ">
-                            <b:navLink value="View All Organisation" href=""></b:navLink> <!--render-->
+                            <b:navLink value="View All Organisation" href="/ProjectIdeas/faces/organisation/listoforganisation.xhtml"></b:navLink> <!--render-->
                             <b:navLink value="New Organisation" href="/ProjectIdeas/faces/organisation/neworganisation.xhtml"></b:navLink> <!--render-->
                         </b:dropMenu>
                         
@@ -44,24 +44,24 @@
                         
                         <b:commandButton action="#{usersController.login()}" value= "Login">
                             <f:param name="id" value="#{usersController.users.id}"/>
-                        </b:commandButton>
-                        
-                        <b:commandButton value= "My Account">
-                            <f:param name="id" value="#{usersController.users.id}"/>
                         </b:commandButton> 
+                        <b:commandButton action="#{usersController.logout()}" value= "Logout">
+                            <f:param name="id" value="#{usersController.users.id}"/>
+                        </b:commandButton>                                            
                         
                     </h:form>                     
                 </b:navBar> 
                 <div>
                     <h:form class="signUP">
-                        <b:commandButton   value= "My Idea" >
+                        <b:commandButton value= "My Idea" >
                             <f:param name="id" value="#{usersController.users.id}"/>
                         </b:commandButton>                        
                         <b:commandButton  action="/login/registeruser.xhtml" value= "Signup" >
                             <f:param name="id" value="#{usersController.users.id}"/>
                         </b:commandButton>
                     </h:form>
-                </div>                
+                </div>  
+                
             </header>
             
             <section>
@@ -70,7 +70,6 @@
                         <f:ajax event="keyup"/>
                     </b:inputText>
                 </h:form>
-                
                 <h:panelGroup>
                     <h:form>        
                         <h:dataTable class="table" value="#{projectController.projectList}" var="project"> 

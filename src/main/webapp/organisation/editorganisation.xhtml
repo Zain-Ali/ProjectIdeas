@@ -21,13 +21,40 @@
                         </b:dropMenu>
                         
                         <b:dropMenu value="Organisations    ">
-                            <b:navLink value="View All Organisation" href=""></b:navLink>
+                            <b:navLink value="View All Organisation" href="/ProjectIdeas/faces/organisation/listoforganisation.xhtml"></b:navLink> <!--render-->
                             <b:navLink value="New Organisation" href="/ProjectIdeas/faces/organisation/neworganisation.xhtml"></b:navLink> <!--render-->
                         </b:dropMenu>
                         
                         <b:navLink value="Contact us" href=""></b:navLink>
-                    </b:navbarLinks>                
-                </b:navBar> 
+                    </b:navbarLinks>
+                    
+                    <h:form styleClass="navbar-form navbar-right">
+                        
+                        <div class="form-group">
+                            <b:inputText placeholder="username" fieldSize="sm" value="#{usersController.users.username}"/>
+                        </div>  
+                        
+                        <div class="form-group">
+                            <b:inputText placeholder="password" fieldSize="sm" value="#{usersController.users.password}"/>
+                        </div>    
+                        
+                        <b:commandButton action="#{usersController.login()}" value= "Login">
+                            <f:param name="id" value="#{usersController.users.id}"/>
+                        </b:commandButton>
+                        
+                        <b:commandButton action="#" value= "My Account">
+                            <f:param name="id" value="#{usersController.users.id}"/>
+                        </b:commandButton> 
+                        
+                    </h:form>                     
+                </b:navBar>  
+                <div>
+                    <h:form class="signUP">
+                        <b:commandButton  action="/login/registeruser.xhtml" value= "Signup" >
+                            <f:param name="id" value="#{usersController.users.id}"/>
+                        </b:commandButton>
+                    </h:form>
+                </div> 
             </header>
             <section>
                 <h:form>

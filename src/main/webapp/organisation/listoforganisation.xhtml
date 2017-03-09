@@ -6,36 +6,55 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
-        <title>Facelet Title</title>
+        <title>List of Organisation</title>
     </h:head>
-    <h:body>
+    <h:body style="padding-top: 50px; padding-bottom: 20px">
         <article>
             <header>
+                <b:navBar brand="Project Ideas for MSc" brand-href="/ProjectIdeas/" inverse="true" fixed="top">
+                    <b:navbarLinks>
+                        
+                        <b:dropMenu value="Project Ideas">
+                            <b:navLink value="View All Projects" href="" ></b:navLink>
+                            <b:navLink value="New Project Idea" href="/ProjectIdeas/faces/project/newproject.xhtml"></b:navLink> <!--render-->
+                        </b:dropMenu>
+                        
+                        <b:dropMenu value="Organisations">
+                            <b:navLink value="View All Organisation" href="/ProjectIdeas/faces/project/listoforganisation.xhtml"></b:navLink> <!--render-->
+                            <b:navLink value="New Organisation" href="/ProjectIdeas/faces/project/newproject.xhtml"></b:navLink> <!--render-->
+                        </b:dropMenu>
+                        
+                        <b:navLink value="Contact us" href=""></b:navLink>
+                    </b:navbarLinks>
+                    
+                    <h:form styleClass="navbar-form navbar-right">
+                        
+                        <div class="form-group">
+                            <b:inputText placeholder="username" fieldSize="sm" value="#{usersController.users.username}"/>
+                        </div>  
+                        
+                        <div class="form-group">
+                            <b:inputText placeholder="password" fieldSize="sm" value="#{usersController.users.password}"/>
+                        </div>    
+                        
+                        <b:commandButton action="#{usersController.login()}" value= "Login">
+                            <f:param name="id" value="#{usersController.users.id}"/>
+                        </b:commandButton>
+                                                
+                    </h:form>                     
+                </b:navBar>  
                 <div>
-                    <img src="resources/images/logo.png" height="100"/>
-                    <h1>List of Organisations</h1>
-                </div>
-                <h:form>
-                    <div id="login">
-                        <h:outputLabel value="Username"/>
-                        <h:inputText p:autocomplete="off"/>
-                        <h:outputLabel value="Password"/>
-                        <h:inputText p:autocomplete="off"/>  
-                        <h:commandButton action="#{placeholder}" value="Login"/>
-                        <h:commandButton action="#{placeholder}" value="Sign up"/>
-                    </div>    
-                </h:form>
-                <h:form>
-                    <div id="login">
-                        <h:outputLabel value="Search"/>
-                        <h:inputText p:autocomplete="on"/>                       
-                    </div>    
-                </h:form>
+                    <h:form class="signUP">
+                        <b:commandButton  action="/login/registeruser.xhtml" value= "Signup" >
+                            <f:param name="id" value="#{usersController.users.id}"/>
+                        </b:commandButton>
+                    </h:form>
+                </div> 
             </header>
             <section>
                 <h:panelGroup>
                     <h:form>
-                        <h:dataTable value="#{organisationController.organisationList}" var="organisation">
+                        <h:dataTable class="table" value="#{organisationController.organisationList}" var="organisation">
                            <h:column>
                                 <f:facet name="header">Ref</f:facet>
                                 <h:outputText value="#{organisation.id}"/>
@@ -44,6 +63,10 @@
                                 <f:facet name="header">Organisation Name</f:facet>
                                 <h:outputText value="#{organisation.organisationName}"/>
                             </h:column> 
+                            <h:column>
+                                <f:facet name="header">Organisation Owner</f:facet>
+                                <h:outputText value="#{organisation.contactName}"/>
+                            </h:column>                             
                             <h:column>
                                 <h:commandButton value="View" action="#{organisationController.viewOrganisation(organisation)}"/>
                             </h:column>
