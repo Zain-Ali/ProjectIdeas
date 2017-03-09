@@ -46,51 +46,41 @@
                         </b:commandButton> 
                         
                     </h:form>                     
-                </b:navBar> 
-                <div>
-                    <h:form class="signUP">
-                        <b:commandButton   value= "My Idea" >
-                            <f:param name="id" value="#{usersController.users.id}"/>
-                        </b:commandButton>                        
-                        <b:commandButton  action="/login/registeruser.xhtml" value= "Signup" >
-                            <f:param name="id" value="#{usersController.users.id}"/>
-                        </b:commandButton>
-                    </h:form>
-                </div>                
+                </b:navBar>               
             </header>
             <section>
                 <h:form>
-                    <div>
+                    <div class="form-style-1">
                         <h:outputLabel value="First Name: "/>
                         <h:inputText value="#{usersController.users.firstname}"
                                     required="true"
                                     requiredMessage="Please enter a First Name."/>
                     </div>
-                    <div>
+                    <div class="form-style-1">
                         <h:outputLabel value="Last Name: "/>
                         <h:inputText value="#{usersController.users.lastName}"
                                     required="true"
                                     requiredMessage="Please enter a Last Name."/>
                     </div> 
-                    <div>
+                    <div class="form-style-1">
                         <h:outputLabel value="Contact Number: "/>
                         <h:inputText value="#{usersController.users.phoneNumber}"
                                     required="true"
                                     requiredMessage="Please enter a Phone Number."/>
                     </div>                    
-                    <div>
+                    <div class="form-style-1">
                         <h:outputLabel value="User Name: "/>
                         <h:inputText value="#{usersController.users.username}"
                                     required="true"
                                     requiredMessage="Please enter a User Name."/>
                     </div>                    
-                    <div>
+                    <div class="form-style-1">
                         <h:outputLabel value="Password: "/>
                         <h:inputSecret value="#{usersController.users.password}"
                                     required="true"
                                     requiredMessage="Please enter a Password."/>
                     </div>                    
-                    <div>
+                    <div class="form-style-1">
                         <h:outputLabel value="type: "/>
                         <h:selectOneMenu id="status" value="#{usersController.users.typeOfUser}"
                                         required="true" requiredMessage="Please select one of the following">
@@ -99,10 +89,11 @@
                             <f:selectItem itemValue="Admin" />
                         </h:selectOneMenu>
                     </div>   
-             
-                    <h:commandButton action="#{usersController.createUsers()}" value= "Submit">
+                    <div class="form-style-1">
+                        <h:commandButton action="#{usersController.createUsers()}" value= "Submit" >
                         <f:param name="id" value="#{usersController.users.id}"/>
-                    </h:commandButton>
+                        </h:commandButton>
+                    </div>    
                 </h:form>
             </section>
         </article>

@@ -37,7 +37,7 @@
                         </div>  
                         
                         <div class="form-group">
-                            <b:inputText placeholder="password" fieldSize="sm" value="#{usersController.users.password}"
+                            <b:inputSecret placeholder="password" fieldSize="sm" value="#{usersController.users.password}"
                                         required="true"
                                         requiredMessage="Please enter a password"/>
                         </div>    
@@ -46,7 +46,7 @@
                             <f:param name="id" value="#{usersController.users.id}"/>
                         </b:commandButton>
                         
-                        <b:commandButton action="#" value= "My Account">
+                        <b:commandButton value= "My Account">
                             <f:param name="id" value="#{usersController.users.id}"/>
                         </b:commandButton> 
                         
@@ -74,7 +74,7 @@
                 <h:panelGroup>
                     <h:form>        
                         <h:dataTable class="table" value="#{projectController.projectList}" var="project"> 
-                           <h:column>
+                            <h:column>
                                 <f:facet name="header">Ref</f:facet>
                                 <h:outputText value="#{project.id}"/>
                             </h:column> 
@@ -106,4 +106,3 @@
         </article>
     </h:body>
 </html>
-

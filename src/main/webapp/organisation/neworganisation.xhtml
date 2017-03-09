@@ -30,44 +30,44 @@
             </header>
             <section>
                 <h:form>
-                    <div>
+                    <div class="form-style-1">
                         <h:outputLabel value="Organisation Name: "/>
                         <h:inputText value="#{organisationController.organisation.organisationName}"
                                     required="true"
                                     requiredMessage="Please enter Organisation Name. "/>
                     </div> 
-                    <div>
+                    <div class="form-style-1">
                         <h:outputLabel value="Postal Address: "/>
                         <h:inputTextarea value="#{organisationController.organisation.postalAddress}"
                                         required="true"
                                         requiredMessage="Please enter Postal Address. "/>
                     </div> 
-                    <div>
+                    <div class="form-style-1">
                         <h:outputLabel value="Postcode: "/>
                         <h:inputText value="#{organisationController.organisation.postCode}"
                                     required="true"
                                     requiredMessage="Please enter a Postcode."/>
                     </div>
-                    <div>
+                    <div class="form-style-1">
                         <h:outputLabel value="Outline of what your organisation does: "/>
                         <h:inputText value="#{organisationController.organisation.outLineOfWhatYourOrganisationDoes}"
                                     required="true"
                                     requiredMessage="Information Needed."/>
                     </div>
-                    <div>
+                    <div class="form-style-1">
                         <h:outputLabel value="Contact Name: "/>
                         <h:inputText value="#{organisationController.organisation.contactName}"
                                     required="true"
                                     requiredMessage="Please enter Contact Name."/>
                     </div>
-                    <div>
+                    <div class="form-style-1">
                         <h:outputLabel value="Contact Number: "/>
                         <h:inputText value="#{organisationController.organisation.telePhone}"
                                     required="true"
                                     requiredMessage="Please enter a contact Number.">
                         </h:inputText>
                     </div>    
-                    <div>
+                    <div class="form-style-1">
                         <h:outputLabel value="Email Address: "/>
                         <h:inputText value="#{organisationController.organisation.emailAddress}"
                                     required="true"
@@ -75,10 +75,12 @@
                                     validatorMessage="Please give a valid email format.">
                             <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
                         </h:inputText>
-                    </div>                      
-                    <h:commandButton action="#{organisationController.createOrganisation()}" value= "Submit">
-                        <f:param name="id" value="#{organisationController.organisation.id}"/>
-                    </h:commandButton>
+                    </div>   
+                    <div class="form-style-1">
+                        <h:commandButton action="#{organisationController.createOrganisation()}" value= "Submit">
+                            <f:param name="id" value="#{organisationController.organisation.id}"/>
+                        </h:commandButton>
+                    </div>    
                 </h:form>
             </section>
         </article>

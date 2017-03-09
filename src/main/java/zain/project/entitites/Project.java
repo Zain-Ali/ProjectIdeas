@@ -5,6 +5,7 @@ import zain.project.entitites.exceptions.InvalidInputException;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,18 +28,36 @@ public class Project implements Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id; //reference number
+    
+    @Column(nullable=false, length=99)
     private String title;
+    
+    @Column(nullable=false, length=99)
     private String languages;    
+    
     @ManyToOne
     private Users projectOwner;
+    
+    @Column(nullable=false) 
     private String aimsAndObjectives;
+    
+    @Column(nullable=true)
     private String academicQuestionsToBeAnswered;
+    
+    @Column(nullable=false)
     private String anticipatedDeliverables;
+    
+    @Column(nullable=true)
     private String studentForWhoProjectHasBeenDevised;
     //private User user;
+    
+    @Column(nullable=false)
     private String status;
+    
+    
     @Temporal(TemporalType.DATE)
     private Date lastUpdated;
+    
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Organisation organisation;
 

@@ -44,5 +44,10 @@ public class ProjectService
     {
         return projectFacade.findAll();
     }
+    
+    public List<Project> findAProjectBySearch(String searchProject) 
+    {
+        return projectFacade.findAllProjects(searchProject);
+    }
 
 }

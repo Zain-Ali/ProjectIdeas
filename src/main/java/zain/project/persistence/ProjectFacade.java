@@ -5,9 +5,11 @@
  */
 package zain.project.persistence;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import zain.project.entitites.Project;
 
 /**
@@ -30,5 +32,35 @@ public class ProjectFacade extends AbstractFacade<Project> {
     {
         super(Project.class);
     }
+    
+    
+    public List<Project> findAllProjects (String search) 
+    {
+        TypedQuery<Project> results = em.createQuery("SELECT p FROM Project p WHERE p.title", Project.class);
+        String FinalSearch = "%";
+        results.setParameter("search", FinalSearch);
+        return results.getResultList();
+    }
+    
+    
+    public List<Project> findAllAssingedProjects () 
+    {
+        return null;
+    }
+    
+    public List<Project> findAllUnAssingedProjects () 
+    {
+        return null;
+    }
+    
+    public List<Project> findAllProjectsByOwner () 
+    {
+        return null;
+    }
+    
+    public List<Project> findAllProjectApproved () 
+    {
+        return null;
+    }   
     
 }

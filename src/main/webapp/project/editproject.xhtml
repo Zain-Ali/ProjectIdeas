@@ -32,37 +32,37 @@
             <section>
                 <h:form>
                     <table>
-                        <div>
+                        <div class="form-style-1">
                             <h:outputLabel value="Title: "/>
                             <h:inputText value="#{projectController.project.title}"
                                         required="true"
                                         requiredMessage="Please enter a Title."/>
                         </div> 
-                        <div>
+                        <div class="form-style-1">
                             <h:outputLabel value="Preferred Language (blanf if unknown): "/>
                             <h:inputText value="#{projectController.project.languages}"/>
                         </div>                     
-                        <div>
+                        <div class="form-style-1">
                             <h:outputLabel value="Aims and Objectives: "/>
                             <h:inputTextarea value="#{projectController.project.aimsAndObjectives}"
                                             required="true"
                                             requiredMessage="Please enter Aims and Objectives"/>
                         </div>  
-                        <div>
+                        <div class="form-style-1">
                             <h:outputLabel value="Academic Question to be answered (blank if unknown): "/>
                             <h:inputTextarea value="#{projectController.project.aimsAndObjectives}"/>
                         </div> 
-                        <div>
+                        <div class="form-style-1">
                             <h:outputLabel value="Anticipated Deliverables: "/>
                             <h:inputTextarea value="#{projectController.project.anticipatedDeliverables}"
                                             required="true"
                                             requiredMessage="Please enter Anticipated Deliverables" />
                         </div> 
-                        <div>
+                        <div class="form-style-1">
                             <h:outputLabel value="Student for Who this Project has been devised (blank if unknown): "/>
                             <h:inputText value="#{projectController.project.studentForWhoProjectHasBeenDevised}"/>
                         </div>
-                        <div>
+                        <div class="form-style-1">
                             <h:outputLabel value="Status : "/>
                             <h:selectOneMenu id="status" value="#{projectController.project.status}">
                                 <f:selectItem itemValue="Approved" />
@@ -71,9 +71,11 @@
                             </h:selectOneMenu>
                         </div>                     
                     </table>
-                    <h:commandButton value="Update" action="#{projectController.updateProject(project)}">
-                        <f:param name="id" value="#{projectController.project.id}" />
-                    </h:commandButton>
+                    <div class="form-style-1">
+                        <h:commandButton value="Update" action="#{projectController.updateProject(project)}">
+                            <f:param name="id" value="#{projectController.project.id}" />
+                        </h:commandButton>
+                    </div>     
                 </h:form>
             </section>
         </article>
