@@ -98,7 +98,7 @@ public class ProjectController  implements Serializable
     public String viewProject(Project project) 
     {
         this.project = project;
-        return "/project/template?faces-redirect=true";
+        return "/project/project?faces-redirect=true";
     }
     
         

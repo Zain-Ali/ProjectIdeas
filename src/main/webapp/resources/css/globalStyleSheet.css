@@ -29,6 +29,8 @@ header {
 
 img {
     clear: both;
+    position: absolute;
+    left: 0px;
 }
 
 .images {
@@ -39,4 +41,19 @@ img {
 
 body {
     background-color: white;
+}
+
+.signUP {
+    clear: both;
+    position: absolute;
+    right: 10px;
+    bottom: 520px;
+}
+
+.searchBar {
+    position: absolute;
+    clear: both;
+    right: 220px;
+    top: 60px;
+    width: 900px;
 }
