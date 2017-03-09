@@ -1,12 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:b="http://bootsfaces.net/ui">
-
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
-        <title>Editing » #{organisationController.organisation.organisationName}</title>
+        <title>New Organisation </title>
         <link rel="stylesheet" type="text/css" href="../resources/css/globalStyleSheet.css"/>
     </h:head>
     <h:body style="padding-top: 50px; padding-bottom: 20px">
@@ -21,7 +20,7 @@
                         </b:dropMenu>
                         
                         <b:dropMenu value="Organisations    ">
-                            <b:navLink value="View All Organisation" href=""></b:navLink>
+                            <b:navLink value="View All Organisation" href=""></b:navLink> <!--render-->
                             <b:navLink value="New Organisation" href="/ProjectIdeas/faces/organisation/neworganisation.xhtml"></b:navLink> <!--render-->
                         </b:dropMenu>
                         
@@ -31,7 +30,6 @@
             </header>
             <section>
                 <h:form>
-                    <table>
                     <div>
                         <h:outputLabel value="Organisation Name: "/>
                         <h:inputText value="#{organisationController.organisation.organisationName}"
@@ -77,10 +75,9 @@
                                     validatorMessage="Please give a valid email format.">
                             <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
                         </h:inputText>
-                    </div>                       
-                    </table>
-                    <h:commandButton value="Update" action="#{organisationController.updateOrganisation(organisation)}">
-                        <f:param name="id" value="#{organisationController.organisation.id}" />
+                    </div>                      
+                    <h:commandButton action="#{organisationController.createOrganisation()}" value= "Submit">
+                        <f:param name="id" value="#{organisationController.organisation.id}"/>
                     </h:commandButton>
                 </h:form>
             </section>
