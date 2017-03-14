@@ -11,45 +11,13 @@
     <h:body style="padding-top: 50px; padding-bottom: 20px">
         <article>
             <header>
-                <b:navBar brand="Project Ideas for MSc" brand-href="/ProjectIdeas/" inverse="true" fixed="top">
-                    <b:navbarLinks>
-                        
-                        <b:dropMenu value="Project Ideas">
-                            <b:navLink value="View All Projects" href="" ></b:navLink>
-                            <b:navLink value="New Project Idea" href="/ProjectIdeas/faces/project/newproject.xhtml"></b:navLink> <!--render-->
-                        </b:dropMenu>
-                        
-                        <b:dropMenu value="Organisations">
-                            <b:navLink value="View All Organisation" href="/ProjectIdeas/faces/project/listoforganisation.xhtml"></b:navLink> <!--render-->
-                            <b:navLink value="New Organisation" href="/ProjectIdeas/faces/project/newproject.xhtml"></b:navLink> <!--render-->
-                        </b:dropMenu>
-                        
-                        <b:navLink value="Contact us" href=""></b:navLink>
-                    </b:navbarLinks>
-                    
-                    <h:form styleClass="navbar-form navbar-right">
-                        
-                        <div class="form-group">
-                            <b:inputText placeholder="username" fieldSize="sm" value="#{usersController.users.username}"/>
-                        </div>  
-                        
-                        <div class="form-group">
-                            <b:inputText placeholder="password" fieldSize="sm" value="#{usersController.users.password}"/>
-                        </div>    
-                        
-                        <b:commandButton action="#{usersController.login()}" value= "Login">
-                            <f:param name="id" value="#{usersController.users.id}"/>
-                        </b:commandButton>
-                                                
-                    </h:form>                     
+                <b:navBar brand="Project Ideas for MSc" brand-href="/ProjectIdeas/" inverse="true" fixed="top">                                                                    
                 </b:navBar>  
-                <div>
-                    <h:form class="signUP">
-                        <b:commandButton  action="/login/registeruser.xhtml" value= "Signup" >
-                            <f:param name="id" value="#{usersController.users.id}"/>
-                        </b:commandButton>
-                    </h:form>
-                </div> 
+                <h:form styleClass="navbar-form navbar-right">
+                    <b:commandButton action="#{usersController.logout()}" value= "Logout" rendered="#{usersController.users.id != null}">
+                        <f:param name="id" value="#{usersController.users.id}"/>
+                    </b:commandButton>
+                </h:form> 
             </header>
             <section>
                 <h:panelGroup>
@@ -76,46 +44,32 @@
             </section>
             <section>
                 <h1>View Organisation Details</h1>
-                 <h:panelGroup>
-                    <h:form>
-                        <h:column>
-                            <f:facet name="header">Ref</f:facet>
-                            <h:outputText value="#{organisationController.organisation.id}"/>
-                        </h:column> 
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="Organisation Name:"/>
-                            </f:facet>
-                            <h:outputText value="#{organisationController.organisation.organisationName}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="Postal Address"/>
-                            </f:facet>
-                            <h:outputText value="#{organisationController.organisation.postalAddress}"/>
-                        </h:column>                         
-                        <h:column>
-                            <f:facet name="header">Postcode: </f:facet>
-                            <h:outputText value="#{organisationController.organisation.postCode}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">Outline of what organisation does </f:facet>
-                            <h:outputText value="#{organisationController.organisation.outLineOfWhatYourOrganisationDoes}"/>
-                        </h:column>    
-                        <h:column>
-                            <f:facet name="header">Contact Name </f:facet>
-                            <h:outputText value="#{organisationController.organisation.contactName}"/>
-                        </h:column> 
-                        <h:column>
-                            <f:facet name="header">Contact Number </f:facet>
-                            <h:outputText value="#{organisationController.organisation.telePhone}"/>
-                        </h:column> 
-                        <h:column>
-                            <f:facet name="header">Email Address </f:facet>
-                            <h:outputText value="#{organisationController.organisation.emailAddress}"/>
-                        </h:column>                         
-                    </h:form> 
-                </h:panelGroup>               
+                 <h:panelGrid>
+                     
+                    <h:outputText value="Ref # "/>
+                    <h:outputText value="#{organisationController.organisation.id}"/>
+                    
+                    <h:outputText value="Organisation Name:"/>
+                    <h:outputText value="#{organisationController.organisation.organisationName}"/>
+
+                    <h:outputText value="Postal Address: "/>
+                    <h:outputText value="#{organisationController.organisation.postalAddress}"/>
+                    
+                    <h:outputText value="Post Code: "/>
+                    <h:outputText value="#{organisationController.organisation.postCode}"/>
+
+                    <h:outputText value="Out line of What Your Organisation Does: "/>
+                    <h:outputText value="#{organisationController.organisation.outLineOfWhatYourOrganisationDoes}"/>
+
+                    <h:outputText value="Contact Name: "/>                            
+                    <h:outputText value="#{organisationController.organisation.contactName}"/>
+
+                    <h:outputText value="Contact Number: "/>
+                    <h:outputText value="#{organisationController.organisation.telePhone}"/>
+
+                    <h:outputText value="Email Address: "/>
+                    <h:outputText value="#{organisationController.organisation.emailAddress}"/>
+                </h:panelGrid>               
             </section>
         </article>
     </h:body>

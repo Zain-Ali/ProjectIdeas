@@ -93,6 +93,12 @@ public class OrganisationController implements Serializable
         return "/organisation/listoforganisation?faces-redirect=true";
     }
     
+    public String goToCreateNewOrganisationPage() 
+    {
+        organisation = new Organisation();
+        return "/organisation/neworganisation?faces-redirect=true";
+    }
+    
         
     @PostConstruct
     public void init() 
