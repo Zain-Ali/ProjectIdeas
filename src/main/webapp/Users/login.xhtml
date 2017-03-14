@@ -10,15 +10,23 @@
     <!--Following code is taken form here but modified-->
     <!--https://github.com/TheCoder4eu/BootsFaces-examples/blob/master/src/main/webapp/signin.xhtml-->
     <h:body style="padding-top: 120px;">
+        <header>
+            <b:navBar brand="Project Ideas for MSc" brand-href="/ProjectIdeas/" inverse="true" fixed="top">
+            </b:navBar>                           
+        </header>        
         <b:container>
             <h:form styleClass="form-signin" prependId="false">
                 <h2 class="form-signin-heading">Please sign in</h2>
-                <b:inputText id="email" placeholder="Username" value="#{usersController.users.username}">
+                <b:inputText id="email" placeholder="Username" value="#{usersController.users.username}"
+                            required="true"
+                            requiredMessage="Please enter a User Name.">
                     <f:facet name="prepend">
                         <b:icon name="user" />
                     </f:facet>
                 </b:inputText>
-                <b:inputText id="password" placeholder="Password" type="password" value="#{usersController.users.password}">
+                <b:inputText id="password" placeholder="Password" type="password" value="#{usersController.users.password}"
+                            required="true"
+                            requiredMessage="Please enter a password.">
                     <f:facet name="prepend">
                         <b:iconAwesome name="key" />
                     </f:facet>

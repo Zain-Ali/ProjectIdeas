@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import zain.project.business.PrivilegeLevel;
 import zain.project.entitites.exceptions.InvalidInputException;
 
 /**
@@ -31,9 +30,6 @@ public class Users implements Serializable
     private String firstname;
     private String lastName;
     private String phoneNumber;
-    //private PrivilegeLevel privielegeLevel;
-    //@ManyToOne(cascade = CascadeType.PERSIST)
-    //private Organisation organisation;
     private String typeOfUser;
 
 

@@ -31,13 +31,12 @@
                         <b:navLink value="Contact us" href=""></b:navLink>
                                                 
                     </b:navbarLinks>
- 
-                     <h:form styleClass="navbar-form navbar-right">
+                    
+                    <h:form styleClass="navbar-form navbar-right">
                         <b:commandButton action ="/Users/login.xhtml" value= "login">
                             <f:param name="id" value="#{usersController.users.id}"/>
                         </b:commandButton>
-                    </h:form>                    
-                    
+                    </h:form>
                     <h:form styleClass="navbar-form navbar-right">
                         <b:commandButton action="#{usersController.logout()}" value= "Logout" rendered="#{usersController.users.id != null}">
                             <f:param name="id" value="#{usersController.users.id}"/>

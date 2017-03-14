@@ -6,30 +6,28 @@
       xmlns:f="http://java.sun.com/jsf/core">
     
     <h:head>
-        <title>Project Idea: Home</title>
+        <title>List of All Projects</title>
         <h:outputStylesheet library="css" name="globalStyleSheet.css"/> 
     </h:head>
     <h:body style="padding-top: 50px; padding-bottom: 20px">
         <article>
+            
             <header>
                 <b:navBar brand="Project Ideas for MSc" brand-href="/ProjectIdeas/" inverse="true" fixed="top">
                     <b:navbarLinks>
                         
                         <b:dropMenu value="Project Ideas">
-                            <h:form>
-                                <h:commandLink value="New Project Idea" action="#{projectController.goAndCreateNewProject()}" rendered="#{usersController.users.id != null}"></h:commandLink>
-                            </h:form>
-                            <b:navLink value="View All Projects" href="/ProjectIdeas/faces/projects/viewallprojects.xhtml" ></b:navLink>
+                            <b:navLink value="View All Projects" href="/ProjectIdeas/faces/project/viewallprojects.xhtml" ></b:navLink>
                         </b:dropMenu>
-                        
-                        <b:dropMenu value="Organisations    ">
-                            <b:navLink value="View All Organisation" href="/ProjectIdeas/faces/organisation/listoforganisation.xhtml"></b:navLink> <!--render-->
-                        </b:dropMenu>
-                        
-                        <b:navLink value="Contact us" href=""></b:navLink>
-                        <b:navLink value="Login" href="/ProjectIdeas/faces/Users/login.xhtml"></b:navLink>
+                                                
                     </b:navbarLinks>
-                                        
+ 
+                     <h:form styleClass="navbar-form navbar-right">
+                        <b:commandButton action ="../Users/login.xhtml" value= "login">
+                            <f:param name="id" value="#{usersController.users.id}"/>
+                        </b:commandButton>
+                    </h:form>                    
+                    
                     <h:form styleClass="navbar-form navbar-right">
                         <b:commandButton action="#{usersController.logout()}" value= "Logout" rendered="#{usersController.users.id != null}">
                             <f:param name="id" value="#{usersController.users.id}"/>
@@ -57,7 +55,7 @@
                     <h:form>        
                         <h:dataTable class="table" value="#{projectController.projectList}" var="project"> 
                             <h:column>
-                                <f:facet name="header">Ref</f:facet>
+                                <f:facet name="header">Ref #</f:facet>
                                 <h:outputText value="#{project.id}"/>
                             </h:column> 
                             <h:column>

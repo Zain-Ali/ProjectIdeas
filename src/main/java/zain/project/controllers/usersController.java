@@ -100,7 +100,6 @@ public class usersController implements Serializable
         return "/index?faces-redirect=true";
     }
     
-    
     @PostConstruct
     public void init() 
     {

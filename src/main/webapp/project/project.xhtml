@@ -11,16 +11,31 @@
     </h:head>
     <h:body style="padding-top: 50px; padding-bottom: 20px">
         <article>
+            
             <header>
-                <b:navBar brand="Project Ideas for MSc" brand-href="/ProjectIdeas/" inverse="true" fixed="top">                                      
-                </b:navBar>  
+                <b:navBar brand="Project Ideas for MSc" brand-href="/ProjectIdeas/" inverse="true" fixed="top">
+ 
+                     <h:form styleClass="navbar-form navbar-right">
+                        <b:commandButton action ="/../Users/login.xhtml" value= "login">
+                            <f:param name="id" value="#{usersController.users.id}"/>
+                        </b:commandButton>
+                    </h:form>                    
+                    
+                    <h:form styleClass="navbar-form navbar-right">
+                        <b:commandButton action="#{usersController.logout()}" value= "Logout" rendered="#{usersController.users.id != null}">
+                            <f:param name="id" value="#{usersController.users.id}"/>
+                        </b:commandButton>
+                    </h:form> 
+                    
+                </b:navBar> 
                 <div>
-                    <h:form class="signUP">
+                    <h:form class="signUP">                       
                         <b:commandButton  action="/Users/registeruser.xhtml" value= "Signup" >
                             <f:param name="id" value="#{usersController.users.id}"/>
                         </b:commandButton>
                     </h:form>
-                </div> 
+                </div>  
+                
             </header>
             
             <section>
