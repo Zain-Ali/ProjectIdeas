@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:f="http://java.sun.com/jsf/core">
     
     <h:head>
         <title>#{projectController.project.title}</title>
@@ -25,7 +24,7 @@
             </header>
             
             <section>
-                <h:panelGrid>                   
+                <h:panelGrid columns="2">                   
                     <h:outputText value="Ref # "/>
                     <h:outputText value="#{projectController.project.id}"/>
                     
@@ -61,6 +60,7 @@
                     <h:form>
                         <h:commandButton value="Edit" rendered="#{usersController.users.typeOfUser == 'Admin' or usersController.users == projectController.project.projectOwner}" action="#{projectController.updateProject(projectController.project)}"/>
                         <h:commandButton value="Withdraw"  rendered="#{usersController.users.typeOfUser == 'Admin' or usersController.users == projectController.project.projectOwner}" action="#{projectController.deleteProject(projectController.project)}"/>                   
+                        <h:commandButton value="Apply"/>                   
                     </h:form>
                     
                 </h:panelGrid>

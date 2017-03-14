@@ -1,12 +1,65 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    
     <h:head>
-        <title>Facelet Title</title>
+        <title>Project Idea: Home</title>
+        <h:outputStylesheet library="css" name="globalStyleSheet.css"/> 
     </h:head>
-    <h:body>
-        Hello from Facelets
+    <h:body style="padding-top: 50px; padding-bottom: 20px">
+        <article>
+            
+            <header>
+                <b:navBar brand="Project Ideas for MSc" brand-href="/ProjectIdeas/" inverse="true" fixed="top">
+                    <b:navbarLinks>
+                        
+                        <b:dropMenu value="Project Ideas">
+                            <h:form>
+                                <h:commandLink value="New Project Idea" action="#{projectController.goAndCreateNewProject()}" rendered="#{usersController.users.id != null}"></h:commandLink>
+                            </h:form>
+                            <b:navLink value="View All Projects" href="/ProjectIdeas/faces/project/viewallprojects.xhtml" ></b:navLink>
+                        </b:dropMenu>
+                        
+                        <b:dropMenu value="Organisations    ">
+                            <b:navLink value="View All Organisation" href="/ProjectIdeas/faces/organisation/listoforganisation.xhtml"></b:navLink> <!--render-->
+                        </b:dropMenu>
+                        
+                        <b:navLink value="Contact us" href=""></b:navLink>
+                        <b:navLink value="Login" href="/ProjectIdeas/faces/Users/login.xhtml"></b:navLink>
+                    </b:navbarLinks>
+                                        
+                    <h:form styleClass="navbar-form navbar-right">
+                        <b:commandButton action="#{usersController.logout()}" value= "Logout" rendered="#{usersController.users.id != null}">
+                            <f:param name="id" value="#{usersController.users.id}"/>
+                        </b:commandButton>
+                    </h:form> 
+                    
+                </b:navBar> 
+                <div>
+                    <h:form class="signUP">                       
+                        <b:commandButton  action="/Users/registeruser.xhtml" value= "Signup" >
+                            <f:param name="id" value="#{usersController.users.id}"/>
+                        </b:commandButton>
+                    </h:form>
+                </div>  
+                
+            </header>
+            
+            <section>
+                <h:form class="searchBar">
+                    <b:inputText placeholder="Search for Project Idea">
+                        <f:ajax event="keyup"/>
+                    </b:inputText>
+                </h:form>
+                <h:panelGroup>
+                    <h:form>        
+
+                    </h:form> 
+                </h:panelGroup>
+            </section>
+        </article>
     </h:body>
 </html>
-
