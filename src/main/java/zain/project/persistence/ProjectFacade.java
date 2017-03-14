@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import zain.project.entitites.Project;
+import zain.project.entitites.Users;
 
 /**
  *
@@ -43,24 +44,45 @@ public class ProjectFacade extends AbstractFacade<Project> {
     }
     
     
-    public List<Project> findAllAssingedProjects () 
-    {
-        return null;
-    }
-    
     public List<Project> findAllUnAssingedProjects () 
     {
-        return null;
+        List<Project> resultsOfALLUnAssignedProjects;
+        resultsOfALLUnAssignedProjects = em.createQuery("SELECT p FROM Project p WHERE p.appliedStudent = :appliedStudent", Project.class)
+                .setParameter("appliedStudent", Boolean.FALSE)
+                .getResultList();
+        return resultsOfALLUnAssignedProjects;
     }
     
-    public List<Project> findAllProjectsByOwner () 
+    
+    public List<Project> findAllProjectsByOwner (Users user) 
     {
-        return null;
+        List<Project> resultsByProjectOwner;
+        resultsByProjectOwner = em.createQuery("SELECT p FROM Project p WHERE p.projectOwner.id = :id", Project.class)
+                .setParameter("id",user.getId())
+                .getResultList();
+        
+        return resultsByProjectOwner;
+    }
+    
+    
+    public List<Project> findAUserAssignedProject(Users studentUser) 
+    {
+        List<Project> resultsForUserAssignedProejct;
+        
+        resultsForUserAssignedProejct = em.createQuery("SELECT p FROM Project p WHERE p.id = :id", Project.class)
+                .setParameter("id", studentUser.getId())
+                .getResultList();
+        return resultsForUserAssignedProejct;
     }
     
     public List<Project> findAllProjectApproved () 
     {
         return null;
     }    
+    
+        public List<Project> findAllAssingedProjects () 
+    {
+        return null;
+    }
     
 }
