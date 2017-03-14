@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+    <h:head>
+        <title>Login    </title>
+    </h:head>
+    <!--Following code is taken form here but modified-->
+    <!--https://github.com/TheCoder4eu/BootsFaces-examples/blob/master/src/main/webapp/signin.xhtml-->
+    <h:body style="padding-top: 120px;">
+        <b:container>
+            <h:form styleClass="form-signin" prependId="false">
+                <h2 class="form-signin-heading">Please sign in</h2>
+                <b:inputText id="email" placeholder="Username" value="#{usersController.users.username}">
+                    <f:facet name="prepend">
+                        <b:icon name="user" />
+                    </f:facet>
+                </b:inputText>
+                <b:inputText id="password" placeholder="Password" type="password" value="#{usersController.users.password}">
+                    <f:facet name="prepend">
+                        <b:iconAwesome name="key" />
+                    </f:facet>
+                </b:inputText>
+                <b:commandButton look="primary btn-block" action="#{usersController.login()}" value= "Login" icon="log-in" size="lg">
+                    <f:param name="id" value="#{usersController.users.id}"/>
+                </b:commandButton>
+            </h:form>
+        </b:container>
+    </h:body>
+</html>

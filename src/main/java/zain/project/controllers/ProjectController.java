@@ -101,6 +101,12 @@ public class ProjectController  implements Serializable
         return "/project/project?faces-redirect=true";
     }
     
+    public String goAndCreateNewProject() 
+    {
+        project = new Project();
+        return "/project/newproject?faces-redirect=true";
+    }
+    
         
     @PostConstruct
     public void init() 
