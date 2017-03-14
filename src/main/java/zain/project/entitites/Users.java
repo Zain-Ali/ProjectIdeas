@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import zain.project.entitites.exceptions.InvalidInputException;
 
@@ -19,6 +20,9 @@ import zain.project.entitites.exceptions.InvalidInputException;
 @Table(name="Users")
 public class Users implements Serializable 
 {
+
+    @OneToOne(mappedBy = "appliedStudent")
+    private Project project;
 
     private static final long serialVersionUID = 1L;
     @Id

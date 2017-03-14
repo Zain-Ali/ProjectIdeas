@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -49,7 +50,6 @@ public class Project implements Serializable
     
     @Column(nullable=true)
     private String studentForWhoProjectHasBeenDevised;
-    //private User user;
     
     @Column(nullable=false)
     private String status;
@@ -60,6 +60,12 @@ public class Project implements Serializable
     
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Organisation organisation;
+    
+    //new 
+    @OneToOne
+    private Users appliedStudent;
+
+
 
 
     
@@ -217,6 +223,17 @@ public class Project implements Serializable
     public void setLastUpdated(Date lastUpdated) 
     {
         this.lastUpdated = lastUpdated;
+    }
+    
+    
+    public Users getAppliedStudent() 
+    {
+        return appliedStudent;
+    }
+
+    public void setAppliedStudent(Users appliedStudent) 
+    {
+        this.appliedStudent = appliedStudent;
     }
     
 

@@ -67,7 +67,13 @@
                             <f:selectItem itemValue="Provisional" />
                             <f:selectItem itemValue="Withdrawn" />
                         </h:selectOneMenu>
-                    </div>    
+                    </div>  
+                    <div class="form-style-1">
+                        <h:outputText value="Apply "/>
+                        <h:selectBooleanCheckbox value="#{projectController.apply}">
+                            <f:param name="id" value="#{projectController.project.id}"/>
+                        </h:selectBooleanCheckbox>
+                    </div>
                     <div class="form-style-1">
                         <h:commandButton action="#{projectController.createProject(usersController.users)}" value= "Submit">
                             <f:param name="id" value="#{projectController.project.id}"/>

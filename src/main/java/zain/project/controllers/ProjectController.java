@@ -24,6 +24,9 @@ public class ProjectController  implements Serializable
     @EJB
     private ProjectService projectService;
     private Project project;
+    private boolean apply = false;
+
+
     
     
     List<Project> projectList = new ArrayList<>();
@@ -48,8 +51,7 @@ public class ProjectController  implements Serializable
         this.projectList = projectList;
     }
     
-
-    
+   
     public Project getProject() 
     {
         return project;
@@ -64,9 +66,11 @@ public class ProjectController  implements Serializable
     
     public String createProject(Users user) 
     {
-        
+        if (apply) 
+        {
+            project.setAppliedStudent(user);
+        }
         project.setProjectOwner(user);
-//        project.setOrganisation(organisation);
         projectService.createProject(project);
         project = new Project();
         projectList = projectService.findAllProjects();
@@ -106,6 +110,19 @@ public class ProjectController  implements Serializable
         project = new Project();
         return "/project/newproject?faces-redirect=true";
     }
+    
+    
+    
+    public boolean isApply() 
+    {
+        return apply;
+    }
+
+    public void setApply(boolean apply) 
+    {
+        this.apply = apply;
+    }
+    
     
         
     @PostConstruct
