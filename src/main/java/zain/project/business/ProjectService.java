@@ -47,7 +47,7 @@ public class ProjectService
     
     public List<Project> findAProjectBySearch(String searchProject) 
     {
-        return projectFacade.findAllProjects(searchProject);
+        return projectFacade.findAProjectBySearch(searchProject);
     }
 
 }

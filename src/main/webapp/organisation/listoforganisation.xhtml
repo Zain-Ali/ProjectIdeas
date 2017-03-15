@@ -71,6 +71,15 @@
                     <h:outputText value="#{organisationController.organisation.emailAddress}"/>
                 </h:panelGrid>               
             </section>
+            <section>
+                <h:form>
+                    <h:outputText value=  "select org from drop down "/>
+                    <h:selectOneMenu value="#{organisationController.organisation}" >
+                        <f:selectItems value="#{organisationController.organisationList}" var="organisation" itemValue="#{organisation}" itemLabel="#{organisation.organisationName}" />
+                </h:selectOneMenu>                   
+                </h:form>
+
+            </section>
         </article>
     </h:body>
 </html>

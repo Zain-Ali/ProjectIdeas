@@ -60,13 +60,13 @@
             
             <section>
                 <h:form class="searchBar">
-                    <b:inputText placeholder="Search for Project Idea">
-                        <f:ajax event="keyup"/>
-                    </b:inputText>
+                    <h:inputText  value="#{projectController.searchProject}">
+                        <f:ajax event="keyup" listener="#{projectController.updateProjectList()}" render="projects" />
+                    </h:inputText>
                 </h:form>
                 <h:panelGroup>
                     <h:form>        
-                        <h:dataTable class="table" value="#{projectController.projectList}" var="project"> 
+                        <h:dataTable id="projects" class="table" value="#{projectController.projectList}" var="project"> 
                             <h:column>
                                 <f:facet name="header">Ref #</f:facet>
                                 <h:outputText value="#{project.id}"/>

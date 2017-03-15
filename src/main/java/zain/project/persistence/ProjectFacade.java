@@ -35,10 +35,10 @@ public class ProjectFacade extends AbstractFacade<Project> {
     }
     
     
-    public List<Project> findAllProjects (String search) 
+    public List<Project> findAProjectBySearch (String search) 
     {
-        TypedQuery<Project> results = em.createQuery("SELECT p FROM Project p WHERE p.title", Project.class);
-        String FinalSearch = "%";
+        TypedQuery<Project> results = em.createQuery("SELECT p FROM Project p WHERE lower(p.title) like lower(:search)", Project.class);
+        String FinalSearch = "%" + search;
         results.setParameter("search", FinalSearch);
         return results.getResultList();
     }
@@ -73,6 +73,11 @@ public class ProjectFacade extends AbstractFacade<Project> {
                 .setParameter("id", studentUser.getId())
                 .getResultList();
         return resultsForUserAssignedProejct;
+    }
+    
+    public List<Project> findProjectByStatus (String status) 
+    {
+       return null;
     }
     
     public List<Project> findAllProjectApproved () 

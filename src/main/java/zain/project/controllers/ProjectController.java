@@ -25,6 +25,22 @@ public class ProjectController  implements Serializable
     private ProjectService projectService;
     private Project project;
     private boolean apply = false;
+    private String searchProject = "";
+
+    public String getSearchProject() 
+    {
+        return searchProject;
+    }
+
+    public void setSearchProject(String searchProject) 
+    {
+        this.searchProject = searchProject;
+    }
+    
+    public void updateProjectList() 
+    {
+        projectList = projectService.findAProjectBySearch(searchProject);
+    }
 
 
     
