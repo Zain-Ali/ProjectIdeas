@@ -45,10 +45,12 @@ public class UsersFacade extends AbstractFacade<Users>
     public List findUserByEmailAddress(String email) 
     {
         List<Users> findUserByEmailResults = em
-                .createQuery("SELECT u FROM Users u WHERE u.email = :=email", Users.class)
+                .createQuery("SELECT u FROM Users u WHERE u.email = :email", Users.class)
                 .setParameter("email", email)
                 .getResultList();
         return findUserByEmailResults;
+        
+        
     }
     
 }

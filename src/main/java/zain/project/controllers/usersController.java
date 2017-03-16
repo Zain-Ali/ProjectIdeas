@@ -8,7 +8,11 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.naming.AuthenticationException;
 import zain.project.business.UsersService;
+import zain.project.business.exceptions.BusinessException;
 import zain.project.entitites.Users;
 
 /**
@@ -25,6 +29,12 @@ public class usersController implements Serializable
     private Users users;
     private List<Users> results;
     List<Users> usersList = new ArrayList<>();
+    private Users currentUser;
+    private String email;
+    private String password;
+
+
+    
     
     public usersController() 
     {
@@ -52,7 +62,7 @@ public class usersController implements Serializable
         this.users = users;
     }
     
-    public String createUsers() 
+    public String createUsers() throws BusinessException 
     {
         usersService.createUser(users);
         users = new Users();
@@ -87,12 +97,54 @@ public class usersController implements Serializable
         return "";
     }
     
+
+    
+    public Users getCurrentUser() 
+    {
+        return currentUser;
+    }
+
+    public void setCurrentUser(Users currentUser) 
+    {
+        this.currentUser = currentUser;
+    }
+    
+    
+    /**
+     * http://www.programcreek.com/java-api-examples/javax.faces.context.FacesContext
+     * @return 
+     */
+//    public String login() 
+//    {
+//        try
+//        {
+//            currentUser = usersService.validateEmailAndPassword(email, password); 
+//        } 
+//        catch (AuthenticationException e)
+//        {
+//            getCurrentUserInstance().addMessage("Error", new FacesMessage("Failed", e.getMessage()));
+//        }
+//        
+//        if (currentUser != null) 
+//        {
+//            getCurrentUserInstance().getExternalContext().getSessionMap().put("email", currentUser);
+//            //results = usersService.login(users.getEmail(), users.getPassword());
+//            //users = results.get(0);
+//        } 
+//        else 
+//        {
+//            return "";
+//        }
+//        return "/index?faces-redirect=true";
+//    }
+    
     public String login() 
     {
         results = usersService.login(users.getEmail(), users.getPassword());
         users = results.get(0);
         return "/index?faces-redirect=true";
     }
+    
     
     public String logout() 
     {
@@ -105,4 +157,14 @@ public class usersController implements Serializable
     {
         usersList = usersService.finalAllUsers();
     } 
+    
+    
+    /**
+     * https://docs.oracle.com/cd/E17802_01/j2ee/javaee/javaserverfaces/2.0/docs/api/javax/faces/context/FacesContext.html
+     * @return 
+     */
+    public FacesContext getCurrentUserInstance() 
+    {
+        return FacesContext.getCurrentInstance();
+    }
 }
