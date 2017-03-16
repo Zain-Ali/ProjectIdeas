@@ -1,11 +1,11 @@
 
 package zain.project.business;
 
+import zain.project.business.exceptions.AuthenticationException;
 import zain.project.business.exceptions.BusinessException;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.naming.AuthenticationException;
 import zain.project.entitites.Users;
 import zain.project.persistence.UsersFacade;
 
