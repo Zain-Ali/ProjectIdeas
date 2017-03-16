@@ -4,12 +4,14 @@ package zain.project.controllers;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import zain.project.business.ProjectService;
-import zain.project.entitites.Organisation;
+import zain.project.business.exceptions.AuthorisationException;
 import zain.project.entitites.Project;
 import zain.project.entitites.Users;
 
@@ -80,14 +82,22 @@ public class ProjectController  implements Serializable
     }
     
     
-    public String createProject(Users user) 
+    public String createProject(Users user)
     {
         if (apply) 
         {
             project.setAppliedStudent(user);
         }
         project.setProjectOwner(user);
-        projectService.createProject(project);
+        
+        try 
+        {
+            projectService.createProject(project);
+        } 
+        catch (AuthorisationException ex) 
+        {
+            Logger.getLogger(ProjectController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         project = new Project();
         projectList = projectService.findAllProjects();
         return "/index?faces-redirect=true";
@@ -110,8 +120,16 @@ public class ProjectController  implements Serializable
     
     public String backToIndex()//update 
     {
-        projectService.editProject(project);
-        this.setProject(new Project());
+        try //update
+        {
+            projectService.editProject(project);
+            this.setProject(new Project());
+            
+        } 
+        catch (AuthorisationException ex) 
+        {
+            Logger.getLogger(ProjectController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return "/index?faces-redirect=true";
     }
 
