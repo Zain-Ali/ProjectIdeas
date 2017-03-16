@@ -19,11 +19,6 @@
                             <b:navLink value="New Project Idea" href="/ProjectIdeas/faces/project/newproject.xhtml"></b:navLink> <!--render-->
                         </b:dropMenu>
                         
-                        <b:dropMenu value="Organisations    ">
-                            <b:navLink value="View All Organisation" href=""></b:navLink> <!--render-->
-                            <b:navLink value="New Organisation" href="/ProjectIdeas/faces/organisation/neworganisation.xhtml"></b:navLink> <!--render-->
-                        </b:dropMenu>
-                        
                         <b:navLink value="Contact us" href=""></b:navLink>
                     </b:navbarLinks>                
                 </b:navBar> 
@@ -80,7 +75,14 @@
                         </h:commandButton>
                     </div>    
                 </h:form>
+                <h:form>
+                    <h:outputText value=  "Select organisation (Optional)"/>
+                    <h:selectOneMenu value="#{organisationController.organisation}" >
+                        <f:selectItems value="#{organisationController.organisationList}" var="organisation" itemValue="#{organisation}" itemLabel="#{organisation.organisationName}" />
+                </h:selectOneMenu>                   
+                </h:form>
             </section>
         </article>
     </h:body>
 </html>
+

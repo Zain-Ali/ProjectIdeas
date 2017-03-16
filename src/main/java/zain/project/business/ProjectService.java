@@ -56,7 +56,7 @@ public class ProjectService
         projectFacade.remove(project);
     }
     
-    //        public void deleteProject (Project project) throws AuthorisationException
+//    public void deleteProject (Project project) throws AuthorisationException
 //    {
 //        if (Objects.equals(project.getProjectOwner().getId(), this)) 
 //        { 
@@ -67,7 +67,7 @@ public class ProjectService
 //            throw new AuthorisationException();
 //        }
 //    }
-//    
+    
     
     public List<Project> findAllProjects() 
     {

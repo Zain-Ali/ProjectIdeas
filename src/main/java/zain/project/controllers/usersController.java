@@ -8,9 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.naming.AuthenticationException;
 import zain.project.business.UsersService;
 import zain.project.business.exceptions.BusinessException;
 import zain.project.entitites.Users;
@@ -150,6 +148,16 @@ public class usersController implements Serializable
     {
         users = new Users();
         return "/index?faces-redirect=true";
+    }
+    
+    public String goToRegisterPage() 
+    {
+        return "/Users/registeruser?faces-redirect=true";
+    }
+    
+    public String goToLogInPage() 
+    {
+        return "/Users/login?faces-redirect=true";
     }
     
     @PostConstruct

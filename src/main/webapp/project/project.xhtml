@@ -14,12 +14,12 @@
             
             <header>
                 <b:navBar brand="Project Ideas for MSc" brand-href="/ProjectIdeas/" inverse="true" fixed="top">
- 
+                     
                      <h:form styleClass="navbar-form navbar-right">
-                        <b:commandButton action ="/../Users/login.xhtml" value= "login">
+                         <b:commandButton action ="#{usersController.goToLogInPage()}" value="Login">
                             <f:param name="id" value="#{usersController.users.id}"/>
                         </b:commandButton>
-                    </h:form>                    
+                    </h:form>   
                     
                     <h:form styleClass="navbar-form navbar-right">
                         <b:commandButton action="#{usersController.logout()}" value= "Logout" rendered="#{usersController.users.id != null}">
@@ -27,15 +27,12 @@
                         </b:commandButton>
                     </h:form> 
                     
-                </b:navBar> 
-                <div>
-                    <h:form class="signUP">                       
-                        <b:commandButton  action="/Users/registeruser.xhtml" value= "Signup" >
+                    <h:form styleClass="navbar-form navbar-right">
+                        <b:commandButton action="#{usersController.goToRegisterPage()}" value= "Sign up">
                             <f:param name="id" value="#{usersController.users.id}"/>
                         </b:commandButton>
-                    </h:form>
-                </div>  
-                
+                    </h:form>                      
+                </b:navBar> 
             </header>
             
             <section>
@@ -73,8 +70,8 @@
                     </h:outputText>
                     
                     <h:form>
-                        <h:commandButton value="Edit" rendered="#{usersController.users.typeOfUser == 'Admin' or usersController.users == projectController.project.projectOwner}" action="#{projectController.updateProject(projectController.project)}"/>
-                        <h:commandButton value="Withdraw"  rendered="#{usersController.users.typeOfUser == 'Admin' or usersController.users == projectController.project.projectOwner}" action="#{projectController.deleteProject(projectController.project)}"/>                   
+                        <h:commandButton value="Edit" rendered="#{usersController.users.typeOfUser == 'Admin' or usersController.users.typeOfUser == 'Staff' or usersController.users == projectController.project.projectOwner}" action="#{projectController.updateProject(projectController.project)}"/>
+                        <h:commandButton value="Withdraw"  rendered="#{usersController.users.typeOfUser == 'Admin' or usersController.users.typeOfUser == 'Staff' or usersController.users == projectController.project.projectOwner}" action="#{projectController.deleteProject(projectController.project)}"/>                   
                         <h:commandButton value="Apply"/>                   
                     </h:form>
                     

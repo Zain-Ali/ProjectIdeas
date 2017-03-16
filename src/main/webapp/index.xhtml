@@ -24,22 +24,21 @@
                         </b:dropMenu>
                         
                         <b:dropMenu value="Organisations">
-                                 <h:form>
-                                    <h:commandLink value="New Organisation" action="#{organisationController.goToCreateNewOrganisationPage()}" rendered="#{usersController.users.id != null}"></h:commandLink>
-                            </h:form>                       
-                            <b:navLink value="View All Organisation" href="/ProjectIdeas/faces/organisation/listoforganisation.xhtml"></b:navLink> <!--render-->
+                            <h:form>
+                                <h:commandLink value="New Organisation" action="#{organisationController.goToCreateNewOrganisationPage()}" rendered="#{usersController.users.id != null}"></h:commandLink>
+                            </h:form>
+                            <b:navLink value="View All Organisation" href="/ProjectIdeas/faces/organisation/listoforganisation.xhtml" ></b:navLink>                            
                         </b:dropMenu>
                         
-                        <b:navLink value="List of Users" href="/ProjectIdeas/faces/Users/listofUsers.xhtml" rendered="#{usersController.users.typeOfUser == 'Admin' or usersController.users.typeOfUser == 'Staff'}" ></b:navLink>
                         <b:navLink value="Contact us" href=""></b:navLink>
-                                                
+                        <b:navLink value="List of Users" href="/ProjectIdeas/faces/Users/listofUsers.xhtml" rendered="#{usersController.users.typeOfUser == 'Admin'}" ></b:navLink>                        
                     </b:navbarLinks>
                     
-                    <h:form styleClass="navbar-form navbar-right">
-                        <b:commandButton action ="/Users/login.xhtml" value= "login">
+                     <h:form styleClass="navbar-form navbar-right">
+                         <b:commandButton action ="#{usersController.goToLogInPage()}" value="Login">
                             <f:param name="id" value="#{usersController.users.id}"/>
                         </b:commandButton>
-                    </h:form>
+                    </h:form>   
                     
                     <h:form styleClass="navbar-form navbar-right">
                         <b:commandButton action="#{usersController.logout()}" value= "Logout" rendered="#{usersController.users.id != null}">
@@ -47,15 +46,13 @@
                         </b:commandButton>
                     </h:form> 
                     
-                </b:navBar> 
-                <div>
-                    <h:form class="signUP">                       
-                        <b:commandButton  action="/Users/registeruser.xhtml" value= "Signup" >
+                    <h:form styleClass="navbar-form navbar-right">
+                        <b:commandButton action="#{usersController.goToRegisterPage()}" value= "Sign up">
                             <f:param name="id" value="#{usersController.users.id}"/>
                         </b:commandButton>
-                    </h:form>
-                </div>  
-                
+                    </h:form>                     
+                    
+                </b:navBar>                 
             </header>
             
             <section>
