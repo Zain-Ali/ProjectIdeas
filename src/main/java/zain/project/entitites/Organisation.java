@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 /**
  *
- * @author zain
+ * @author UP687776
  */
 @Entity
 public class Organisation implements Serializable {
@@ -27,86 +27,145 @@ public class Organisation implements Serializable {
     private String emailAddress;
 
 
+    /**
+     * 
+     * @return id
+     */
     public Long getId() 
     {
         return id;
     }
 
+    /**
+     * set id
+     * @param id 
+     */
     public void setId(Long id) 
     {
         this.id = id;
     }
     
-
+    /**
+     * 
+     * @return organisation name
+     */
     public String getOrganisationName() 
     {
         return organisationName;
     }
 
+    /**
+     * set organisation name
+     * @param organisationName 
+     */
     public void setOrganisationName(String organisationName) 
     {
         this.organisationName = organisationName;
     }
 
+    /**
+     * 
+     * @return postal address
+     */
     public String getPostalAddress() 
     {
         return postalAddress;
     }
 
+    /**
+     * set postal address
+     * @param postalAddress 
+     */
     public void setPostalAddress(String postalAddress) 
     {
         this.postalAddress = postalAddress;
     }
 
-    
+    /**
+     * 
+     * @return post code
+     */
     public String getPostCode() 
     {
         return postCode;
     }
 
+    /**
+     * set post code
+     * @param postCode 
+     */
     public void setPostCode(String postCode) 
     {
         this.postCode = postCode;
     }
 
-    
+    /**
+     * 
+     * @return Out Line Of What Your Organisation Does
+     */
     public String getOutLineOfWhatYourOrganisationDoes() 
     {
         return outLineOfWhatYourOrganisationDoes;
     }
 
+    /**
+     * set Out Line Of What Your Organisation Does
+     * @param outLineOfWhatYourOrganisationDoes 
+     */
     public void setOutLineOfWhatYourOrganisationDoes(String outLineOfWhatYourOrganisationDoes) 
     {
         this.outLineOfWhatYourOrganisationDoes = outLineOfWhatYourOrganisationDoes;
     }
 
-    
+    /**
+     * 
+     * @return contact name
+     */
     public String getContactName() 
     {
         return contactName;
     }
 
+    /**
+     * set contact name
+     * @param contactName 
+     */
     public void setContactName(String contactName) 
     {
         this.contactName = contactName;
     }
-
+    
+    /**
+     * 
+     * @return telephone number (contact number)
+     */
     public int getTelePhone() 
     {
         return telePhone;
     }
 
+    /**
+     * set telephone number (contact number)
+     * @param telePhone 
+     */
     public void setTelePhone(int telePhone) 
     {
         this.telePhone = telePhone;
     }
     
-
+    /**
+     * 
+     * @return email address
+     */
     public String getEmailAddress() 
     {
         return emailAddress;
     }
 
+    /**
+     * set email address
+     * @param emailAddress 
+     */
     public void setEmailAddress(String emailAddress) 
     {
         this.emailAddress = emailAddress;

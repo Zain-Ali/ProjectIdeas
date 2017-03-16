@@ -2,6 +2,7 @@
 package zain.project.entitites;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,15 +13,12 @@ import javax.persistence.Table;
 
 /**
  *
- * @author zain
+ * @author UP687776
  */
 @Entity
 @Table(name="Users")
 public class Users implements Serializable 
 {
-
-    @OneToOne(mappedBy = "appliedStudent")
-    private Project project;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -32,84 +30,132 @@ public class Users implements Serializable
     private String lastName;
     private String phoneNumber;
     private String typeOfUser;
-    
+    @OneToOne(mappedBy = "appliedStudent")
+    private List<Project> project;
     @ManyToOne
     private Organisation organisation;
 
-
-
-
+    /**
+     * 
+     * @return ID
+     */
     public Long getId() 
     {
         return id;
     }
-
+    
+    /**
+     * set new id
+     * @param id 
+     */
     public void setId(Long id) 
     {
         this.id = id;
     }
     
-    
-    
+    /**
+     * 
+     * @return password
+     */
     public String getPassword() 
     {
         return password;
     }
 
+    /**
+     * set password
+     * @param password 
+     */
     public void setPassword(String password) 
     {
         this.password = password;
     }
 
-    
+    /**
+     * 
+     * @return email
+     */
     public String getEmail() 
     {
         return email;
     }
 
+    /**
+     * set email
+     * @param email 
+     */
     public void setEmail(String email) 
     {
         this.email = email;
     }
 
+    /**
+     * 
+     * @return get first name
+     */
     public String getFirstname() 
     {
         return firstname;
     }
     
-    
+    /**
+     * set first name
+     * @param firstname 
+     */
     public void setFirstname(String firstname) 
     {
         this.firstname = firstname;
     }
 
+    /**
+     * 
+     * @return last name
+     */
     public String getLastName() 
     {
         return lastName;
     }
 
-    
+    /**
+     * set last name
+     * @param lastName 
+     */
     public void setLastName(String lastName) 
     {
         this.lastName = lastName;
     }
 
+    /**
+     * 
+     * @return get phone number
+     */
     public String getPhoneNumber() 
     {
         return phoneNumber;
     }
 
+    /**
+     * set phone number
+     * @param phoneNumber 
+     */
     public void setPhoneNumber(String phoneNumber) 
     {
         this.phoneNumber = phoneNumber;
     }
     
-    
+    /**
+     * 
+     * @return type of users (Admin, or Student, or Staff)
+     */
     public String getTypeOfUser() 
     {
         return typeOfUser;
     }
 
+    /**
+     * set type of users (Admin, or Student, or Staff)
+     * @param typeOfUser 
+     */
     public void setTypeOfUser(String typeOfUser)
     {
         switch(typeOfUser)
@@ -123,12 +169,38 @@ public class Users implements Serializable
         }
     }
     
+    /**
+     * 
+     * @return list of projects from Project Class
+     */
+    public List<Project> getProject() 
+    {
+        return project;
+    }
+
+    /**
+     * set project from Project Class
+     * @param project 
+     */
+    public void setProject(List<Project> project) 
+    {
+        this.project = project;
+    }
+    //(Note) delete above 2 if cause problem 
     
+    /**
+     * 
+     * @return organisation 
+     */
     public Organisation getOrganisation() 
     {
         return organisation;
     }
 
+    /**
+     * set organisation
+     * @param organisation 
+     */
     public void setOrganisation(Organisation organisation) 
     {
         this.organisation = organisation;

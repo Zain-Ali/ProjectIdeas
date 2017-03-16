@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 /**
  *
- * @author zain
+ * @author UP687776
  */
 @Entity
 public class ContactAdmin implements Serializable {
@@ -24,82 +24,142 @@ public class ContactAdmin implements Serializable {
     private String shortTitle;
     private String message;
 
-    
-    public Long getId() {
+    /**
+     * 
+     * @return id
+     */
+    public Long getId() 
+    {
         return id;
     }
 
-    public void setId(Long id) {
+    /**
+     * set id
+     * @param id 
+     */
+    public void setId(Long id) 
+    {
         this.id = id;
     }
 
-    
-    public String getFullName() {
+    /**
+     * 
+     * @return full name
+     */
+    public String getFullName() 
+    {
         return fullName;
     }
 
-    public void setFullName(String fullName) {
+    /**
+     * set full name
+     * @param fullName 
+     */
+    public void setFullName(String fullName) 
+    {
         this.fullName = fullName;
     }
-
     
-    public String getEmailAddress() {
+    /**
+     * 
+     * @return email address
+     */
+    public String getEmailAddress() 
+    {
         return emailAddress;
     }
 
-    public void setEmailAddress(String emailAddress) {
+    /**
+     * set email address
+     * @param emailAddress 
+     */
+    public void setEmailAddress(String emailAddress) 
+    {
         this.emailAddress = emailAddress;
     }
 
-    
-    public String getContactNumber() {
+    /**
+     * 
+     * @return contact number
+     */
+    public String getContactNumber() 
+    {
         return contactNumber;
     }
 
-    public void setContactNumber(String contactNumber) {
+    /**
+     * set contact number
+     * @param contactNumber 
+     */
+    public void setContactNumber(String contactNumber) 
+    {
         this.contactNumber = contactNumber;
     }
 
-    public String getShortTitle() {
+    /**
+     * 
+     * @return short title
+     */
+    public String getShortTitle() 
+    {
         return shortTitle;
     }
 
-    
-    public void setShortTitle(String shortTitle) {
+    /**
+     * set short title
+     * @param shortTitle 
+     */
+    public void setShortTitle(String shortTitle) 
+    {
         this.shortTitle = shortTitle;
     }
 
-    public String getMessage() {
+    /**
+     * 
+     * @return message 
+     */
+    public String getMessage() 
+    {
         return message;
     }
 
-    public void setMessage(String message) {
+    /**
+     * set message
+     * @param message 
+     */
+    public void setMessage(String message) 
+    {
         this.message = message;
     }
 
     
     @Override
-    public int hashCode() {
+    public int hashCode() 
+    {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) {
+    public boolean equals(Object object) 
+    {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ContactAdmin)) {
+        if (!(object instanceof ContactAdmin)) 
+        {
             return false;
         }
         ContactAdmin other = (ContactAdmin) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) 
+        {
             return false;
         }
         return true;
     }
 
     @Override
-    public String toString() {
+    public String toString() 
+    {
         return "zain.project.entitites.Contact[ id=" + id + " ]";
     }
     

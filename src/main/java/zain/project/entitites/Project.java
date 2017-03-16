@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author zain
+ * @author UP687776
  */
 @Entity
 @Table(name="Projects")
@@ -64,103 +64,163 @@ public class Project implements Serializable
     @OneToOne
     private Users appliedStudent;
 
-
-
-
-    
-    
+    /**
+     * 
+     * @return id 
+     */
     public Long getId() 
     {
         return id;
     }
 
+    /**
+     * set id
+     * @param id 
+     */
     public void setId(Long id) 
     {
         this.id = id;
     }
     
-
+    /**
+     * 
+     * @return title 
+     */
     public String getTitle() 
     {
         return title;
     }
 
+    /**
+     * set title
+     * @param title 
+     */
     public void setTitle(String title)
     {
         this.title = title;
     }
         
-    
+    /**
+     * 
+     * @return language
+     */
     public String getLanguages() 
     {
         return languages;
     }
 
+    /**
+     * set language
+     * @param languages 
+     */
     public void setLanguages(String languages) 
     {
         this.languages = languages;
     }
     
-    
-        public Users getProjectOwner() 
+    /**
+     * 
+     * @return from Project Class
+     */
+    public Users getProjectOwner() 
     {
         return projectOwner;
     }
-
+    
+    /**
+     * set from Project Class
+     * @param projectOwner 
+     */
     public void setProjectOwner(Users projectOwner) 
     {
         this.projectOwner = projectOwner;
     } 
 
+    /**
+     * 
+     * @return aims and objectives
+     */
     public String getAimsAndObjectives() 
     {
         return aimsAndObjectives;
     }
 
+    /**
+     * set aims and objective
+     * @param aimsAndObjectives 
+     */
     public void setAimsAndObjectives(String aimsAndObjectives)
     {
         this.aimsAndObjectives = aimsAndObjectives;
     }
     
-
+    /**
+     * 
+     * @return academic questions to be answered
+     */
     public String getAcademicQuestionsToBeAnswered() 
     {
         return academicQuestionsToBeAnswered;
     }
 
+    /**
+     * set academic questions to be answered
+     * @param academicQuestionsToBeAnswered 
+     */
     public void setAcademicQuestionsToBeAnswered(String academicQuestionsToBeAnswered) 
     {
         this.academicQuestionsToBeAnswered = academicQuestionsToBeAnswered;
     }
     
-
+    /**
+     * 
+     * @return anticipated deliverables
+     */
     public String getAnticipatedDeliverables() 
     {
         return anticipatedDeliverables;
     }
 
+    /**
+     * set anticipated deliverables
+     * @param anticipatedDeliverables 
+     */
     public void setAnticipatedDeliverables(String anticipatedDeliverables) 
     {
         this.anticipatedDeliverables = anticipatedDeliverables;
     }
     
-    
+    /**
+     * 
+     * @return Student For Who Project Has Been Devised
+     */
     public String getStudentForWhoProjectHasBeenDevised() 
     {
         return studentForWhoProjectHasBeenDevised;
     }
 
+    /**
+     * set Student For Who Project Has Been Devised
+     * @param studentForWhoProjectHasBeenDevised 
+     */
     public void setStudentForWhoProjectHasBeenDevised(String studentForWhoProjectHasBeenDevised) 
     {
         this.studentForWhoProjectHasBeenDevised = studentForWhoProjectHasBeenDevised;
     }
     
-    
+    /**
+     * 
+     * @return status (Approved, Provisional, Withdrawn)
+     */
     public String getStatus() 
     {
         return status;
     }
 
+    /**
+     * set (status (Approved, Provisional, Withdrawn)
+     * @param status 
+     */
     public void setStatus(String status)
     {
         switch(status) 
@@ -174,33 +234,55 @@ public class Project implements Serializable
         }
     }
     
+    /**
+     * 
+     * @return organisation from Organisation Class
+     */
     public Organisation getOrganisation() 
     {
         return organisation;
     }
 
+    /**
+     * set organisation from Organisation Class
+     * @param organisation 
+     */
     public void setOrganisation(Organisation organisation) 
     {
         this.organisation = organisation;
     }
     
-
+    /**
+     * 
+     * @return date created or updated
+     */
     public Date getLastUpdated() 
     {
         return lastUpdated;
     }
 
+    /**
+     * set date created or updated
+     * @param lastUpdated 
+     */
     public void setLastUpdated(Date lastUpdated) 
     {
         this.lastUpdated = lastUpdated;
     }
     
-    
+    /**
+     * 
+     * @return applied student from Users class (optional)
+     */
     public Users getAppliedStudent() 
     {
         return appliedStudent;
     }
 
+    /**
+     * set applied student from Users class (optional)
+     * @param appliedStudent 
+     */
     public void setAppliedStudent(Users appliedStudent) 
     {
         this.appliedStudent = appliedStudent;
