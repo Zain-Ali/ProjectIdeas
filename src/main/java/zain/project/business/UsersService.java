@@ -44,9 +44,9 @@ public class UsersService
         return userFacade.findAll();
     }
         
-    public List<Users> login (String username, String password) 
+    public List<Users> login (String email, String password) 
     {
-        return userFacade.login(username, password);
+        return userFacade.login(email, password);
     }
 
 }

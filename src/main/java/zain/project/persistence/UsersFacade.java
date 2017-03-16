@@ -34,12 +34,21 @@ public class UsersFacade extends AbstractFacade<Users>
         super(Users.class);
     }
     
-    public List login(String username, String password) 
+    public List login(String email, String password) 
     {
-        TypedQuery<Users> query = em.createQuery("SELECT u FROM Users u WHERE u.username = :username AND u.password = :password", Users.class);
-        query.setParameter("username", username);
+        TypedQuery<Users> query = em.createQuery("SELECT u FROM Users u WHERE u.email = :email AND u.password = :password", Users.class);
+        query.setParameter("email", email);
         query.setParameter("password", password);
         return query.getResultList();
+    }
+    
+    public List findUserByEmailAddress(String email) 
+    {
+        List<Users> findUserByEmailResults = em
+                .createQuery("SELECT u FROM Users u WHERE u.email = :=email", Users.class)
+                .setParameter("email", email)
+                .getResultList();
+        return findUserByEmailResults;
     }
     
 }

@@ -29,7 +29,13 @@
                         <h:inputText value="#{usersController.users.lastName}"
                                     required="true"
                                     requiredMessage="Please enter a Last Name."/>
-                    </div> 
+                    </div>
+                    <div class="form-style-1">
+                        <h:outputLabel value="Contact Number: "/>
+                        <h:inputText value="#{usersController.users.phoneNumber}"
+                                    required="true"
+                                    requiredMessage="Please enter a Phone Number."/>
+                    </div>                       
                     <div class="form-style-1">
                         <h:outputLabel value="Email Address: "/>
                         <h:inputText value="#{usersController.users.email}"
@@ -38,19 +44,7 @@
                                     validatorMessage="Please give a valid email format.">
                             <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
                         </h:inputText>
-                    </div>                     
-                    <div class="form-style-1">
-                        <h:outputLabel value="Contact Number: "/>
-                        <h:inputText value="#{usersController.users.phoneNumber}"
-                                    required="true"
-                                    requiredMessage="Please enter a Phone Number."/>
-                    </div>                    
-                    <div class="form-style-1">
-                        <h:outputLabel value="User Name: "/>
-                        <h:inputText value="#{usersController.users.username}"
-                                    required="true"
-                                    requiredMessage="Please enter a User Name."/>
-                    </div>                    
+                    </div>                                                         
                     <div class="form-style-1">
                         <h:outputLabel value="Password: "/>
                         <h:inputSecret value="#{usersController.users.password}"

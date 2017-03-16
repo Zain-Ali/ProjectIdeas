@@ -2,7 +2,6 @@
 package zain.project.entitites;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,7 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import zain.project.entitites.exceptions.InvalidInputException;
 
 /**
  *
@@ -28,13 +26,17 @@ public class Users implements Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String username;
     private String password;
     private String email;
     private String firstname;
     private String lastName;
     private String phoneNumber;
     private String typeOfUser;
+    
+    @ManyToOne
+    private Organisation organisation;
+
+
 
 
     public Long getId() 
@@ -48,16 +50,6 @@ public class Users implements Serializable
     }
     
     
-    public String getUsername() 
-    {
-        return username;
-    }
-
-    public void setUsername(String username) 
-    {
-        this.username = username;
-    }
-
     
     public String getPassword() 
     {
@@ -84,7 +76,7 @@ public class Users implements Serializable
     {
         return firstname;
     }
-
+    
     
     public void setFirstname(String firstname) 
     {
@@ -113,33 +105,12 @@ public class Users implements Serializable
     }
     
     
-//
-//    public PrivilegeLevel getPrivielegeLevel() 
-//    {
-//        return privielegeLevel;
-//    }
-//
-//    public void setPrivielegeLevel(PrivilegeLevel privielegeLevel) 
-//    {
-//        this.privielegeLevel = privielegeLevel;
-//    }
-
-//    public Organisation getOrganisation() 
-//    {
-//        return organisation;
-//    }
-//
-//    public void setOrganisation(Organisation organisation) 
-//    {
-//        this.organisation = organisation;
-//    }
-    
     public String getTypeOfUser() 
     {
         return typeOfUser;
     }
 
-    public void setTypeOfUser(String typeOfUser) throws InvalidInputException
+    public void setTypeOfUser(String typeOfUser)
     {
         switch(typeOfUser)
         {
@@ -148,11 +119,22 @@ public class Users implements Serializable
             case "Staff/Tutor":    
                 this.typeOfUser = typeOfUser;
                 break;
-                default:
-                throw new InvalidInputException("Only Select ");
+                default:System.out.println("Not a Admin, Student, or Staff/Tutor");
         }
     }
     
+    
+    public Organisation getOrganisation() 
+    {
+        return organisation;
+    }
+
+    public void setOrganisation(Organisation organisation) 
+    {
+        this.organisation = organisation;
+    }
+    
+        
     @Override
     public int hashCode() 
     {

@@ -89,7 +89,7 @@ public class usersController implements Serializable
     
     public String login() 
     {
-        results = usersService.login(users.getUsername(), users.getPassword());
+        results = usersService.login(users.getEmail(), users.getPassword());
         users = results.get(0);
         return "/index?faces-redirect=true";
     }
@@ -104,6 +104,5 @@ public class usersController implements Serializable
     public void init() 
     {
         usersList = usersService.finalAllUsers();
-    }
-    
+    } 
 }
