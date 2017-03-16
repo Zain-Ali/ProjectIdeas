@@ -10,13 +10,18 @@ import javax.persistence.EntityManager;
 
 /**
  *
- * @author zain
+ * @author UP687776
  */
 public abstract class AbstractFacade<T> 
 {
 
     private Class<T> entityClass;
 
+    /**
+     * 
+     * @param entityClass 
+     * Abstract Facade Constructor
+     */
     public AbstractFacade(Class<T> entityClass) 
     {
         this.entityClass = entityClass;
@@ -24,26 +29,48 @@ public abstract class AbstractFacade<T>
 
     protected abstract EntityManager getEntityManager();
 
+    /**
+     * Creates an Entity
+     * @param entity 
+     */
     public void create(T entity) 
     {
         getEntityManager().persist(entity);
     }
 
+    /**
+     * Edit an Entity
+     * @param entity
+     * @return entity
+     */
     public T edit(T entity) 
     {
         return getEntityManager().merge(entity);
     }
 
+    /**
+     * Remove an Entity
+     * @param entity 
+     */
     public void remove(T entity) 
     {
         getEntityManager().remove(getEntityManager().merge(entity));
     }
 
+    /**
+     * 
+     * @param id
+     * @return entity with ID
+     */
     public T find(Object id) 
     {
         return getEntityManager().find(entityClass, id);
     }
 
+    /**
+     * 
+     * @return and find all entities
+     */
     public List<T> findAll() 
     {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
@@ -51,6 +78,11 @@ public abstract class AbstractFacade<T>
         return getEntityManager().createQuery(cq).getResultList();
     }
 
+    /**
+     * 
+     * @param range
+     * @return and find range entity
+     */
     public List<T> findRange(int[] range) 
     {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
@@ -61,6 +93,10 @@ public abstract class AbstractFacade<T>
         return q.getResultList();
     }
 
+    /**
+     * 
+     * @return count int value
+     */
     public int count() 
     {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();

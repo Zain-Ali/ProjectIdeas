@@ -15,26 +15,39 @@ import zain.project.entitites.Users;
 
 /**
  *
- * @author zain
+ * @author UP687776
  */
 @Stateless
-public class ProjectFacade extends AbstractFacade<Project> {
+public class ProjectFacade extends AbstractFacade<Project> 
+{
 
     @PersistenceContext(unitName = "PU")
     private EntityManager em;
 
+    /**
+     * 
+     * @return Entity Manager
+     */
     @Override
     protected EntityManager getEntityManager() 
     {
         return em;
     }
 
+    /**
+     * Project Facade Constructor
+     */
     public ProjectFacade() 
     {
         super(Project.class);
     }
     
-    
+    /**
+     * 
+     * @param search
+     * @return project 
+     * function allow users to search for a project by the title
+     */
     public List<Project> findAProjectBySearch (String search) 
     {
         TypedQuery<Project> results = em.createQuery("SELECT p FROM Project p WHERE lower(p.title) like lower(:search)", Project.class);
@@ -44,6 +57,11 @@ public class ProjectFacade extends AbstractFacade<Project> {
     }
     
     
+    /**
+     * 
+     * @return all un assigned projects
+     * function allow users to search for all un assigned projects
+     */
     public List<Project> findAllUnAssingedProjects () 
     {
         List<Project> resultsOfALLUnAssignedProjects;
@@ -52,8 +70,20 @@ public class ProjectFacade extends AbstractFacade<Project> {
                 .getResultList();
         return resultsOfALLUnAssignedProjects;
     }
+    //above function still to do
     
+    public List<Project> findAllAssingedProjects () 
+    {
+        return null;
+    }
+    //above function still to do    
     
+    /**
+     * 
+     * @param user
+     * @return all projects by owner name
+     * function find all projects by their owner
+     */
     public List<Project> findAllProjectsByOwner (Users user) 
     {
         List<Project> resultsByProjectOwner;
@@ -63,8 +93,14 @@ public class ProjectFacade extends AbstractFacade<Project> {
         
         return resultsByProjectOwner;
     }
-    
-    
+    //above function still to do
+     
+    /**
+     * 
+     * @param studentUser
+     * @return a project assigned to a user
+     * function allow users to search for project already assigned to a student
+     */    
     public List<Project> findAUserAssignedProject(Users studentUser) 
     {
         List<Project> resultsForUserAssignedProejct;
@@ -74,20 +110,18 @@ public class ProjectFacade extends AbstractFacade<Project> {
                 .getResultList();
         return resultsForUserAssignedProejct;
     }
+    //above function still to do
+    
     
     public List<Project> findProjectByStatus (String status) 
     {
        return null;
     }
+    //above function still to do
     
     public List<Project> findAllProjectApproved () 
     {
         return null;
     }    
-    
-        public List<Project> findAllAssingedProjects () 
-    {
-        return null;
-    }
-    
+    //above function still to do
 }

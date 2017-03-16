@@ -5,14 +5,16 @@
  */
 package zain.project.persistence;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import zain.project.entitites.Organisation;
 
 /**
  *
- * @author zain
+ * @author UP687776
  */
 @Stateless
 public class OrganisationFacade extends AbstractFacade<Organisation> 
@@ -21,15 +23,37 @@ public class OrganisationFacade extends AbstractFacade<Organisation>
     @PersistenceContext(unitName = "PU")
     private EntityManager em;
 
+    /**
+     * 
+     * @return Entity Manager
+     */
     @Override
     protected EntityManager getEntityManager() 
     {
         return em;
     }
 
+    /**
+     * Organisation Facade Constructor
+     */
     public OrganisationFacade() 
     {
         super(Organisation.class);
     }
     
+    
+    /**
+     * 
+     * @param search
+     * @return organisation 
+     * function allow users to search for a Organisation by the Organisation name
+     */
+    public List<Organisation> findAOrganisationBySearch (String search) 
+    {
+        TypedQuery<Organisation> results = em.createQuery("SELECT o FROM Organisation o WHERE lower(o.organisationName) like lower(:search)", Organisation.class);
+        String FinalSearch = "%" + search;
+        results.setParameter("search", FinalSearch);
+        return results.getResultList();
+    }
+    //above function still to do
 }
