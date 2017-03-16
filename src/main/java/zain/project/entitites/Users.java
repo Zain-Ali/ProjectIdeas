@@ -116,10 +116,10 @@ public class Users implements Serializable
         {
             case "Admin":
             case "Student":
-            case "Staff/Tutor":    
+            case "Staff":    
                 this.typeOfUser = typeOfUser;
                 break;
-                default:System.out.println("Not a Admin, Student, or Staff/Tutor");
+                default:System.out.println("Not a Admin, Student, or Staff");
         }
     }
     
