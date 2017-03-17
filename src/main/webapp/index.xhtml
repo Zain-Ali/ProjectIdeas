@@ -57,9 +57,10 @@
             
             <section>
                 <h:form class="searchBar">
-                    <h:inputText  value="#{projectController.searchProject}">
+                    <h:inputText  value="#{projectController.searchProject}"/>
+                    <h:commandButton value="search" action="#{projectController.updateProjectList()}">
                         <f:ajax event="keyup" listener="#{projectController.updateProjectList()}" render="projects" />
-                    </h:inputText>
+                    </h:commandButton>    
                 </h:form>
                 <h:panelGroup>
                     <h:form>        

@@ -1,4 +1,3 @@
-
 package zain.project.controllers;
 
 import java.io.Serializable;
@@ -21,148 +20,112 @@ import zain.project.entitites.Users;
  */
 @Named(value = "projectController")
 @SessionScoped
-public class ProjectController  implements Serializable
-{
+public class ProjectController implements Serializable {
+
     @EJB
     private ProjectService projectService;
     private Project project;
     private boolean apply = false;
     private String searchProject = "";
 
-    public String getSearchProject() 
-    {
+    public String getSearchProject() {
         return searchProject;
     }
 
-    public void setSearchProject(String searchProject) 
-    {
+    public void setSearchProject(String searchProject) {
         this.searchProject = searchProject;
     }
-    
-    public void updateProjectList() 
-    {
+
+    public void updateProjectList() {
         projectList = projectService.findAProjectBySearch(searchProject);
     }
 
-
-    
-    
     List<Project> projectList = new ArrayList<>();
 
     /**
      * Creates a new instance of ProjectController
      */
-    public ProjectController() 
-    {
+    public ProjectController() {
         this.project = new Project();
     }
-    
-    
-    public List<Project> getProjectList () 
-    {
+
+    public List<Project> getProjectList() {
         return projectList;
     }
-    
-    
-    public void setProjectList (List<Project> projectList) 
-    {
+
+    public void setProjectList(List<Project> projectList) {
         this.projectList = projectList;
     }
-    
-   
-    public Project getProject() 
-    {
+
+    public Project getProject() {
         return project;
     }
-    
-    
-    public void setProject (Project project) 
-    {
+
+    public void setProject(Project project) {
         this.project = project;
     }
-    
-    
-    public String createProject(Users user)
-    {
-        if (apply) 
-        {
+
+    public String createProject(Users user) {
+        if (apply) {
             project.setAppliedStudent(user);
         }
         project.setProjectOwner(user);
-        
-        try 
-        {
+
+        try {
             projectService.createProject(project);
-        } 
-        catch (AuthorisationException ex) 
-        {
+        } catch (AuthorisationException ex) {
             Logger.getLogger(ProjectController.class.getName()).log(Level.SEVERE, null, ex);
         }
         project = new Project();
         projectList = projectService.findAllProjects();
         return "/index?faces-redirect=true";
     }
-    
-    
-    public String deleteProject(Project project) 
-    {
+
+    public String deleteProject(Project project) {
         projectService.deleteProject(project);
         projectList = projectService.findAllProjects();
         return "/index?faces-redirect=true";
     }
-    
-    
-    public String updateProject(Project project) 
-    {
+
+    public String updateProject(Project project) {
         this.project = project;
         return "/project/editproject?faces-redirect=true";
     }
-    
+
     public String backToIndex()//update 
     {
         try //update
         {
             projectService.editProject(project);
             this.setProject(new Project());
-            
-        } 
-        catch (AuthorisationException ex) 
-        {
+
+        } catch (AuthorisationException ex) {
             Logger.getLogger(ProjectController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "/index?faces-redirect=true";
     }
 
-    public String viewProject(Project project) 
-    {
+    public String viewProject(Project project) {
         this.project = project;
         return "/project/project?faces-redirect=true";
     }
-    
-    public String goAndCreateNewProject() 
-    {
+
+    public String goAndCreateNewProject() {
         project = new Project();
         return "/project/newproject?faces-redirect=true";
     }
-    
-    
-    
-    public boolean isApply() 
-    {
+
+    public boolean isApply() {
         return apply;
     }
 
-    public void setApply(boolean apply) 
-    {
+    public void setApply(boolean apply) {
         this.apply = apply;
     }
-    
-    
-        
+
     @PostConstruct
-    public void init() 
-    {
+    public void init() {
         projectList = projectService.findAllProjects();
     }
-    
+
 }

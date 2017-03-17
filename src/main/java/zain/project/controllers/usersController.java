@@ -1,4 +1,3 @@
-
 package zain.project.controllers;
 
 import java.io.Serializable;
@@ -19,8 +18,7 @@ import zain.project.entitites.Users;
  */
 @Named(value = "usersController")
 @SessionScoped
-public class usersController implements Serializable
-{
+public class usersController implements Serializable {
 
     @EJB
     private UsersService usersService;
@@ -31,57 +29,44 @@ public class usersController implements Serializable
     private String email;
     private String password;
 
-
-    
-    
-    public usersController() 
-    {
+    public usersController() {
         this.users = new Users();
     }
-    
-    public List<Users> getUsersList () 
-    {
+
+    public List<Users> getUsersList() {
         return usersList;
     }
-    
-    public void setUsersList (List<Users> usersList) 
-    {
+
+    public void setUsersList(List<Users> usersList) {
         this.usersList = usersList;
     }
-    
-    public Users getUsers() 
-    {
+
+    public Users getUsers() {
         return users;
     }
-    
-    
-    public void setUsers (Users users) 
-    {
+
+    public void setUsers(Users users) {
         this.users = users;
     }
-    
-    public String createUsers() throws BusinessException 
-    {
+
+    public String createUsers() throws BusinessException {
         usersService.createUser(users);
         users = new Users();
         usersList = usersService.finalAllUsers();
         return "/index?faces-redirect=true"; //add new page for users account info
     }
-    
-    public String deleteUsers(Users users) 
-    {
+
+    public String deleteUsers(Users users) {
         usersService.deleteUser(users);
         usersList = usersService.finalAllUsers();
         return "/index?faces-redirect=true";
     }
-    
-    
-    public String editUsers(Users users) 
-    {
+
+    public String editUsers(Users users) {
         this.users = users;
         return "";
     }
-    
+
     public String backToIndex()//update 
     {
         usersService.editUser(users);
@@ -89,28 +74,23 @@ public class usersController implements Serializable
         return "/index?faces-redirect=true";
     }
 
-    public String viewUsers(Users users) 
-    {
+    public String viewUsers(Users users) {
         this.users = users;
         return "";
     }
-    
 
-    
-    public Users getCurrentUser() 
-    {
+    public Users getCurrentUser() {
         return currentUser;
     }
 
-    public void setCurrentUser(Users currentUser) 
-    {
+    public void setCurrentUser(Users currentUser) {
         this.currentUser = currentUser;
     }
-    
-    
+
     /**
      * http://www.programcreek.com/java-api-examples/javax.faces.context.FacesContext
-     * @return 
+     *
+     * @return
      */
 //    public String login() 
 //    {
@@ -135,44 +115,36 @@ public class usersController implements Serializable
 //        }
 //        return "/index?faces-redirect=true";
 //    }
-    
-    public String login() 
-    {
+    public String login() {
         results = usersService.login(users.getEmail(), users.getPassword());
         users = results.get(0);
         return "/index?faces-redirect=true";
     }
-    
-    
-    public String logout() 
-    {
+
+    public String logout() {
         users = new Users();
         return "/index?faces-redirect=true";
     }
-    
-    public String goToRegisterPage() 
-    {
+
+    public String goToRegisterPage() {
         return "/Users/registeruser?faces-redirect=true";
     }
-    
-    public String goToLogInPage() 
-    {
+
+    public String goToLogInPage() {
         return "/Users/login?faces-redirect=true";
     }
-    
+
     @PostConstruct
-    public void init() 
-    {
+    public void init() {
         usersList = usersService.finalAllUsers();
-    } 
-    
-    
+    }
+
     /**
      * https://docs.oracle.com/cd/E17802_01/j2ee/javaee/javaserverfaces/2.0/docs/api/javax/faces/context/FacesContext.html
-     * @return 
+     *
+     * @return
      */
-    public FacesContext getCurrentUserInstance() 
-    {
+    public FacesContext getCurrentUserInstance() {
         return FacesContext.getCurrentInstance();
     }
 }

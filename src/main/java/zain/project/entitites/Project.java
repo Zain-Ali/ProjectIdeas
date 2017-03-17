@@ -1,4 +1,3 @@
-
 package zain.project.entitites;
 
 import java.io.Serializable;
@@ -20,303 +19,283 @@ import javax.persistence.TemporalType;
  * @author UP687776
  */
 @Entity
-@Table(name="Projects")
-public class Project implements Serializable 
-{
+@Table(name = "Projects")
+public class Project implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id; //reference number
-    
-    @Column(nullable=false, length=99)
+
+    @Column(nullable = false, length = 99)
     private String title;
-    
-    @Column(nullable=false, length=99)
-    private String languages;    
-    
+
+    @Column(nullable = false, length = 99)
+    private String languages;
+
     @ManyToOne
     private Users projectOwner;
-    
-    @Column(nullable=false) 
+
+    @Column(nullable = false)
     private String aimsAndObjectives;
-    
-    @Column(nullable=true)
+
+    @Column(nullable = true)
     private String academicQuestionsToBeAnswered;
-    
-    @Column(nullable=false)
+
+    @Column(nullable = false)
     private String anticipatedDeliverables;
-    
-    @Column(nullable=true)
+
+    @Column(nullable = true)
     private String studentForWhoProjectHasBeenDevised;
-    
-    @Column(nullable=false)
+
+    @Column(nullable = false)
     private String status;
-    
-    
+
     @Temporal(TemporalType.DATE)
     private Date lastUpdated;
-    
+
     @ManyToOne(cascade = CascadeType.PERSIST)
     private Organisation organisation;
-    
+
     //new 
     @OneToOne
     private Users appliedStudent;
 
     /**
-     * 
-     * @return id 
+     *
+     * @return id
      */
-    public Long getId() 
-    {
+    public Long getId() {
         return id;
     }
 
     /**
      * set id
-     * @param id 
+     *
+     * @param id
      */
-    public void setId(Long id) 
-    {
+    public void setId(Long id) {
         this.id = id;
     }
-    
+
     /**
-     * 
-     * @return title 
+     *
+     * @return title
      */
-    public String getTitle() 
-    {
+    public String getTitle() {
         return title;
     }
 
     /**
      * set title
-     * @param title 
+     *
+     * @param title
      */
-    public void setTitle(String title)
-    {
+    public void setTitle(String title) {
         this.title = title;
     }
-        
+
     /**
-     * 
+     *
      * @return language
      */
-    public String getLanguages() 
-    {
+    public String getLanguages() {
         return languages;
     }
 
     /**
      * set language
-     * @param languages 
+     *
+     * @param languages
      */
-    public void setLanguages(String languages) 
-    {
+    public void setLanguages(String languages) {
         this.languages = languages;
     }
-    
-    /**
-     * 
-     * @return from Project Class
-     */
-    public Users getProjectOwner() 
-    {
-        return projectOwner;
-    }
-    
-    /**
-     * set from Project Class
-     * @param projectOwner 
-     */
-    public void setProjectOwner(Users projectOwner) 
-    {
-        this.projectOwner = projectOwner;
-    } 
 
     /**
-     * 
+     *
+     * @return from Project Class
+     */
+    public Users getProjectOwner() {
+        return projectOwner;
+    }
+
+    /**
+     * set from Project Class
+     *
+     * @param projectOwner
+     */
+    public void setProjectOwner(Users projectOwner) {
+        this.projectOwner = projectOwner;
+    }
+
+    /**
+     *
      * @return aims and objectives
      */
-    public String getAimsAndObjectives() 
-    {
+    public String getAimsAndObjectives() {
         return aimsAndObjectives;
     }
 
     /**
      * set aims and objective
-     * @param aimsAndObjectives 
+     *
+     * @param aimsAndObjectives
      */
-    public void setAimsAndObjectives(String aimsAndObjectives)
-    {
+    public void setAimsAndObjectives(String aimsAndObjectives) {
         this.aimsAndObjectives = aimsAndObjectives;
     }
-    
+
     /**
-     * 
+     *
      * @return academic questions to be answered
      */
-    public String getAcademicQuestionsToBeAnswered() 
-    {
+    public String getAcademicQuestionsToBeAnswered() {
         return academicQuestionsToBeAnswered;
     }
 
     /**
      * set academic questions to be answered
-     * @param academicQuestionsToBeAnswered 
+     *
+     * @param academicQuestionsToBeAnswered
      */
-    public void setAcademicQuestionsToBeAnswered(String academicQuestionsToBeAnswered) 
-    {
+    public void setAcademicQuestionsToBeAnswered(String academicQuestionsToBeAnswered) {
         this.academicQuestionsToBeAnswered = academicQuestionsToBeAnswered;
     }
-    
+
     /**
-     * 
+     *
      * @return anticipated deliverables
      */
-    public String getAnticipatedDeliverables() 
-    {
+    public String getAnticipatedDeliverables() {
         return anticipatedDeliverables;
     }
 
     /**
      * set anticipated deliverables
-     * @param anticipatedDeliverables 
+     *
+     * @param anticipatedDeliverables
      */
-    public void setAnticipatedDeliverables(String anticipatedDeliverables) 
-    {
+    public void setAnticipatedDeliverables(String anticipatedDeliverables) {
         this.anticipatedDeliverables = anticipatedDeliverables;
     }
-    
+
     /**
-     * 
+     *
      * @return Student For Who Project Has Been Devised
      */
-    public String getStudentForWhoProjectHasBeenDevised() 
-    {
+    public String getStudentForWhoProjectHasBeenDevised() {
         return studentForWhoProjectHasBeenDevised;
     }
 
     /**
      * set Student For Who Project Has Been Devised
-     * @param studentForWhoProjectHasBeenDevised 
+     *
+     * @param studentForWhoProjectHasBeenDevised
      */
-    public void setStudentForWhoProjectHasBeenDevised(String studentForWhoProjectHasBeenDevised) 
-    {
+    public void setStudentForWhoProjectHasBeenDevised(String studentForWhoProjectHasBeenDevised) {
         this.studentForWhoProjectHasBeenDevised = studentForWhoProjectHasBeenDevised;
     }
-    
+
     /**
-     * 
+     *
      * @return status (Approved, Provisional, Withdrawn)
      */
-    public String getStatus() 
-    {
+    public String getStatus() {
         return status;
     }
 
     /**
      * set (status (Approved, Provisional, Withdrawn)
-     * @param status 
+     *
+     * @param status
      */
-    public void setStatus(String status)
-    {
-        switch(status) 
-        {
+    public void setStatus(String status) {
+        switch (status) {
             case "Approved": //Approved
             case "Provisional": // Provisional 
             case "Withdrawn": // WithDrawn
                 this.status = status;
                 break;
-            default: System.out.println("Only Select \"Approved\", \"Provisional\", \"Withdrawn\" ");
+            default:
+                System.out.println("Only Select \"Approved\", \"Provisional\", \"Withdrawn\" ");
         }
     }
-    
+
     /**
-     * 
+     *
      * @return organisation from Organisation Class
      */
-    public Organisation getOrganisation() 
-    {
+    public Organisation getOrganisation() {
         return organisation;
     }
 
     /**
      * set organisation from Organisation Class
-     * @param organisation 
+     *
+     * @param organisation
      */
-    public void setOrganisation(Organisation organisation) 
-    {
+    public void setOrganisation(Organisation organisation) {
         this.organisation = organisation;
     }
-    
+
     /**
-     * 
+     *
      * @return date created or updated
      */
-    public Date getLastUpdated() 
-    {
+    public Date getLastUpdated() {
         return lastUpdated;
     }
 
     /**
      * set date created or updated
-     * @param lastUpdated 
+     *
+     * @param lastUpdated
      */
-    public void setLastUpdated(Date lastUpdated) 
-    {
+    public void setLastUpdated(Date lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
-    
+
     /**
-     * 
+     *
      * @return applied student from Users class (optional)
      */
-    public Users getAppliedStudent() 
-    {
+    public Users getAppliedStudent() {
         return appliedStudent;
     }
 
     /**
      * set applied student from Users class (optional)
-     * @param appliedStudent 
+     *
+     * @param appliedStudent
      */
-    public void setAppliedStudent(Users appliedStudent) 
-    {
+    public void setAppliedStudent(Users appliedStudent) {
         this.appliedStudent = appliedStudent;
     }
-    
 
     @Override
-    public int hashCode() 
-    {
+    public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) 
-    {
+    public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Project)) 
-        {
+        if (!(object instanceof Project)) {
             return false;
         }
         Project other = (Project) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) 
-        {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
     }
 
     @Override
-    public String toString() 
-    {
+    public String toString() {
         return "zain.project.entitites.Project[ id=" + id + " ]";
     }
-    
+
 }

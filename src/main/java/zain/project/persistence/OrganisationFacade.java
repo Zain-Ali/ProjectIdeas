@@ -17,39 +17,34 @@ import zain.project.entitites.Organisation;
  * @author UP687776
  */
 @Stateless
-public class OrganisationFacade extends AbstractFacade<Organisation> 
-{
+public class OrganisationFacade extends AbstractFacade<Organisation> {
 
     @PersistenceContext(unitName = "PU")
     private EntityManager em;
 
     /**
-     * 
+     *
      * @return Entity Manager
      */
     @Override
-    protected EntityManager getEntityManager() 
-    {
+    protected EntityManager getEntityManager() {
         return em;
     }
 
     /**
      * Organisation Facade Constructor
      */
-    public OrganisationFacade() 
-    {
+    public OrganisationFacade() {
         super(Organisation.class);
     }
-    
-    
+
     /**
-     * 
+     *
      * @param search
-     * @return organisation 
-     * function allow users to search for a Organisation by the Organisation name
+     * @return organisation function allow users to search for a Organisation by
+     * the Organisation name
      */
-    public List<Organisation> findAOrganisationBySearch (String search) 
-    {
+    public List<Organisation> findAOrganisationBySearch(String search) {
         TypedQuery<Organisation> results = em.createQuery("SELECT o FROM Organisation o WHERE lower(o.organisationName) like lower(:search)", Organisation.class);
         String FinalSearch = "%" + search;
         results.setParameter("search", FinalSearch);

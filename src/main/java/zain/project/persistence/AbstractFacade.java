@@ -12,18 +12,15 @@ import javax.persistence.EntityManager;
  *
  * @author UP687776
  */
-public abstract class AbstractFacade<T> 
-{
+public abstract class AbstractFacade<T> {
 
     private Class<T> entityClass;
 
     /**
-     * 
-     * @param entityClass 
-     * Abstract Facade Constructor
+     *
+     * @param entityClass Abstract Facade Constructor
      */
-    public AbstractFacade(Class<T> entityClass) 
-    {
+    public AbstractFacade(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
 
@@ -31,60 +28,57 @@ public abstract class AbstractFacade<T>
 
     /**
      * Creates an Entity
-     * @param entity 
+     *
+     * @param entity
      */
-    public void create(T entity) 
-    {
+    public void create(T entity) {
         getEntityManager().persist(entity);
     }
 
     /**
      * Edit an Entity
+     *
      * @param entity
      * @return entity
      */
-    public T edit(T entity) 
-    {
+    public T edit(T entity) {
         return getEntityManager().merge(entity);
     }
 
     /**
      * Remove an Entity
-     * @param entity 
+     *
+     * @param entity
      */
-    public void remove(T entity) 
-    {
+    public void remove(T entity) {
         getEntityManager().remove(getEntityManager().merge(entity));
     }
 
     /**
-     * 
+     *
      * @param id
      * @return entity with ID
      */
-    public T find(Object id) 
-    {
+    public T find(Object id) {
         return getEntityManager().find(entityClass, id);
     }
 
     /**
-     * 
+     *
      * @return and find all entities
      */
-    public List<T> findAll() 
-    {
+    public List<T> findAll() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         return getEntityManager().createQuery(cq).getResultList();
     }
 
     /**
-     * 
+     *
      * @param range
      * @return and find range entity
      */
-    public List<T> findRange(int[] range) 
-    {
+    public List<T> findRange(int[] range) {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         javax.persistence.Query q = getEntityManager().createQuery(cq);
@@ -94,16 +88,15 @@ public abstract class AbstractFacade<T>
     }
 
     /**
-     * 
+     *
      * @return count int value
      */
-    public int count() 
-    {
+    public int count() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         javax.persistence.criteria.Root<T> rt = cq.from(entityClass);
         cq.select(getEntityManager().getCriteriaBuilder().count(rt));
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
-    
+
 }

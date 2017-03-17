@@ -1,4 +1,3 @@
-
 package zain.project.entitites;
 
 import java.io.Serializable;
@@ -25,142 +24,130 @@ public class ContactAdmin implements Serializable {
     private String message;
 
     /**
-     * 
+     *
      * @return id
      */
-    public Long getId() 
-    {
+    public Long getId() {
         return id;
     }
 
     /**
      * set id
-     * @param id 
+     *
+     * @param id
      */
-    public void setId(Long id) 
-    {
+    public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * 
+     *
      * @return full name
      */
-    public String getFullName() 
-    {
+    public String getFullName() {
         return fullName;
     }
 
     /**
      * set full name
-     * @param fullName 
+     *
+     * @param fullName
      */
-    public void setFullName(String fullName) 
-    {
+    public void setFullName(String fullName) {
         this.fullName = fullName;
     }
-    
+
     /**
-     * 
+     *
      * @return email address
      */
-    public String getEmailAddress() 
-    {
+    public String getEmailAddress() {
         return emailAddress;
     }
 
     /**
      * set email address
-     * @param emailAddress 
+     *
+     * @param emailAddress
      */
-    public void setEmailAddress(String emailAddress) 
-    {
+    public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;
     }
 
     /**
-     * 
+     *
      * @return contact number
      */
-    public String getContactNumber() 
-    {
+    public String getContactNumber() {
         return contactNumber;
     }
 
     /**
      * set contact number
-     * @param contactNumber 
+     *
+     * @param contactNumber
      */
-    public void setContactNumber(String contactNumber) 
-    {
+    public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
     }
 
     /**
-     * 
+     *
      * @return short title
      */
-    public String getShortTitle() 
-    {
+    public String getShortTitle() {
         return shortTitle;
     }
 
     /**
      * set short title
-     * @param shortTitle 
+     *
+     * @param shortTitle
      */
-    public void setShortTitle(String shortTitle) 
-    {
+    public void setShortTitle(String shortTitle) {
         this.shortTitle = shortTitle;
     }
 
     /**
-     * 
-     * @return message 
+     *
+     * @return message
      */
-    public String getMessage() 
-    {
+    public String getMessage() {
         return message;
     }
 
     /**
      * set message
-     * @param message 
+     *
+     * @param message
      */
-    public void setMessage(String message) 
-    {
+    public void setMessage(String message) {
         this.message = message;
     }
 
-    
     @Override
-    public int hashCode() 
-    {
+    public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) 
-    {
+    public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ContactAdmin)) 
-        {
+        if (!(object instanceof ContactAdmin)) {
             return false;
         }
         ContactAdmin other = (ContactAdmin) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) 
-        {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
     }
 
     @Override
-    public String toString() 
-    {
+    public String toString() {
         return "zain.project.entitites.Contact[ id=" + id + " ]";
     }
-    
+
 }

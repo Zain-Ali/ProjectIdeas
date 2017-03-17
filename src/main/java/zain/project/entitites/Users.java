@@ -1,4 +1,3 @@
-
 package zain.project.entitites;
 
 import java.io.Serializable;
@@ -16,9 +15,8 @@ import javax.persistence.Table;
  * @author UP687776
  */
 @Entity
-@Table(name="Users")
-public class Users implements Serializable 
-{
+@Table(name = "Users")
+public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -36,205 +34,190 @@ public class Users implements Serializable
     private Organisation organisation;
 
     /**
-     * 
+     *
      * @return ID
      */
-    public Long getId() 
-    {
+    public Long getId() {
         return id;
     }
-    
+
     /**
      * set new id
-     * @param id 
+     *
+     * @param id
      */
-    public void setId(Long id) 
-    {
+    public void setId(Long id) {
         this.id = id;
     }
-    
+
     /**
-     * 
+     *
      * @return password
      */
-    public String getPassword() 
-    {
+    public String getPassword() {
         return password;
     }
 
     /**
      * set password
-     * @param password 
+     *
+     * @param password
      */
-    public void setPassword(String password) 
-    {
+    public void setPassword(String password) {
         this.password = password;
     }
 
     /**
-     * 
+     *
      * @return email
      */
-    public String getEmail() 
-    {
+    public String getEmail() {
         return email;
     }
 
     /**
      * set email
-     * @param email 
+     *
+     * @param email
      */
-    public void setEmail(String email) 
-    {
+    public void setEmail(String email) {
         this.email = email;
     }
 
     /**
-     * 
+     *
      * @return get first name
      */
-    public String getFirstname() 
-    {
+    public String getFirstname() {
         return firstname;
     }
-    
+
     /**
      * set first name
-     * @param firstname 
+     *
+     * @param firstname
      */
-    public void setFirstname(String firstname) 
-    {
+    public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
 
     /**
-     * 
+     *
      * @return last name
      */
-    public String getLastName() 
-    {
+    public String getLastName() {
         return lastName;
     }
 
     /**
      * set last name
-     * @param lastName 
+     *
+     * @param lastName
      */
-    public void setLastName(String lastName) 
-    {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
     /**
-     * 
+     *
      * @return get phone number
      */
-    public String getPhoneNumber() 
-    {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
     /**
      * set phone number
-     * @param phoneNumber 
+     *
+     * @param phoneNumber
      */
-    public void setPhoneNumber(String phoneNumber) 
-    {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    
+
     /**
-     * 
+     *
      * @return type of users (Admin, or Student, or Staff)
      */
-    public String getTypeOfUser() 
-    {
+    public String getTypeOfUser() {
         return typeOfUser;
     }
 
     /**
      * set type of users (Admin, or Student, or Staff)
-     * @param typeOfUser 
+     *
+     * @param typeOfUser
      */
-    public void setTypeOfUser(String typeOfUser)
-    {
-        switch(typeOfUser)
-        {
+    public void setTypeOfUser(String typeOfUser) {
+        switch (typeOfUser) {
             case "Admin":
             case "Student":
-            case "Staff":    
+            case "Staff":
                 this.typeOfUser = typeOfUser;
                 break;
-                default:System.out.println("Not a Admin, Student, or Staff");
+            default:
+                System.out.println("Not a Admin, Student, or Staff");
         }
     }
-    
+
     /**
-     * 
+     *
      * @return list of projects from Project Class
      */
-    public List<Project> getProject() 
-    {
+    public List<Project> getProject() {
         return project;
     }
 
     /**
      * set project from Project Class
-     * @param project 
+     *
+     * @param project
      */
-    public void setProject(List<Project> project) 
-    {
+    public void setProject(List<Project> project) {
         this.project = project;
     }
     //(Note) delete above 2 if cause problem 
-    
+
     /**
-     * 
-     * @return organisation 
+     *
+     * @return organisation
      */
-    public Organisation getOrganisation() 
-    {
+    public Organisation getOrganisation() {
         return organisation;
     }
 
     /**
      * set organisation
-     * @param organisation 
+     *
+     * @param organisation
      */
-    public void setOrganisation(Organisation organisation) 
-    {
+    public void setOrganisation(Organisation organisation) {
         this.organisation = organisation;
     }
-    
-        
+
     @Override
-    public int hashCode() 
-    {
+    public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object object) 
-    {
+    public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Users)) 
-        {
+        if (!(object instanceof Users)) {
             return false;
         }
         Users other = (Users) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) 
-        {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
     }
 
     @Override
-    public String toString() 
-    {
+    public String toString() {
         return "zain.project.entitites.User[ id=" + id + " ]";
     }
-    
+
 }

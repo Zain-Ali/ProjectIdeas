@@ -9,14 +9,13 @@ package zain.project.business.exceptions;
  *
  * @author zain
  */
-public class AuthorisationException extends Exception 
-{
-    public AuthorisationException(String exception) 
-    {
-        super (exception);
+public class AuthorisationException extends Exception {
+
+    public AuthorisationException(String exception) {
+        super(exception);
     }
 
     public AuthorisationException() {
     }
-    
+
 }

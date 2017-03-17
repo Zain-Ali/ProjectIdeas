@@ -1,4 +1,3 @@
-
 package zain.project.controllers;
 
 import java.io.Serializable;
@@ -17,72 +16,57 @@ import zain.project.entitites.ContactAdmin;
  */
 @Named(value = "contactAdminController")
 @SessionScoped
-public class ContactAdminController implements Serializable 
-{
+public class ContactAdminController implements Serializable {
+
     @EJB
     private ContactAdminService contactAdminService;
     private ContactAdmin contactAdminForMessage;
     List<ContactAdmin> contactAdminMessageList = new ArrayList<>();
 
-
     /**
      * Creates a new instance of ContactController
      */
-    public ContactAdminController() 
-    {
+    public ContactAdminController() {
         this.contactAdminForMessage = new ContactAdmin();
     }
-    
-    
-    public List<ContactAdmin> getContactAdminMessageList() 
-    {
+
+    public List<ContactAdmin> getContactAdminMessageList() {
         return contactAdminMessageList;
     }
-    
-    public void setMessageList(ArrayList<ContactAdmin> messageList) 
-    {
+
+    public void setMessageList(ArrayList<ContactAdmin> messageList) {
         this.contactAdminMessageList = messageList;
     }
-    
-    
-    public void setContactAdminMessageList(List<ContactAdmin> contactAdminMessageList) 
-    {
+
+    public void setContactAdminMessageList(List<ContactAdmin> contactAdminMessageList) {
         this.contactAdminMessageList = contactAdminMessageList;
     }
-    
-    
-    public ContactAdmin getMessageFromContactAdmin() 
-    {
+
+    public ContactAdmin getMessageFromContactAdmin() {
         return contactAdminForMessage;
     }
-    
-    public void setMessageFromContactAdmin(ContactAdmin message) 
-    {
+
+    public void setMessageFromContactAdmin(ContactAdmin message) {
         this.contactAdminForMessage = message;
     }
 
-    
-    public String createMessage() 
-    {
+    public String createMessage() {
         contactAdminService.createMessage(contactAdminForMessage);
         contactAdminForMessage = new ContactAdmin();
         contactAdminMessageList = contactAdminService.findAllMessages();
         return "index.xhtml";
     }
-    
-    
-    public String deleteMessageByAdmin (ContactAdmin message) 
-    {
+
+    public String deleteMessageByAdmin(ContactAdmin message) {
         contactAdminService.deleteMessage(message);
-        
+
         contactAdminMessageList = contactAdminService.findAllMessages();
         return "userenquiries.xhtml";
     }
-    
+
     @PostConstruct
-    public void init() 
-    {
+    public void init() {
         contactAdminMessageList = contactAdminService.findAllMessages();
     }
-    
+
 }
