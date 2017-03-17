@@ -22,11 +22,11 @@ public class UsersService {
         return userFacade.findAll();
     }
 
-    public void createUser(Users user) throws BusinessException {
+    public void createUser(Users user) throws Exception {
         if (userFacade.findUserByEmailAddress(user.getEmail()).isEmpty()) {
             userFacade.create(user);
         } else {
-            throw new BusinessException("User already exist");
+            throw new Exception("User already exist");
         }
 
     }

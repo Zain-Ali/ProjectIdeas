@@ -31,6 +31,16 @@ public class OrganisationController implements Serializable {
         this.organisation = new Organisation();
     }
 
+    public OrganisationService getOrganisationService() {
+        return organisationService;
+    }
+
+    public void setOrganisationService(OrganisationService organisationService) {
+        this.organisationService = organisationService;
+    }
+    
+    
+
     public List<Organisation> getOrganisationList() {
         return organisationList;
     }

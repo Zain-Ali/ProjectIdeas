@@ -16,6 +16,14 @@ public class OrganisationService {
     @EJB
     protected OrganisationFacade organisationFacade;
 
+    public OrganisationFacade getOrganisationFacade() {
+        return organisationFacade;
+    }
+
+    public void setOrganisationFacade(OrganisationFacade organisationFacade) {
+        this.organisationFacade = organisationFacade;
+    }
+
     public Organisation createOrganisation(Organisation organisation) {
         organisationFacade.create(organisation);
         return organisation;

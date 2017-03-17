@@ -25,6 +25,15 @@ public class ProjectController implements Serializable {
     @EJB
     private ProjectService projectService;
     private Project project;
+    private Users user;
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
     private boolean apply = false;
     private String searchProject = "";
 
@@ -80,7 +89,7 @@ public class ProjectController implements Serializable {
         projectList = projectService.findAllProjects();
         return "/index?faces-redirect=true";
     }
-
+//i dont why it says that, because we are not even adding anything to the organisation table
     public String deleteProject(Project project) {
         projectService.deleteProject(project);
         projectList = projectService.findAllProjects();
@@ -96,7 +105,7 @@ public class ProjectController implements Serializable {
     {
         try //update
         {
-            projectService.editProject(project);
+            projectService.editProject(project, user);
             this.setProject(new Project());
 
         } catch (AuthorisationException ex) {

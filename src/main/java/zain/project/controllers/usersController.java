@@ -3,6 +3,8 @@ package zain.project.controllers;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -49,11 +51,17 @@ public class usersController implements Serializable {
         this.users = users;
     }
 
-    public String createUsers() throws BusinessException {
-        usersService.createUser(users);
-        users = new Users();
-        usersList = usersService.finalAllUsers();
-        return "/index?faces-redirect=true"; //add new page for users account info
+    public String createUsers() {
+        try {
+            usersService.createUser(users);
+            users = new Users();
+            usersList = usersService.finalAllUsers();
+            return "/index?faces-redirect=true";
+        } catch (Exception ex) {
+            Logger.getLogger(usersController.class.getName()).log(Level.SEVERE, null, ex);
+            
+            return "";
+        }  
     }
 
     public String deleteUsers(Users users) {
