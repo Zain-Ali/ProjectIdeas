@@ -1,43 +1,47 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:b="http://bootsfaces.net/ui">
-    <h:head>
-        <title>Login    </title>
-    </h:head>
-    <!--Following code is taken form here but modified-->
-    <!--https://github.com/TheCoder4eu/BootsFaces-examples/blob/master/src/main/webapp/signin.xhtml-->
-    <h:body style="padding-top: 120px;">
-        <header>
-            <b:navBar brand="Project Ideas for MSc" brand-href="/ProjectIdeas/" inverse="true" fixed="top">
-            </b:navBar>                           
-        </header>        
-        <b:container>
-            <h:form styleClass="form-signin" prependId="false">
-                <h2 class="form-signin-heading">Please sign in</h2>
-                <b:inputText id="email" placeholder="Email" value="#{usersController.users.email}"
-                            required="true"
-                                    requiredMessage="Please enter an email."
-                                    validatorMessage="Please give a valid email format.">
-                            <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
-                        
-                    <f:facet name="prepend">
-                        <b:icon name="user" />
-                    </f:facet>
-                </b:inputText>
-                <b:inputText id="password" placeholder="Password" type="password" value="#{usersController.users.password}"
-                            required="true"
-                            requiredMessage="Please enter a password.">
-                    <f:facet name="prepend">
-                        <b:iconAwesome name="key" />
-                    </f:facet>
-                </b:inputText>
-                <b:commandButton look="primary btn-block" action="#{usersController.login()}" value= "Login" icon="log-in" size="lg">
-                    <f:param name="id" value="#{usersController.users.id}"/>
-                </b:commandButton>
-            </h:form>
-        </b:container>
-    </h:body>
+
+    <ui:composition template="./../resources/templates/templatemain.xhtml">
+
+
+        <ui:define name="title">New Users</ui:define>
+
+        <ui:define name="content">
+            <b:container>
+                <h:form styleClass="form-signin" prependId="false">
+                    <h2 class="form-signin-heading">Please sign in</h2>
+                    <b:inputText id="email" placeholder="Email" value="#{usersController.users.email}"
+                                 required="true"
+                                 requiredMessage="Please enter an email."
+                                 validatorMessage="Please give a valid email format.">
+                        <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$"/>
+
+                        <f:facet name="prepend">
+                            <b:icon name="user" />
+                        </f:facet>
+                    </b:inputText>
+                    <b:inputText id="password" placeholder="Password" type="password" value="#{usersController.users.password}"
+                                 required="true"
+                                 requiredMessage="Please enter a password.">
+                        <f:facet name="prepend">
+                            <b:iconAwesome name="key" />
+                        </f:facet>
+                    </b:inputText>
+                    <b:commandButton look="primary btn-block" action="#{usersController.login()}" value= "Login" icon="log-in" size="lg">
+                        <f:param name="id" value="#{usersController.users.id}"/>
+                    </b:commandButton>
+                </h:form>
+            </b:container>            
+        </ui:define>
+
+    </ui:composition>
+
 </html>
+
+
+

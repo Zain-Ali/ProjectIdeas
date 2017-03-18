@@ -1,89 +1,45 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
-    
-    <h:head>
-        <title>#{projectController.project.title}</title>
-        <h:outputStylesheet library="css" name="globalStyleSheet.css"/> 
-    </h:head>
-    <h:body style="padding-top: 50px; padding-bottom: 20px">
-        <article>
-            
-            <header>
-                <b:navBar brand="Project Ideas for MSc" brand-href="/ProjectIdeas/" inverse="true" fixed="top">
-                    <b:navbarLinks>
-                        
-                        <b:dropMenu value="Project Ideas">
-                            <h:form>
-                                <h:commandLink value="New Project Idea" action="#{projectController.goAndCreateNewProject()}" rendered="#{usersController.users.id != null}"></h:commandLink>
-                            </h:form>
-                            <b:navLink value="View All Projects" href="/ProjectIdeas/faces/project/viewallprojects.xhtml" ></b:navLink>
-                        </b:dropMenu>
-                        
-                        <b:dropMenu value="Organisations">
-                            <h:form>
-                                <h:commandLink value="New Organisation" action="#{organisationController.goToCreateNewOrganisationPage()}" rendered="#{usersController.users.id != null}"></h:commandLink>
-                            </h:form>
-                            <b:navLink value="View All Organisation" href="/ProjectIdeas/faces/organisation/listoforganisation.xhtml" ></b:navLink>                            
-                        </b:dropMenu>
-                        
-                        <b:navLink value="Contact us" href=""></b:navLink>
-                        <b:navLink value="List of Users" href="/ProjectIdeas/faces/Users/listofUsers.xhtml" rendered="#{usersController.users.typeOfUser == 'Admin'}" ></b:navLink>                        
-                    </b:navbarLinks>
-                    
-                     <h:form styleClass="navbar-form navbar-right">
-                         <b:commandButton action ="#{usersController.goToLogInPage()}" value="Login">
-                            <f:param name="id" value="#{usersController.users.id}"/>
-                        </b:commandButton>
-                    </h:form>   
-                    
-                    <h:form styleClass="navbar-form navbar-right">
-                        <b:commandButton action="#{usersController.logout()}" value= "Logout" rendered="#{usersController.users.id != null}">
-                            <f:param name="id" value="#{usersController.users.id}"/>
-                        </b:commandButton>
-                    </h:form> 
-                    
-                    <h:form styleClass="navbar-form navbar-right">
-                        <b:commandButton action="#{usersController.goToRegisterPage()}" value= "Sign up">
-                            <f:param name="id" value="#{usersController.users.id}"/>
-                        </b:commandButton>
-                    </h:form>                     
-                    
-                </b:navBar>                 
-            </header>
-            
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+    <ui:composition template="./../resources/templates/templatemain.xhtml">
+
+        <ui:define name="title">#{projectController.project.title}</ui:define>
+
+        <ui:define name="content">
             <section>
                 <h:panelGrid columns="2">                   
                     <h:outputText value="Ref # "/>
                     <h:outputText value="#{projectController.project.id}"/>
-                    
+
                     <h:outputText value="Title "/>
                     <h:outputText value="#{projectController.project.title}"/>
 
                     <h:outputText value="Programming Language "/>
                     <h:outputText value="#{projectController.project.languages}"/>
-                    
+
                     <h:outputText value="Project Owner "/>                    
                     <h:outputText value="#{projectController.project.projectOwner.email}"/>
-                            
+
                     <h:outputText value="Aims and Objectives "/>
                     <h:outputText value="#{projectController.project.aimsAndObjectives}"/>
-                    
+
                     <h:outputText value=" Academic Questions to be answered "/>
                     <h:outputText value="#{projectController.project.academicQuestionsToBeAnswered}"/>
-                           
+
                     <h:outputText value="Anticipated Deliverables "/>
                     <h:outputText value="#{projectController.project.anticipatedDeliverables}"/>
-                            
+
                     <h:outputText value="Student for Who this Project has been devised "/>
                     <h:outputText value="#{projectController.project.studentForWhoProjectHasBeenDevised}"/>
 
                     <h:outputText value="Status "/>
                     <h:outputText value="#{projectController.project.status}"/>
-                    
+
                     <h:outputText value="organisation "/>
                     <h:outputText value="#{projectController.project.organisation}"/>
 
@@ -91,17 +47,18 @@
                     <h:outputText value="#{projectController.project.lastUpdated}">
                         <f:convertDateTime pattern="dd-MM-yyyy"/>
                     </h:outputText>
-                    
+
                     <h:form>
                         <h:commandButton value="Edit" rendered="#{usersController.users.typeOfUser == 'Admin' or usersController.users.typeOfUser == 'Staff' or usersController.users == projectController.project.projectOwner}" action="#{projectController.updateProject(projectController.project)}"/>
                         <h:commandButton value="Withdraw"  rendered="#{usersController.users.typeOfUser == 'Admin' or usersController.users.typeOfUser == 'Staff' or usersController.users == projectController.project.projectOwner}" action="#{projectController.deleteProject(projectController.project)}"/>                   
                         <h:commandButton value="Apply"/>                   
                     </h:form>
-                    
+
                 </h:panelGrid>
 
-            </section>
-        </article>
-    </h:body>
-</html>
+            </section>           
+        </ui:define>
 
+    </ui:composition>
+
+</html>

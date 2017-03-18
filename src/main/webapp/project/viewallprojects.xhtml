@@ -3,96 +3,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
-    
-    <h:head>
-        <title>List of All Projects</title>
-        <h:outputStylesheet library="css" name="globalStyleSheet.css"/> 
-    </h:head>
-    <h:body style="padding-top: 50px; padding-bottom: 20px">
-        <article>
-            
-            <header>
-                <b:navBar brand="Project Ideas for MSc" brand-href="/ProjectIdeas/" inverse="true" fixed="top">
-                    <b:navbarLinks>
-                        
-                        <b:dropMenu value="Project Ideas">
-                            <h:form>
-                                <h:commandLink value="New Project Idea" action="#{projectController.goAndCreateNewProject()}" rendered="#{usersController.users.id != null}"></h:commandLink>
-                            </h:form>
-                            <b:navLink value="View All Projects" href="/ProjectIdeas/faces/project/viewallprojects.xhtml" ></b:navLink>
-                        </b:dropMenu>
-                        
-                        <b:dropMenu value="Organisations">
-                            <h:form>
-                                <h:commandLink value="New Organisation" action="#{organisationController.goToCreateNewOrganisationPage()}" rendered="#{usersController.users.id != null}"></h:commandLink>
-                            </h:form>
-                            <b:navLink value="View All Organisation" href="/ProjectIdeas/faces/organisation/listoforganisation.xhtml" ></b:navLink>                            
-                        </b:dropMenu>
-                        
-                        <b:navLink value="Contact us" href=""></b:navLink>
-                        <b:navLink value="List of Users" href="/ProjectIdeas/faces/Users/listofUsers.xhtml" rendered="#{usersController.users.typeOfUser == 'Admin'}" ></b:navLink>                        
-                    </b:navbarLinks>
-                    
-                     <h:form styleClass="navbar-form navbar-right">
-                         <b:commandButton action ="#{usersController.goToLogInPage()}" value="Login">
-                            <f:param name="id" value="#{usersController.users.id}"/>
-                        </b:commandButton>
-                    </h:form>   
-                    
-                    <h:form styleClass="navbar-form navbar-right">
-                        <b:commandButton action="#{usersController.logout()}" value= "Logout" rendered="#{usersController.users.id != null}">
-                            <f:param name="id" value="#{usersController.users.id}"/>
-                        </b:commandButton>
-                    </h:form> 
-                    
-                    <h:form styleClass="navbar-form navbar-right">
-                        <b:commandButton action="#{usersController.goToRegisterPage()}" value= "Sign up">
-                            <f:param name="id" value="#{usersController.users.id}"/>
-                        </b:commandButton>
-                    </h:form>                     
-                    
-                </b:navBar>                 
-            </header>
-            
-            <section>
-                <h:form class="searchBar">
-                    <b:inputText placeholder="Search for Project Idea">
-                        <f:ajax event="keyup"/>
-                    </b:inputText>
-                </h:form>
-                <h:panelGroup>
-                    <h:form>        
-                        <h:dataTable class="table" value="#{projectController.projectList}" var="project"> 
-                            <h:column>
-                                <f:facet name="header">Ref #</f:facet>
-                                <h:outputText value="#{project.id}"/>
-                            </h:column> 
-                            <h:column>
-                                <f:facet name="header">Project Title</f:facet>
-                                <h:outputText value="#{project.title}"/>
-                            </h:column> 
-                            <h:column>
-                                <f:facet name="header">Project Owner</f:facet>
-                                <h:outputText value="#{project.projectOwner.email}"/>
-                            </h:column>     
-                            <h:column>
-                                <f:facet name="header">Date</f:facet>
-                                <h:outputText value="#{project.lastUpdated}">
-                                    <f:convertDateTime pattern="dd-MM-yyyy"/>
-                                </h:outputText>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Status</f:facet>
-                                <h:outputText value="#{project.status}"/>
-                            </h:column>
-                            <h:column>
-                                <h:commandButton value="View" action="#{projectController.viewProject(project)}"/>
-                            </h:column>
-                        </h:dataTable> 
-                    </h:form> 
-                </h:panelGroup>
-            </section>
-        </article>
-    </h:body>
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="./../resources/templates/templatemain.xhtml">
+
+        <ui:define name="title">View all Projects</ui:define>
+
+        <ui:define name="content">
+            <h:form class="searchBar">
+                <b:inputText placeholder="Search for Project Idea">
+                    <f:ajax event="keyup"/>
+                </b:inputText>
+            </h:form>
+            <h:panelGroup>
+                <h:form>        
+                    <h:dataTable class="table" value="#{projectController.projectList}" var="project"> 
+                        <h:column>
+                            <f:facet name="header">Ref #</f:facet>
+                            <h:outputText value="#{project.id}"/>
+                        </h:column> 
+                        <h:column>
+                            <f:facet name="header">Project Title</f:facet>
+                            <h:outputText value="#{project.title}"/>
+                        </h:column> 
+                        <h:column>
+                            <f:facet name="header">Project Owner</f:facet>
+                            <h:outputText value="#{project.projectOwner.email}"/>
+                        </h:column>     
+                        <h:column>
+                            <f:facet name="header">Date</f:facet>
+                            <h:outputText value="#{project.lastUpdated}">
+                                <f:convertDateTime pattern="dd-MM-yyyy"/>
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Status</f:facet>
+                            <h:outputText value="#{project.status}"/>
+                        </h:column>
+                        <h:column>
+                            <h:commandButton value="View" action="#{projectController.viewProject(project)}"/>
+                        </h:column>
+                    </h:dataTable> 
+                </h:form> 
+            </h:panelGroup>
+        </ui:define>
+        
+    </ui:composition>
 </html>
