@@ -101,6 +101,11 @@
 
                     <h:outputText value="Email Address: "/>
                     <h:outputText value="#{organisationController.organisation.emailAddress}"/>
+                    
+                    <h:form>
+                        <h:commandButton value="Edit" rendered="#{usersController.users.typeOfUser == 'Admin' or usersController.users.typeOfUser == 'Staff' or usersController.users == projectController.project.projectOwner}" action="#{organisationController.updateOrganisation(organisation)}"/>
+                        <h:commandButton value="Withdraw"  rendered="#{usersController.users.typeOfUser == 'Admin' or usersController.users.typeOfUser == 'Staff' or usersController.users == projectController.project.projectOwner}" action="#{organisationController.deleteOrganisation(organisation)}"/>                   
+                    </h:form>                        
                 </h:panelGrid>               
             </section>
         </article>
