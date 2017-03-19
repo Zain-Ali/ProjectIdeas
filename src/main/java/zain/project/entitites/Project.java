@@ -55,9 +55,8 @@ public class Project implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date lastUpdated;
 
-    //@ManyToOne(cascade = CascadeType.PERSIST)
     
-    @ManyToOne//(mappedBy = "projects")
+    @ManyToOne
     private Organisation organisation;
 
     //new 

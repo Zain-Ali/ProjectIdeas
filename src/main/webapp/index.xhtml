@@ -3,50 +3,56 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
 
     <ui:composition template="./resources/templates/templatemain.xhtml">
 
         <ui:define name="title">SUMS: MSc Project Ideas</ui:define>
 
         <ui:define name="content">
-            <h:form class="searchBar">
-                <h:inputText  value="#{projectController.searchProject}"/>
-                <h:commandButton value="search" action="#{projectController.updateProjectList()}">
-                    <f:ajax event="keyup" listener="#{projectController.updateProjectList()}" render="projects" />
-                </h:commandButton>    
-            </h:form>
-                <h:panelGroup>
-                    <h:form>        
-                        <h:dataTable id="projects" class="table" value="#{projectController.projectList}" var="project"> 
-                            <h:column>
-                                <f:facet name="header">Ref #</f:facet>
-                                <h:outputText value="#{project.id}"/>
-                            </h:column> 
-                            <h:column>
-                                <f:facet name="header">Project Title</f:facet>
-                                <h:outputText value="#{project.title}"/>
-                            </h:column> 
-                            <h:column>
-                                <f:facet name="header">Project Owner</f:facet>
-                                <h:outputText value="#{project.projectOwner.email}"/> 
-                            </h:column>     
-                            <h:column>
-                                <f:facet name="header">Date</f:facet>
-                                <h:outputText value="#{project.lastUpdated}">
-                                    <f:convertDateTime pattern="dd-MM-yyyy"/>
-                                </h:outputText>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">Status</f:facet>
-                                <h:outputText value="#{project.status}"/>
-                            </h:column>
-                            <h:column>
-                                <h:commandButton value="View" action="#{projectController.viewProject(project)}"/>
-                            </h:column>
-                        </h:dataTable> 
-                    </h:form> 
-                </h:panelGroup>
+            
+            <div class="searchBar">
+                <h:form>
+                    <b:inputText placeholder="Type something here..." value="#{projectController.searchProject}"/>
+                        <h:commandButton class="button" value="search" action="#{projectController.updateProjectList()}">
+                            <f:ajax event="keyup" render="projects" listener="#{projectController.updateProjectList()}" />
+                        </h:commandButton> 
+                </h:form>                
+            </div>
+
+            <h:panelGroup>
+                <h:form>        
+                    <h:dataTable id="projects" class="table" value="#{projectController.projectList}" var="project"> 
+                        <h:column>
+                            <f:facet name="header">Ref #</f:facet>
+                            <h:outputText value="#{project.id}"/>
+                        </h:column> 
+                        <h:column>
+                            <f:facet name="header">Project Title</f:facet>
+                            <h:outputText value="#{project.title}"/>
+                        </h:column> 
+                        <h:column>
+                            <f:facet name="header">Project Owner</f:facet>
+                            <h:outputText value="#{project.projectOwner.email}"/> 
+                        </h:column>     
+                        <h:column>
+                            <f:facet name="header">Date</f:facet>
+                            <h:outputText value="#{project.lastUpdated}">
+                                <f:convertDateTime pattern="dd-MM-yyyy"/>
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Status</f:facet>
+                            <h:outputText value="#{project.status}"/>
+                        </h:column>
+                        <h:column>
+                            <h:commandButton value="View" action="#{projectController.viewProject(project)}"/>
+                        </h:column>
+                    </h:dataTable> 
+                </h:form> 
+            </h:panelGroup>
         </ui:define>
+
     </ui:composition>
 </html>
