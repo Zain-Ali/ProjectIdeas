@@ -12,14 +12,9 @@
 
         <ui:define name="content">
             <section>
-                <h:form class="searchBar">
-                    <b:inputText placeholder="Search for a user">
-                        <f:ajax event="keyup"/>
-                    </b:inputText>
-                </h:form>
                 <h:panelGroup>
-                    <h:form>        
-                        <h:dataTable class="table" value="#{usersController.usersList}" var="Users"> 
+                    <h:form class="space2">        
+                        <b:dataTable class="table" value="#{usersController.usersList}" var="Users"> 
                             <h:column>
                                 <f:facet name="header">Ref #</f:facet>
                                 <h:outputText value="#{Users.id}"/>
@@ -45,7 +40,7 @@
                             <h:column>
                                 <h:commandButton value="Delete user" action="#{usersController.deleteUsers(users)}"/>
                             </h:column>
-                        </h:dataTable> 
+                        </b:dataTable> 
                     </h:form> 
                 </h:panelGroup>
             </section>           

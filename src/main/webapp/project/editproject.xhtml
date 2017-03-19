@@ -51,7 +51,13 @@
                                 <f:selectItem itemValue="Provisional" />
                                 <f:selectItem itemValue="Withdrawn" />
                             </h:selectOneMenu>
-                        </div>                     
+                        </div>   
+
+                        <h:outputText value=  "Select organisation (Optional)"/>
+                        <h:selectOneMenu value="#{projectController.project.organisation}" >
+                            <f:selectItem itemValue="" itemLabel="No org:" />
+                            <f:selectItems value="#{organisationController.organisationList}" var="organisation" itemValue="#{organisation}" itemLabel="#{organisation.organisationName}" />
+                        </h:selectOneMenu>                           
                     </table>
                     <div class="form-style-1">
                         <h:commandButton value="Update" action="#{projectController.updateProject(project)}">

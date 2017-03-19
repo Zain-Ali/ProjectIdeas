@@ -10,7 +10,7 @@
         <ui:define name="title">New Project</ui:define>
 
         <ui:define name="content">
-            <section>
+            <section class="space">
                 <h:form>
                     <div class="form-style-1">
                         <h:outputLabel value="Title: "/>
@@ -44,24 +44,25 @@
                     </div>
                     <div class="form-style-1">
                         <h:outputLabel value="Status : "/>
-                        <h:selectOneMenu id="status" value="#{projectController.project.status}">
+                        <h:selectOneMenu id="status" value="#{projectController.project.status}" >
                             <f:selectItem itemValue="Approved" />
                             <f:selectItem itemValue="Provisional" />
                             <f:selectItem itemValue="Withdrawn" />
                         </h:selectOneMenu>
                     </div>  
                     <div class="form-style-1">
-                        <h:outputText value="Apply "/>
+                        <h:outputText value="Apply for Project Idea "/>
                         <h:selectBooleanCheckbox value="#{projectController.apply}">
                             <f:param name="id" value="#{projectController.project.id}"/>
                         </h:selectBooleanCheckbox>
                     </div>
-
-                    <h:outputText value=  "Select organisation (Optional)"/>
-                    <h:selectOneMenu value="#{projectController.project.organisation}" >
-                        <f:selectItem itemValue="" itemLabel="No org:" />
-                        <f:selectItems value="#{organisationController.organisationList}" />
-                    </h:selectOneMenu>      
+                    <div class="form-style-1">
+                        <h:outputText value=  "Select organisation (Optional)"/>
+                        <h:selectOneMenu value="#{projectController.project.organisation}" >
+                            <f:selectItem itemValue="" itemLabel="No Organisation " />
+                            <f:selectItems value="#{organisationController.organisationList}" var="organisation" itemValue="#{organisation}" itemLabel="#{organisation.organisationName}" />
+                        </h:selectOneMenu>   
+                    </div>
                     <div class="form-style-1">
                         <h:commandButton action="#{projectController.createProject(usersController.users)}" value= "Submit">
                             <f:param name="id" value="#{projectController.project.id}"/>

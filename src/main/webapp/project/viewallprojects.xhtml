@@ -11,14 +11,17 @@
         <ui:define name="title">View all Projects</ui:define>
 
         <ui:define name="content">
-            <h:form class="searchBar">
-                <b:inputText placeholder="Search for Project Idea">
-                    <f:ajax event="keyup"/>
-                </b:inputText>
-            </h:form>
+            <div class="searchBar">
+                <h:form>
+                    <b:inputText placeholder="Type something here..." value="#{projectController.searchProject}"/>
+                        <h:commandButton class="button" value="search" action="#{projectController.updateProjectList()}">
+                            <f:ajax event="keyup" render="projects" listener="#{projectController.updateProjectList()}" />
+                        </h:commandButton> 
+                </h:form>                
+            </div>
             <h:panelGroup>
-                <h:form>        
-                    <h:dataTable class="table" value="#{projectController.projectList}" var="project"> 
+                <h:form class="space2">        
+                    <b:dataTable class="table" value="#{projectController.projectList}" var="project"> 
                         <h:column>
                             <f:facet name="header">Ref #</f:facet>
                             <h:outputText value="#{project.id}"/>
@@ -44,7 +47,7 @@
                         <h:column>
                             <h:commandButton value="View" action="#{projectController.viewProject(project)}"/>
                         </h:column>
-                    </h:dataTable> 
+                    </b:dataTable> 
                 </h:form> 
             </h:panelGroup>
         </ui:define>

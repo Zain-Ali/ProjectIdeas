@@ -95,11 +95,25 @@ body {
     top: 100px;   
 }
 
+.space2 {
+    padding-top: 50px;
+    border-collapse: separate;
+    margin-top: 50px;
+    right: 10px;
+    left: 20px;
+    top: 200px;   
+}
 
-/*.home {
-    position: clear;
-    bottom: 300px;
-}*/
+
+.footer {
+    border-style: solid;
+    margin: auto;
+    padding: 2px;
+    width: 85%;
+    margin-top: 20px;
+    bottom: 25px;
+    margin-top: 10px;
+}
 
 
 /*The following CSS code taken from*/

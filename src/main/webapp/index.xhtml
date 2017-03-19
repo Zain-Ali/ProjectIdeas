@@ -22,8 +22,9 @@
             </div>
 
             <h:panelGroup>
-                <h:form>        
-                    <h:dataTable id="projects" class="table" value="#{projectController.projectList}" var="project"> 
+                <h:form class="space2">        
+                    <b:dataTable id="projects" class="table" value="#{projectController.projectList}" 
+                                 var="project" searching="false"> 
                         <h:column>
                             <f:facet name="header">Ref #</f:facet>
                             <h:outputText value="#{project.id}"/>
@@ -36,10 +37,10 @@
                             <f:facet name="header">Project Owner</f:facet>
                             <h:outputText value="#{project.projectOwner.email}"/> 
                         </h:column>     
-                        <h:column>
-                            <f:facet name="header">Date</f:facet>
+                        <h:column >
+                            <f:facet name="header" >Date</f:facet>
                             <h:outputText value="#{project.lastUpdated}">
-                                <f:convertDateTime pattern="dd-MM-yyyy"/>
+                                <f:convertDateTime pattern="dd-MM-yyyy" type="date"/>
                             </h:outputText>
                         </h:column>
                         <h:column>
@@ -47,9 +48,10 @@
                             <h:outputText value="#{project.status}"/>
                         </h:column>
                         <h:column>
+                            <f:facet name="header">View Project</f:facet>
                             <h:commandButton value="View" action="#{projectController.viewProject(project)}"/>
                         </h:column>
-                    </h:dataTable> 
+                    </b:dataTable> 
                 </h:form> 
             </h:panelGroup>
         </ui:define>
