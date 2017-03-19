@@ -9,9 +9,10 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import zain.project.business.UsersService;
-import zain.project.business.exceptions.BusinessException;
+import zain.project.business.exceptions.AuthenticationException;
 import zain.project.entitites.Users;
 
 /**
@@ -30,6 +31,22 @@ public class usersController implements Serializable {
     private Users currentUser;
     private String email;
     private String password;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public usersController() {
         this.users = new Users();
@@ -56,7 +73,8 @@ public class usersController implements Serializable {
             usersService.createUser(users);
             users = new Users();
             usersList = usersService.finalAllUsers();
-            return "/index?faces-redirect=true";
+//            return "/index?faces-redirect=true";
+            return "/Users/login?faces-redirect=true";
         } catch (Exception ex) {
             Logger.getLogger(usersController.class.getName()).log(Level.SEVERE, null, ex);
             
@@ -108,14 +126,14 @@ public class usersController implements Serializable {
 //        } 
 //        catch (AuthenticationException e)
 //        {
-//            getCurrentUserInstance().addMessage("Error", new FacesMessage("Failed", e.getMessage()));
+//            getCurrentUserInstance().addMessage("Error", new FacesMessage("Failed to login", e.getMessage()));
 //        }
 //        
 //        if (currentUser != null) 
 //        {
 //            getCurrentUserInstance().getExternalContext().getSessionMap().put("email", currentUser);
-//            //results = usersService.login(users.getEmail(), users.getPassword());
-//            //users = results.get(0);
+//            results = usersService.login(users.getEmail(), users.getPassword());
+//            users = results.get(0);
 //        } 
 //        else 
 //        {
@@ -123,11 +141,13 @@ public class usersController implements Serializable {
 //        }
 //        return "/index?faces-redirect=true";
 //    }
-    public String login() {
-        results = usersService.login(users.getEmail(), users.getPassword());
-        users = results.get(0);
-        return "/index?faces-redirect=true";
-    }
+    
+    
+        public String login() {
+            results = usersService.login(users.getEmail(), users.getPassword());
+            users = results.get(0);
+            return "/index?faces-redirect=true";
+        }
 
     public String logout() {
         users = new Users();
