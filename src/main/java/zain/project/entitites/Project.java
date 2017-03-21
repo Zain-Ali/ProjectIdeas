@@ -54,9 +54,8 @@ public class Project implements Serializable {
 
     @Temporal(TemporalType.DATE)
     private Date lastUpdated;
-
     
-    @ManyToOne
+    @ManyToOne//(mappedBy = "projects")
     private Organisation organisation;
 
     //new 

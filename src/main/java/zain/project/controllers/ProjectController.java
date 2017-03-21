@@ -27,9 +27,7 @@ public class ProjectController implements Serializable {
     private Project project;
     private Users user;
     private boolean apply = false;
-    private String searchProject = "";
-
-   
+    private String searchProject = "";  
     List<Project> projectList = new ArrayList<>();
 
     /**
@@ -70,7 +68,7 @@ public class ProjectController implements Serializable {
         projectList = projectService.findAllProjects();
         return "/index?faces-redirect=true";
     }
-    
+
     public String deleteProject(Project project) {
         projectService.deleteProject(project);
         projectList = projectService.findAllProjects();
@@ -113,14 +111,6 @@ public class ProjectController implements Serializable {
         this.apply = apply;
     }
     
-        public Users getUser() {
-        return user;
-    }
-
-    public void setUser(Users user) {
-        this.user = user;
-    }
-    
     public String getSearchProject() {
         return searchProject;
     }
@@ -132,6 +122,14 @@ public class ProjectController implements Serializable {
     public void updateProjectList() {
         projectList = projectService.findAProjectBySearch(searchProject);
     }
+    
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }    
 
     @PostConstruct
     public void init() {
