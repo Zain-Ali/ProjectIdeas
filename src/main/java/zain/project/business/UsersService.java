@@ -22,11 +22,11 @@ public class UsersService {
         return userFacade.findAll();
     }
 
-    public void createUser(Users user) throws Exception {
+    public void createUser(Users user) throws BusinessException {
         if (userFacade.findUserByEmailAddress(user.getEmail()).isEmpty()) {
             userFacade.create(user);
         } else {
-            throw new Exception("User already exist");
+            throw new BusinessException("User already exist");
         }
 
     }
@@ -67,5 +67,5 @@ public class UsersService {
             }
         }
     }
-
+   
 }
