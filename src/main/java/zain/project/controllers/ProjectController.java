@@ -26,29 +26,10 @@ public class ProjectController implements Serializable {
     private ProjectService projectService;
     private Project project;
     private Users user;
-
-    public Users getUser() {
-        return user;
-    }
-
-    public void setUser(Users user) {
-        this.user = user;
-    }
     private boolean apply = false;
     private String searchProject = "";
 
-    public String getSearchProject() {
-        return searchProject;
-    }
-
-    public void setSearchProject(String searchProject) {
-        this.searchProject = searchProject;
-    }
-
-    public void updateProjectList() {
-        projectList = projectService.findAProjectBySearch(searchProject);
-    }
-
+   
     List<Project> projectList = new ArrayList<>();
 
     /**
@@ -89,7 +70,7 @@ public class ProjectController implements Serializable {
         projectList = projectService.findAllProjects();
         return "/index?faces-redirect=true";
     }
-//i dont why it says that, because we are not even adding anything to the organisation table
+    
     public String deleteProject(Project project) {
         projectService.deleteProject(project);
         projectList = projectService.findAllProjects();
@@ -130,6 +111,26 @@ public class ProjectController implements Serializable {
 
     public void setApply(boolean apply) {
         this.apply = apply;
+    }
+    
+        public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
+    
+    public String getSearchProject() {
+        return searchProject;
+    }
+
+    public void setSearchProject(String searchProject) {
+        this.searchProject = searchProject;
+    }
+
+    public void updateProjectList() {
+        projectList = projectService.findAProjectBySearch(searchProject);
     }
 
     @PostConstruct
