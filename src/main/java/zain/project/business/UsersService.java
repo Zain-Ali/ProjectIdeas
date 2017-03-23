@@ -26,19 +26,27 @@ public class UsersService {
         if (userFacade.findUserByEmailAddress(user.getEmail()).isEmpty()) {
             userFacade.create(user);
         } else {
-            throw new BusinessException("User already exist");
+            throw new BusinessException("Unable to create new user."
+                    + "User already exist");
         }
 
     }
+    
 
-    public Users editUser(Users user) {
-        return userFacade.edit(user);
+    public Users editUser(Users user) throws BusinessException {
+        if (userFacade.findUserByEmailAddress(user.getEmail()).isEmpty()) { 
+            return userFacade.edit(user);
+        }
+        else {
+            throw new BusinessException("Unable to update user information");
+        }    
     }
+    
 
-    public void deleteUser(Users user) {
+    public void deleteUser(Users user){// throws BusinessException {
         userFacade.remove(user);
     }
-
+    
     public List<Users> findAllUsers() {
         return userFacade.findAll();
     }

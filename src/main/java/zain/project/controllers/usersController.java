@@ -13,6 +13,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import zain.project.business.UsersService;
 import zain.project.business.exceptions.AuthenticationException;
+import zain.project.business.exceptions.BusinessException;
 import zain.project.entitites.Users;
 
 /**
@@ -29,7 +30,8 @@ public class usersController implements Serializable {
     private List<Users> results;
     List<Users> usersList = new ArrayList<>();
     private Users currentUser;
-//    private String email;
+    
+    //    private String email;
 //    private String password;
 //
 //    public String getEmail() {
@@ -47,6 +49,7 @@ public class usersController implements Serializable {
 //    public void setPassword(String password) {
 //        this.password = password;
 //    }
+
 
     public usersController() {
         this.users = new Users();
@@ -73,7 +76,6 @@ public class usersController implements Serializable {
             usersService.createUser(users);
             users = new Users();
             usersList = usersService.finalAllUsers();
-//            return "/index?faces-redirect=true";
             return "/Users/login?faces-redirect=true";
         } catch (Exception ex) {
             Logger.getLogger(usersController.class.getName()).log(Level.SEVERE, null, ex);
@@ -83,23 +85,31 @@ public class usersController implements Serializable {
     }
 
     public String deleteUsers(Users users) {
+        //this.users = users;
         usersService.deleteUser(users);
         usersList = usersService.finalAllUsers();
-        return "/index?faces-redirect=true";
+        return "/Users/listofUsers?faces-redirect=true";
     }
 
-    public String editUsers(Users users) {
+    
+    //to do
+    public String updateUsers(Users users) {
         this.users = users;
-        return "";
+        return "/Users/registeruser?faces-redirect=true";
     }
 
     public String backToIndex()//update 
     {
-        usersService.editUser(users);
+        try {
+            usersService.editUser(users);
+        } catch (BusinessException ex) {
+            Logger.getLogger(usersController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         this.setUsers(new Users());
         return "/index?faces-redirect=true";
     }
 
+    //not in use
     public String viewUsers(Users users) {
         this.users = users;
         return "";
@@ -117,6 +127,7 @@ public class usersController implements Serializable {
      * http://www.programcreek.com/java-api-examples/javax.faces.context.FacesContext
      *
      * @return
+     * @throws java.lang.Exception
      */
     public String login() throws Exception 
     {
@@ -147,12 +158,6 @@ public class usersController implements Serializable {
         return "/index?faces-redirect=true";
     }
     
-    
-//        public String login() {
-//            results = usersService.login(users.getEmail(), users.getPassword());
-//            users = results.get(0);
-//            return "/index?faces-redirect=true";
-//        }
 
     public String logout() {
         users = new Users();
