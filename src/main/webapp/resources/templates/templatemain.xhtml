@@ -29,11 +29,6 @@
                     </h:form>
                     <b:navLink value="View All Organisation" href="/ProjectIdeas/faces/organisation/listoforganisation.xhtml" ></b:navLink>                            
                 </b:dropMenu>
-<!--                <b:dropMenu value="Contact us">
-                    <h:form>
-                        <h:commandLink value="Contact us" action="#{contactAdminController.goToCreateNewContactPage()}"></h:commandLink>
-                    </h:form>
-                </b:dropMenu>    -->
                 <b:navLink value="List of Users" href="/ProjectIdeas/faces/Users/listofUsers.xhtml" rendered="#{usersController.users.typeOfUser == 'Admin'}" ></b:navLink>                        
 
             </b:navbarLinks>
