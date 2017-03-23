@@ -1,12 +1,51 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
-    <h:head>
-        <title>Facelet Title</title>
-    </h:head>
-    <h:body>
-        Hello from Facelets
-    </h:body>
-</html>
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
+    <ui:composition template="./../resources/templates/templatemain.xhtml">
+
+        <ui:define name="title">View all Messages</ui:define>
+
+        <ui:define name="content">
+            <h:panelGroup>
+                <h:form class="space2">        
+                    <b:dataTable class="table" value="#{contactAdminController.contactAdminList}" var="messages"> 
+                        <h:column>
+                            <f:facet name="header">Ref #</f:facet>
+                            <h:outputText value="#{messages.id}"/>
+                        </h:column> 
+                        <h:column>
+                            <f:facet name="header">Full Name</f:facet>
+                            <h:outputText value="#{messages.fullName}"/>
+                        </h:column> 
+                        <h:column>
+                            <f:facet name="header">Email Address</f:facet>
+                            <h:outputText value="#{messages.emailAddress}"/>
+                        </h:column> 
+                        <h:column>
+                            <f:facet name="header">Contact Number</f:facet>
+                            <h:outputText value="#{messages.contactNumber}"/>
+                        </h:column>                         
+                        <h:column>
+                            <f:facet name="header">Short Title</f:facet>
+                            <h:outputText value="#{messages.shortTitle}">
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">Message</f:facet>
+                            <h:outputText value="#{messages.message}"/>
+                        </h:column>
+                        <h:column>
+                            <h:commandButton value="Completed/Delete" action="#{contactAdminController.deleteContactAdmin(contactAdminController.contactAdmin)}"/>                   
+                        </h:column>
+                    </b:dataTable> 
+                </h:form> 
+            </h:panelGroup>
+        </ui:define>
+
+    </ui:composition>
+</html>

@@ -69,7 +69,7 @@ public class ContactAdminController implements Serializable {
     public String deleteContactAdmin(ContactAdmin contactAdmin) {
         contactAdminService.deleteContactAdmin(contactAdmin);
         contactAdminList = contactAdminService.findAllContactAdmin();
-        return "/index?faces-redirect=true";
+        return "/contact/listofmessages?faces-redirect=true";
     }
     
     public String editContactAdmin (ContactAdmin contactAdmin) {
