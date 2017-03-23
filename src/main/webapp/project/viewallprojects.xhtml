@@ -11,14 +11,6 @@
         <ui:define name="title">View all Projects</ui:define>
 
         <ui:define name="content">
-            <div class="searchBar">
-                <h:form>
-                    <b:inputText placeholder="Type something here..." value="#{projectController.searchProject}"/>
-                        <h:commandButton class="button" value="search" action="#{projectController.updateProjectList()}">
-                            <f:ajax event="keyup" render="projects" listener="#{projectController.updateProjectList()}" />
-                        </h:commandButton> 
-                </h:form>                
-            </div>
             <h:panelGroup>
                 <h:form class="space2">        
                     <b:dataTable class="table" value="#{projectController.projectList}" var="project"> 

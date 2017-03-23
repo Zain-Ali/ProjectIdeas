@@ -21,6 +21,7 @@ public class OrganisationController implements Serializable {
     @EJB
     private OrganisationService organisationService;
     private Organisation organisation;
+    private String searchOrganisation = "";
 
     List<Organisation> organisationList = new ArrayList<>();
 
@@ -38,8 +39,6 @@ public class OrganisationController implements Serializable {
     public void setOrganisationService(OrganisationService organisationService) {
         this.organisationService = organisationService;
     }
-    
-    
 
     public List<Organisation> getOrganisationList() {
         return organisationList;
@@ -92,6 +91,19 @@ public class OrganisationController implements Serializable {
         organisation = new Organisation();
         return "/organisation/neworganisation?faces-redirect=true";
     }
+    
+    public String getSearchOrganisation() {
+        return searchOrganisation;
+    }
+
+    public void setSearchOrganisation(String searchOrganisation) {
+        this.searchOrganisation = searchOrganisation;
+    }
+    
+    public void updateOrganisationList() {
+        organisationList = organisationService.findAOrganisationBySearch(searchOrganisation);
+    }
+    
 
     @PostConstruct
     public void init() {

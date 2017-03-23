@@ -46,9 +46,7 @@ public class ProjectFacade extends AbstractFacade<Project> {
      */
     public List<Project> findAProjectBySearch(String search) {
         TypedQuery<Project> results = em.createQuery("SELECT p FROM Project p WHERE lower(p.title) like lower(:search) "
-                + "OR lower(p.status) like lower(:search)" , Project.class);
-             
-//        TypedQuery<Project> results = em.createQuery("SELECT p FROM Project p WHERE lower(p.title) LIKE lower(:search) OR lower(p.projectOwner) LIKE lower(:search) ", Project.class);
+                + "OR lower(p.status) like lower(:search)" , Project.class);             
         String FinalSearch = "%" + search + "%";
         results.setParameter("search", FinalSearch);
         return results.getResultList();
