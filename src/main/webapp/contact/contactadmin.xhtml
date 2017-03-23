@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="./../resources/templates/templatemain.xhtml">
+
+        <ui:define name="title">Contact Admin</ui:define>
+
+        <ui:define name="content">
+            <section class="space">
+                <h:form>
+                    <div class="form-style-1">
+                        <h:outputLabel value="Full name: "/>
+                        <h:inputText value="#{contactAdminController.contactAdmin.fullName}"
+                                     required="true"
+                                     requiredMessage="Please enter your Full name."/>
+                    </div> 
+                    <div class="form-style-1">
+                        <h:outputLabel value="Email Address: "/>
+                        <h:inputText value="#{contactAdminController.contactAdmin.emailAddress}"
+                                     required="true"
+                                     requiredMessage="Please enter your Email Address."/>
+                    </div>                     
+                    <div class="form-style-1">
+                        <h:outputLabel value="Contact Number: "/>
+                        <h:inputTextarea value="#{contactAdminController.contactAdmin.contactNumber}"
+                                         required="true"
+                                         requiredMessage="Please enter your Contact Numbe"/>
+                    </div>  
+                    <div class="form-style-1">
+                        <h:outputLabel value="Short Title: "/>
+                        <h:inputText value="#{contactAdminController.contactAdmin.shortTitle}"/>
+                    </div> 
+                    <div class="form-style-1">
+                        <h:outputLabel value="Your Message: "/>
+                        <h:inputTextarea value="#{contactAdminController.contactAdmin.message}"
+                                         required="true"
+                                         requiredMessage="Please enter Anticipated Deliverables" />
+                    </div> 
+                    <div class="form-style-1">
+                        <h:commandButton value= "Submit" action="#{contactAdminController.createContact()}" />
+                    </div>    
+                </h:form>
+            </section>  
+            
+        </ui:define>
+
+    </ui:composition>
+
+</html>

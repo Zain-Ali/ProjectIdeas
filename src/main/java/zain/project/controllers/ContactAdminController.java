@@ -8,6 +8,7 @@ package zain.project.controllers;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -74,6 +75,16 @@ public class ContactAdminController implements Serializable {
     public String editContactAdmin (ContactAdmin contactAdmin) {
         this.contactAdmin = new ContactAdmin();
         return "";
+    }
+    
+    public String goToCreateNewContactAdminPage() {
+        contactAdmin = new ContactAdmin();
+        return "/contact/contactadmin?faces-redirect=true";
+    }
+    
+    @PostConstruct
+    public void init() {
+        contactAdminList = contactAdminService.findAllContactAdmin();
     }
 
 }
