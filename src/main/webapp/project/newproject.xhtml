@@ -67,7 +67,7 @@
                         <h:commandButton value= "Submit" rendered="#{projectController.project.id == null}" action="#{projectController.createProject(usersController.users)}" />
                     </div>    
                     <div class="form-style-1">
-                        <h:commandButton value="Update" rendered="#{projectController.project.id != null}" action="#{projectController.updateProject(project)}"/>
+                        <h:commandButton value="Update" rendered="#{projectController.project.id != null}" action="#{projectController.backToIndex()}"/>
                     </div>                      
                 </h:form>
             </section>  

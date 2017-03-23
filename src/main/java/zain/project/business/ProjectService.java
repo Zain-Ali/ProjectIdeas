@@ -31,14 +31,10 @@ public class ProjectService {
 
     }
 
-    public void editProject(Project project, Users user) throws BusinessException {
-        if (user.equals(project.getProjectOwner())) {
-            projectFacade.edit(project);
-            Date date = new Date();
-            project.setLastUpdated(date);
-        } else {
-            throw new BusinessException("");
-        }
+    public void editProject(Project project, Users user) {
+        projectFacade.edit(project);
+        Date date = new Date();
+        project.setLastUpdated(date);
     }
 
     public void deleteProject(Project project) {

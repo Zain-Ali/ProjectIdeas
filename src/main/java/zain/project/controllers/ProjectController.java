@@ -26,6 +26,7 @@ public class ProjectController implements Serializable {
     private ProjectService projectService;
     private Project project;
     private Users user;
+
     private boolean apply = false;
     private String searchProject = "";
     List<Project> projectList = new ArrayList<>();
@@ -81,16 +82,9 @@ public class ProjectController implements Serializable {
         return "/project/newproject?faces-redirect=true";
     }
 
-    public String backToIndex()//update 
-    {
-        try
-        {
-            projectService.editProject(project, user);
-            this.setProject(new Project());
-
-        } catch (BusinessException ex) {
-            Logger.getLogger(ProjectController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public String backToIndex() { //update
+        projectService.editProject(project, user);
+        this.setProject(new Project());
         return "/index?faces-redirect=true";
     }
 
