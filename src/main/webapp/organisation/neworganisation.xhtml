@@ -63,6 +63,11 @@
                             <f:param name="id" value="#{organisationController.organisation.id}"/>
                         </h:commandButton>
                     </div>    
+                    <div class="form-style-1">
+                        <h:commandButton value="Update" action="#{organisationController.updateOrganisation(organisation)}">
+                            <f:param name="id" value="#{organisationController.organisation.id}" />
+                        </h:commandButton>
+                    </div>                      
                 </h:form>
             </section>
         </ui:define>

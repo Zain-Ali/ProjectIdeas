@@ -72,7 +72,8 @@ public class OrganisationController implements Serializable {
 
     public String updateOrganisation(Organisation organisation) {
         this.organisation = organisation;
-        return "/organisation/editorganisation?faces-redirect=true";
+//        return "/organisation/editorganisation?faces-redirect=true";
+        return "/organisation/neworganisation?faces-redirect=true";
     }
 
     public String backToIndex()//update 
