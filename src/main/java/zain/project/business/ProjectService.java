@@ -50,19 +50,10 @@ public class ProjectService {
     public List<Project> findAllProjects() {
         return projectFacade.findAll();
     }
+    
 
     public List<Project> findAProjectBySearch(String searchProject) {
         return projectFacade.findAProjectBySearch(searchProject);
     }
 
 }
-
-//    public void editProject(Project project) throws AuthorisationException {
-//        if (Objects.equals(project.getProjectOwner().getId(), this)) {
-//            projectFacade.edit(project);
-//            Date date = new Date();
-//            project.setLastUpdated(date);
-//        } else {
-//            throw new AuthorisationException();
-//        }
-//    }
