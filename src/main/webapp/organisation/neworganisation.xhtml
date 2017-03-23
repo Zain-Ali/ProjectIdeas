@@ -62,7 +62,7 @@
                         <h:commandButton value= "Submit" rendered="#{organisationController.organisation.id == null}" action="#{organisationController.createOrganisation()}"/>
                     </div>    
                     <div class="form-style-1">
-                        <h:commandButton value="Update" rendered="#{organisationController.organisation.id != null}" action="#{organisationController.updateOrganisation(organisation)}"/>
+                        <h:commandButton value="Update" rendered="#{organisationController.organisation.id != null}" action="#{organisationController.backToIndex()}"/>
                     </div>                      
                 </h:form>
             </section>
