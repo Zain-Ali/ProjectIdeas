@@ -33,13 +33,8 @@ public class UsersService {
     }
     
 
-    public Users editUser(Users user) throws BusinessException {
-        if (userFacade.findUserByEmailAddress(user.getEmail()).isEmpty()) { 
-            return userFacade.edit(user);
-        }
-        else {
-            throw new BusinessException("Unable to update user information");
-        }    
+    public Users editUser(Users user) {
+        return userFacade.edit(user);
     }
     
 

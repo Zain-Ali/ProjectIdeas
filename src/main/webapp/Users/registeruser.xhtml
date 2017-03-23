@@ -55,10 +55,11 @@
                         </h:selectOneMenu>
                     </div>   
                     <div class="form-style-1">
-                        <h:commandButton action="#{usersController.createUsers()}" value= "Submit" >
-                         
-                        </h:commandButton>
-                    </div>    
+                        <h:commandButton value= "Submit" action="#{usersController.createUsers()}" />
+                    </div> 
+                    <div>
+                        <h:commandButton value= "Update" rendered="#{usersController.users.typeOfUser == 'Admin'}" action="#{usersController.updateUsers(Users)}"/>                        
+                    </div>
                 </h:form>
             </section>            
         </ui:define>

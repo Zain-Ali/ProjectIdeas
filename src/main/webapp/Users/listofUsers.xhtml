@@ -38,7 +38,9 @@
                                 <h:outputText value="#{Users.typeOfUser}"/>
                             </h:column>
                             <h:column>
-                                <h:commandButton value="Delete user"  action="#{usersController.deleteUsers(Users)}"/>                                                  
+                                <f:facet name="header">Update / Delete</f:facet>
+                                <h:commandButton value="Delete user" action="#{usersController.deleteUsers(Users)}"/>  
+                                <h:commandButton value= "Update"  action="#{usersController.updateUsers(Users)}" />                                 
                             </h:column>
                         </b:dataTable> 
                     </h:form> 

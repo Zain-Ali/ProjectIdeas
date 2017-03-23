@@ -31,25 +31,6 @@ public class usersController implements Serializable {
     List<Users> usersList = new ArrayList<>();
     private Users currentUser;
     
-    //    private String email;
-//    private String password;
-//
-//    public String getEmail() {
-//        return email;
-//    }
-//
-//    public void setEmail(String email) {
-//        this.email = email;
-//    }
-//
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
-
 
     public usersController() {
         this.users = new Users();
@@ -100,13 +81,9 @@ public class usersController implements Serializable {
 
     public String backToIndex()//update 
     {
-        try {
-            usersService.editUser(users);
-        } catch (BusinessException ex) {
-            Logger.getLogger(usersController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        usersService.editUser(users);
         this.setUsers(new Users());
-        return "/index?faces-redirect=true";
+        return "/Users/listofUsers?faces-redirect=true";
     }
 
     //not in use
