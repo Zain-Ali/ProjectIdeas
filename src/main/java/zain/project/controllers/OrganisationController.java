@@ -61,7 +61,7 @@ public class OrganisationController implements Serializable {
         organisationService.createOrganisation(organisation);
         organisation = new Organisation();
         organisationList = organisationService.findAllOrganisation();
-        return "/index?faces-redirect=true";
+        return "/organisation/listoforganisation?faces-redirect=true";
     }
 
     public String deleteOrganisation(Organisation organisation) {
