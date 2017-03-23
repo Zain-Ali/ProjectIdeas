@@ -13,6 +13,11 @@ import zain.project.persistence.OrganisationFacade;
  *
  * @author UP687776
  */
+
+/*The following Java code taken from*/
+/*https://github.com/Jimbriggs/webp-examples/blob/ENTWA2015-2016/ENTWAJPA1/src/java/jim/entwa/ctrl/AddressConverter.java*/
+/*But the code has been modifed according to project needs*/
+/*Starts here*/
 @FacesConverter(forClass = Organisation.class)
 public class OrganisationConverter implements Converter {
     
@@ -37,5 +42,5 @@ public class OrganisationConverter implements Converter {
             throw new Error("object is not of type Organisation");
         }
     }
-
+/*End here*/
 }
