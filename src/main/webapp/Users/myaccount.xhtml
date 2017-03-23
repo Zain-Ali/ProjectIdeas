@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui">
+
+    <ui:composition template="./../resources/templates/templatemain.xhtml">
+
+
+        <ui:define name="title">My Account</ui:define>
+
+        <ui:define name="content">
+            <section class="space2">
+                <h:panelGroup>
+                    <h:outputLabel value="Your Account Information"/>
+                    <br></br>
+                    <h:outputLabel value="Name : " />
+                    <h:outputText value="#{usersController.users.firstname} #{usersController.users.lastName}"/>
+                    <br></br>
+                    <h:outputLabel value="Email : "/>
+                    <h:outputText value="#{usersController.users.email}"/>
+                    <br></br>
+                    <h:outputLabel value="Type of User : "/>
+                    <h:outputText value="#{usersController.users.typeOfUser}"/>   
+                    <br></br>
+                </h:panelGroup>
+            </section>
+        </ui:define>
+
+    </ui:composition>
+
+</html>
+

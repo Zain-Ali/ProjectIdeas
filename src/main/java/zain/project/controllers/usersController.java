@@ -133,6 +133,10 @@ public class usersController implements Serializable {
     public String goToLogInPage() {
         return "/Users/login?faces-redirect=true";
     }
+    
+    public String goToMyAccountPage() {
+        return "/Users/myaccount?faces-redirect=true";
+    }
 
     @PostConstruct
     public void init() {

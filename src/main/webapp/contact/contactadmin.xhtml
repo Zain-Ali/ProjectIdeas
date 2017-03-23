@@ -41,7 +41,7 @@
                                          requiredMessage="Please enter Anticipated Deliverables" />
                     </div> 
                     <div class="form-style-1">
-                        <h:commandButton value= "Submit" action="#{contactAdminController.createContact()}" />
+                        <h:commandButton value= "Submit" actionListener="#{contactAdminController.createContact()}"/>
                     </div>    
                 </h:form>
             </section>  
