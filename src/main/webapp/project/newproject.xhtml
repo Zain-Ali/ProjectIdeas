@@ -64,11 +64,11 @@
                         </h:selectOneMenu>   
                     </div>
                     <div class="form-style-1">
-                        <h:commandButton action="#{projectController.createProject(usersController.users)}" value= "Submit">
-                            <f:param name="id" value="#{projectController.project.id}"/>
-                        </h:commandButton>
+                        <h:commandButton value= "Submit" rendered="#{projectController.project.id == null}" action="#{projectController.createProject(usersController.users)}" />
                     </div>    
-                    
+                    <div class="form-style-1">
+                        <h:commandButton value="Update" rendered="#{projectController.project.id != null}" action="#{projectController.updateProject(project)}"/>
+                    </div>                      
                 </h:form>
             </section>  
             

@@ -78,7 +78,7 @@ public class ProjectController implements Serializable {
 
     public String updateProject(Project project) {
         this.project = project;
-        return "/project/editproject?faces-redirect=true";
+        return "/project/newproject?faces-redirect=true";
     }
 
     public String backToIndex()//update 
