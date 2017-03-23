@@ -59,12 +59,12 @@
                         </h:inputText>
                     </div>   
                     <div class="form-style-1">
-                        <h:commandButton action="#{organisationController.createOrganisation()}" value= "Submit">
+                        <h:commandButton value= "Submit" rendered="#{organisationController.organisation.id == null}" action="#{organisationController.createOrganisation()}">
                             <f:param name="id" value="#{organisationController.organisation.id}"/>
                         </h:commandButton>
                     </div>    
                     <div class="form-style-1">
-                        <h:commandButton value="Update" action="#{organisationController.updateOrganisation(organisation)}">
+                        <h:commandButton value="Update" rendered="#{organisationController.organisation.id != null}" action="#{organisationController.updateOrganisation(organisation)}">
                             <f:param name="id" value="#{organisationController.organisation.id}" />
                         </h:commandButton>
                     </div>                      
