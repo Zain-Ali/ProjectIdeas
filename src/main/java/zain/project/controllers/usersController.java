@@ -29,24 +29,24 @@ public class usersController implements Serializable {
     private List<Users> results;
     List<Users> usersList = new ArrayList<>();
     private Users currentUser;
-    private String email;
-    private String password;
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+//    private String email;
+//    private String password;
+//
+//    public String getEmail() {
+//        return email;
+//    }
+//
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
+//
+//    public String getPassword() {
+//        return password;
+//    }
+//
+//    public void setPassword(String password) {
+//        this.password = password;
+//    }
 
     public usersController() {
         this.users = new Users();
@@ -118,36 +118,41 @@ public class usersController implements Serializable {
      *
      * @return
      */
-//    public String login() 
-//    {
-//        try
-//        {
-//            currentUser = usersService.validateEmailAndPassword(email, password); 
-//        } 
-//        catch (AuthenticationException e)
-//        {
-//            getCurrentUserInstance().addMessage("Error", new FacesMessage("Failed to login", e.getMessage()));
-//        }
-//        
-//        if (currentUser != null) 
-//        {
-//            getCurrentUserInstance().getExternalContext().getSessionMap().put("email", currentUser);
-//            results = usersService.login(users.getEmail(), users.getPassword());
-//            users = results.get(0);
-//        } 
-//        else 
-//        {
-//            return "";
-//        }
-//        return "/index?faces-redirect=true";
-//    }
-    
-    
-        public String login() {
+    public String login() throws Exception 
+    {
+        try
+        {
+//            String emailTEMP = users.getEmail();
+            System.out.println("This is email " + users.getEmail() + "This is password "+  users.getPassword());
+            currentUser = usersService.validateEmailAndPassword(users.getEmail(), users.getPassword()); 
+            
+        } 
+        catch (AuthenticationException e)
+        {
+            getCurrentUserInstance().addMessage("Error", new FacesMessage("Failed to login", e.getMessage()));
+            System.out.println("e" + e);
+            throw new Exception(e);
+        }
+        
+        if (currentUser != null) 
+        {
+            getCurrentUserInstance().getExternalContext().getSessionMap().put("email", currentUser);
             results = usersService.login(users.getEmail(), users.getPassword());
             users = results.get(0);
-            return "/index?faces-redirect=true";
+        } 
+        else 
+        {
+            return "";
         }
+        return "/index?faces-redirect=true";
+    }
+    
+    
+//        public String login() {
+//            results = usersService.login(users.getEmail(), users.getPassword());
+//            users = results.get(0);
+//            return "/index?faces-redirect=true";
+//        }
 
     public String logout() {
         users = new Users();

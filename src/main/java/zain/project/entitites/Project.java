@@ -50,7 +50,7 @@ public class Project implements Serializable {
     private String studentForWhoProjectHasBeenDevised;
 
     @Column(nullable = false)
-    private String status;
+    private String status = "Provisional";
 
     @Temporal(TemporalType.DATE)
     private Date lastUpdated;

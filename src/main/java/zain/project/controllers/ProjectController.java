@@ -64,6 +64,7 @@ public class ProjectController implements Serializable {
         } catch (AuthorisationException ex) {
             Logger.getLogger(ProjectController.class.getName()).log(Level.SEVERE, null, ex);
         }
+//        project.setStatus("Provisional");
         project = new Project();
         projectList = projectService.findAllProjects();
         return "/index?faces-redirect=true";

@@ -72,7 +72,7 @@ public class Users implements Serializable {
      * @return email
      */
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     /**

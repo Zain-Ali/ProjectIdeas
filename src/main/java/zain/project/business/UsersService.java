@@ -54,16 +54,16 @@ public class UsersService {
      * @return
      * @throws AuthenticationException
      */
-    public Users validateEmailAndPassword(String email, String password) throws AuthenticationException {
+    public Users validateEmailAndPassword(String email, String password) throws Exception {
         List<Users> users = userFacade.findUserByEmailAddress(email);
         if (users.isEmpty()) {
-            throw new AuthenticationException("Email or password is not valid. Please try again");
+            throw new Exception("Email or password is not valid. Please try again");
         } else {
             Users user = users.get(0);
             if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
                 return user;
             } else {
-                throw new AuthenticationException("Email or password is not valid. Please try again");
+                throw new Exception("Email or password is not valid. Please try again");
             }
         }
     }

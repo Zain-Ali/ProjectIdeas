@@ -44,7 +44,7 @@
                     </div>
                     <div class="form-style-1">
                         <h:outputLabel value="Status : "/>
-                        <h:selectOneMenu id="status" value="#{projectController.project.status}" >
+                        <h:selectOneMenu id="status" value="#{projectController.project.status}" rendered="#{usersController.users.typeOfUser == 'Admin' or usersController.users.typeOfUser == 'Staff'}">
                             <f:selectItem itemValue="Approved" />
                             <f:selectItem itemValue="Provisional" />
                             <f:selectItem itemValue="Withdrawn" />
