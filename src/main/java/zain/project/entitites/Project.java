@@ -2,8 +2,6 @@ package zain.project.entitites;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -54,11 +52,10 @@ public class Project implements Serializable {
 
     @Temporal(TemporalType.DATE)
     private Date lastUpdated;
-    
-    @ManyToOne//(mappedBy = "projects")
+
+    @ManyToOne
     private Organisation organisation;
 
-    //new 
     @OneToOne
     private Users appliedStudent;
 
@@ -283,7 +280,6 @@ public class Project implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Project)) {
             return false;
         }

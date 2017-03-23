@@ -10,9 +10,11 @@ package zain.project.business.exceptions;
  * @author zain
  */
 public class BusinessException extends Exception {
-
+    
+    public BusinessException() {
+    }
+    
     public BusinessException(String exception) {
         super(exception);
     }
-
 }

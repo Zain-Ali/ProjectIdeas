@@ -10,7 +10,7 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import zain.project.business.ProjectService;
-import zain.project.business.exceptions.AuthorisationException;
+import zain.project.business.exceptions.BusinessException;
 import zain.project.entitites.Project;
 import zain.project.entitites.Users;
 
@@ -27,7 +27,7 @@ public class ProjectController implements Serializable {
     private Project project;
     private Users user;
     private boolean apply = false;
-    private String searchProject = "";  
+    private String searchProject = "";
     List<Project> projectList = new ArrayList<>();
 
     /**
@@ -61,10 +61,10 @@ public class ProjectController implements Serializable {
 
         try {
             projectService.createProject(project);
-        } catch (AuthorisationException ex) {
+        } catch (BusinessException ex) {
             Logger.getLogger(ProjectController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         project = new Project();
         projectList = projectService.findAllProjects();
         return "/index?faces-redirect=true";
@@ -83,12 +83,12 @@ public class ProjectController implements Serializable {
 
     public String backToIndex()//update 
     {
-        try //update
+        try
         {
             projectService.editProject(project, user);
             this.setProject(new Project());
 
-        } catch (AuthorisationException ex) {
+        } catch (BusinessException ex) {
             Logger.getLogger(ProjectController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "/index?faces-redirect=true";
@@ -111,7 +111,7 @@ public class ProjectController implements Serializable {
     public void setApply(boolean apply) {
         this.apply = apply;
     }
-    
+
     public String getSearchProject() {
         return searchProject;
     }
@@ -123,14 +123,6 @@ public class ProjectController implements Serializable {
     public void updateProjectList() {
         projectList = projectService.findAProjectBySearch(searchProject);
     }
-    
-    public Users getUser() {
-        return user;
-    }
-
-    public void setUser(Users user) {
-        this.user = user;
-    }    
 
     @PostConstruct
     public void init() {

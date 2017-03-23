@@ -40,8 +40,8 @@ public class OrganisationService {
     public List<Organisation> findAllOrganisation() {
         return organisationFacade.findAll();
     }
-    
-    public List<Organisation>findAOrganisationBySearch(String searchOrganisation){
+
+    public List<Organisation> findAOrganisationBySearch(String searchOrganisation) {
         return organisationFacade.findAOrganisationBySearch(searchOrganisation);
     }
 }

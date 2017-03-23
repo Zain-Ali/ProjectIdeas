@@ -9,7 +9,6 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import zain.project.business.UsersService;
 import zain.project.business.exceptions.AuthenticationException;
@@ -30,8 +29,10 @@ public class usersController implements Serializable {
     private List<Users> results;
     List<Users> usersList = new ArrayList<>();
     private Users currentUser;
-    
 
+    /**
+     * Creates a new instance of usersController
+     */
     public usersController() {
         this.users = new Users();
     }
@@ -58,21 +59,18 @@ public class usersController implements Serializable {
             users = new Users();
             usersList = usersService.finalAllUsers();
             return "/Users/login?faces-redirect=true";
-        } catch (Exception ex) {
+        } catch (BusinessException ex) {
             Logger.getLogger(usersController.class.getName()).log(Level.SEVERE, null, ex);
-            
             return "";
-        }  
+        }
     }
 
     public String deleteUsers(Users users) {
-        //this.users = users;
         usersService.deleteUser(users);
         usersList = usersService.finalAllUsers();
         return "/Users/listofUsers?faces-redirect=true";
     }
 
-    
     //to do
     public String updateUsers(Users users) {
         this.users = users;
@@ -84,12 +82,6 @@ public class usersController implements Serializable {
         usersService.editUser(users);
         this.setUsers(new Users());
         return "/Users/listofUsers?faces-redirect=true";
-    }
-
-    //not in use
-    public String viewUsers(Users users) {
-        this.users = users;
-        return "";
     }
 
     public Users getCurrentUser() {
@@ -106,35 +98,28 @@ public class usersController implements Serializable {
      * @return
      * @throws java.lang.Exception
      */
-    public String login() throws Exception 
-    {
-        try
-        {
-//            String emailTEMP = users.getEmail();
-            System.out.println("This is email " + users.getEmail() + "This is password "+  users.getPassword());
-            currentUser = usersService.validateEmailAndPassword(users.getEmail(), users.getPassword()); 
-            
-        } 
-        catch (AuthenticationException e)
-        {
-            getCurrentUserInstance().addMessage("Error", new FacesMessage("Failed to login", e.getMessage()));
-            System.out.println("e" + e);
+    public String login() throws Exception {
+        try {
+            String passEmail = users.getEmail();
+            String passPassword = users.getPassword();
+
+            System.out.println("This is email " + passEmail + "This is password " + passPassword);
+            currentUser = usersService.validateEmailAndPassword(passEmail, passPassword);
+
+        } catch (AuthenticationException e) {
+            System.out.println("exception is " + e);
             throw new Exception(e);
         }
-        
-        if (currentUser != null) 
-        {
-            getCurrentUserInstance().getExternalContext().getSessionMap().put("email", currentUser);
+
+        if (currentUser != null) {
             results = usersService.login(users.getEmail(), users.getPassword());
+
             users = results.get(0);
-        } 
-        else 
-        {
+        } else {
             return "";
         }
         return "/index?faces-redirect=true";
     }
-    
 
     public String logout() {
         users = new Users();

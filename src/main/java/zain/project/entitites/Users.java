@@ -22,14 +22,16 @@ public class Users implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String password;
-    private String email;
     private String firstname;
     private String lastName;
     private String phoneNumber;
     private String typeOfUser;
+    private String email;
+    private String password;
+
     @OneToOne(mappedBy = "appliedStudent")
     private List<Project> project;
+
     @ManyToOne
     private Organisation organisation;
 
@@ -48,40 +50,6 @@ public class Users implements Serializable {
      */
     public void setId(Long id) {
         this.id = id;
-    }
-
-    /**
-     *
-     * @return password
-     */
-    public String getPassword() {
-        return password;
-    }
-
-    /**
-     * set password
-     *
-     * @param password
-     */
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    /**
-     *
-     * @return email
-     */
-    public String getEmail() {
-        return this.email;
-    }
-
-    /**
-     * set email
-     *
-     * @param email
-     */
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     /**
@@ -162,6 +130,40 @@ public class Users implements Serializable {
 
     /**
      *
+     * @return email
+     */
+    public String getEmail() {
+        return this.email;
+    }
+
+    /**
+     * set email
+     *
+     * @param email
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     *
+     * @return password
+     */
+    public String getPassword() {
+        return password;
+    }
+
+    /**
+     * set password
+     *
+     * @param password
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    /**
+     *
      * @return list of projects from Project Class
      */
     public List<Project> getProject() {
@@ -204,7 +206,6 @@ public class Users implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof Users)) {
             return false;
         }

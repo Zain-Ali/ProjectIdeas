@@ -29,19 +29,16 @@ public class UsersService {
             throw new BusinessException("Unable to create new user."
                     + "User already exist");
         }
-
     }
-    
 
     public Users editUser(Users user) {
         return userFacade.edit(user);
     }
-    
 
-    public void deleteUser(Users user){// throws BusinessException {
+    public void deleteUser(Users user) {
         userFacade.remove(user);
     }
-    
+
     public List<Users> findAllUsers() {
         return userFacade.findAll();
     }
@@ -57,18 +54,17 @@ public class UsersService {
      * @return
      * @throws AuthenticationException
      */
-    public Users validateEmailAndPassword(String email, String password) throws Exception {
+    public Users validateEmailAndPassword(String email, String password) throws AuthenticationException {
         List<Users> users = userFacade.findUserByEmailAddress(email);
         if (users.isEmpty()) {
-            throw new Exception("Email or password is not valid. Please try again");
+            throw new AuthenticationException("Email Address or Password is not valid. Please try again!");
         } else {
             Users user = users.get(0);
             if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
                 return user;
             } else {
-                throw new Exception("Email or password is not valid. Please try again");
+                throw new AuthenticationException("Email Address or Password is not valid. Please try again!");
             }
         }
     }
-   
 }

@@ -1,4 +1,3 @@
-
 package zain.project.controllers;
 
 import javax.faces.component.UIComponent;
@@ -15,12 +14,11 @@ import zain.project.persistence.OrganisationFacade;
  */
 
 /*The following Java code taken from*/
-/*https://github.com/Jimbriggs/webp-examples/blob/ENTWA2015-2016/ENTWAJPA1/src/java/jim/entwa/ctrl/AddressConverter.java*/
-/*But the code has been modifed according to project needs*/
-/*Starts here*/
+ /*https://github.com/Jimbriggs/webp-examples/blob/ENTWA2015-2016/ENTWAJPA1/src/java/jim/entwa/ctrl/AddressConverter.java*/
+ /*But the code has been modifed according to project needs*/
+ /*Starts here*/
 @FacesConverter(forClass = Organisation.class)
 public class OrganisationConverter implements Converter {
-    
 
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
@@ -42,5 +40,5 @@ public class OrganisationConverter implements Converter {
             throw new Error("object is not of type Organisation");
         }
     }
-/*End here*/
+    /*End here*/
 }
