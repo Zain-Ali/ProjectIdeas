@@ -34,40 +34,6 @@
                     </h:form> 
                 </h:panelGroup>
             </section>
-            <section>
-                <h1>View Organisation Details</h1>
-                <h:panelGrid>
-
-                    <h:outputText value="Ref # "/>
-                    <h:outputText value="#{organisationController.organisation.id}"/>
-
-                    <h:outputText value="Organisation Name:"/>
-                    <h:outputText value="#{organisationController.organisation.organisationName}"/>
-
-                    <h:outputText value="Postal Address: "/>
-                    <h:outputText value="#{organisationController.organisation.postalAddress}"/>
-
-                    <h:outputText value="Post Code: "/>
-                    <h:outputText value="#{organisationController.organisation.postCode}"/>
-
-                    <h:outputText value="Out line of What Your Organisation Does: "/>
-                    <h:outputText value="#{organisationController.organisation.outLineOfWhatYourOrganisationDoes}"/>
-
-                    <h:outputText value="Contact Name: "/>                            
-                    <h:outputText value="#{organisationController.organisation.contactName}"/>
-
-                    <h:outputText value="Contact Number: "/>
-                    <h:outputText value="#{organisationController.organisation.telePhone}"/>
-
-                    <h:outputText value="Email Address: "/>
-                    <h:outputText value="#{organisationController.organisation.emailAddress}"/>
-
-                    <h:form>
-                        <h:commandButton value="Edit" rendered="#{usersController.users.typeOfUser == 'Admin' or usersController.users.typeOfUser == 'Staff' or usersController.users == projectController.project.projectOwner}" action="#{organisationController.updateOrganisation(organisationController.organisation)}"/>
-                        <h:commandButton value="Withdraw"  rendered="#{usersController.users.typeOfUser == 'Admin' or usersController.users.typeOfUser == 'Staff' or usersController.users == projectController.project.projectOwner}" action="#{organisationController.deleteOrganisation(organisationController.organisation)}"/>                   
-                    </h:form>                        
-                </h:panelGrid>               
-            </section>
         </ui:define>
 
     </ui:composition> 

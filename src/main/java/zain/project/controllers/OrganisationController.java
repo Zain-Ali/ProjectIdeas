@@ -65,7 +65,7 @@ public class OrganisationController implements Serializable {
     public String deleteOrganisation(Organisation organisation) {
         organisationService.deleteOrganisation(organisation);
         organisationList = organisationService.findAllOrganisation();
-        return "/index?faces-redirect=true";
+        return "/organisation/listoforganisation?faces-redirect=true";
     }
 
     public String updateOrganisation(Organisation organisation) {
@@ -77,12 +77,12 @@ public class OrganisationController implements Serializable {
     {
         organisationService.updateOrganisation(organisation);
         this.setOrganisation(new Organisation());
-        return "/index?faces-redirect=true";
+        return "/organisation/listoforganisation?faces-redirect=true";
     }
 
     public String viewOrganisation(Organisation organisation) {
         this.organisation = organisation;
-        return "/organisation/listoforganisation?faces-redirect=true";
+        return "/organisation/organisation?faces-redirect=true";
     }
 
     public String goToCreateNewOrganisationPage() {

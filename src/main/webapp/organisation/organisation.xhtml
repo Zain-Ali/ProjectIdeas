@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+
+    <ui:composition template="./../resources/templates/templatemain.xhtml">
+
+        <ui:define name="title">#{organisationController.organisation.organisationName}</ui:define>
+
+        <ui:define name="content">
+            <section class="space">
+                <h:panelGrid columns="2">                   
+                    <h:outputText value="Ref # "/>
+                    <h:outputText value="#{organisationController.organisation.id}"/>
+
+                    <h:outputText value="Organisation Name:"/>
+                    <h:outputText value="#{organisationController.organisation.organisationName}"/>
+
+                    <h:outputText value="Postal Address: "/>
+                    <h:outputText value="#{organisationController.organisation.postalAddress}"/>
+
+                    <h:outputText value="Post Code: "/>
+                    <h:outputText value="#{organisationController.organisation.postCode}"/>
+
+                    <h:outputText value="Out line of What Your Organisation Does: "/>
+                    <h:outputText value="#{organisationController.organisation.outLineOfWhatYourOrganisationDoes}"/>
+
+                    <h:outputText value="Contact Name: "/>                            
+                    <h:outputText value="#{organisationController.organisation.contactName}"/>
+
+                    <h:outputText value="Contact Number: "/>
+                    <h:outputText value="#{organisationController.organisation.telePhone}"/>
+
+                    <h:outputText value="Email Address: "/>
+                    <h:outputText value="#{organisationController.organisation.emailAddress}"/>
+
+                    <h:form>
+                        <h:commandButton value="Edit" rendered="#{usersController.users.typeOfUser == 'Admin' or usersController.users.typeOfUser == 'Staff' or usersController.users == projectController.project.projectOwner}" action="#{organisationController.updateOrganisation(organisationController.organisation)}"/>
+                        <h:commandButton value="Withdraw"  rendered="#{usersController.users.typeOfUser == 'Admin' or usersController.users.typeOfUser == 'Staff' or usersController.users == projectController.project.projectOwner}" action="#{organisationController.deleteOrganisation(organisationController.organisation)}"/>                   
+                    </h:form>                        
+                </h:panelGrid> 
+            </section>
+            
+        </ui:define>
+    </ui:composition>
+</html>
