@@ -1,6 +1,7 @@
 package zain.project.entitites;
 
 import java.io.Serializable;
+import java.util.Calendar;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -50,8 +51,8 @@ public class Project implements Serializable {
     @Column(nullable = false)
     private String status = "Provisional";
 
-    @Temporal(TemporalType.DATE)
-    private Date lastUpdated;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Calendar lastUpdated;
 
     @ManyToOne
     private Organisation organisation;
@@ -241,7 +242,7 @@ public class Project implements Serializable {
      *
      * @return date created or updated
      */
-    public Date getLastUpdated() {
+    public Calendar getLastUpdated() {
         return lastUpdated;
     }
 
@@ -250,7 +251,7 @@ public class Project implements Serializable {
      *
      * @param lastUpdated
      */
-    public void setLastUpdated(Date lastUpdated) {
+    public void setLastUpdated(Calendar lastUpdated) {
         this.lastUpdated = lastUpdated;
     }
 

@@ -1,7 +1,10 @@
 package zain.project.controllers;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -116,6 +119,12 @@ public class ProjectController implements Serializable {
 
     public void updateProjectList() {
         projectList = projectService.findAProjectBySearch(searchProject);
+    }
+    
+    public String convertCalendarToDate (Calendar calendar) {
+        Date date = calendar.getTime();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        return simpleDateFormat.format(date);
     }
 
     @PostConstruct

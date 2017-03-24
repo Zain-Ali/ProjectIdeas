@@ -1,5 +1,6 @@
 package zain.project.business;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
@@ -22,7 +23,7 @@ public class ProjectService {
     public Project createProject(Project project) throws BusinessException {
         if (true) {
             projectFacade.create(project);
-            Date date = new Date();
+            Calendar date =  Calendar.getInstance();
             project.setLastUpdated(date);
         } else {
             throw new BusinessException("Unable to create new project.");
@@ -33,7 +34,7 @@ public class ProjectService {
 
     public void editProject(Project project, Users user) {
         projectFacade.edit(project);
-        Date date = new Date();
+        Calendar date =  Calendar.getInstance();
         project.setLastUpdated(date);
     }
 

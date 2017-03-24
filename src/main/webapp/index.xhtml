@@ -39,8 +39,7 @@
                         </h:column>     
                         <h:column >
                             <f:facet name="header" >Date</f:facet>
-                            <h:outputText value="#{project.lastUpdated}">
-                                <f:convertDateTime pattern="dd-MM-yyyy" type="date"/>
+                            <h:outputText value="#{projectController.convertCalendarToDate(project.lastUpdated)}">
                             </h:outputText>
                         </h:column>
                         <h:column>
