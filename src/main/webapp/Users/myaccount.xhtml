@@ -25,14 +25,17 @@
                     <h:outputLabel value="Type of User : "/>
                     <h:outputText value="#{usersController.currentUser.typeOfUser}"/>   
                     <br></br>
+                    <h:outputLabel value="Number of project applied for : "/>
                     #{usersController.users.project.size()}
                     <h:dataTable class="table" value="#{usersController.currentUser.project}" var="project">
                         <h:column>
-                            
-                        
-                        <h:outputLabel value="title : "/>
-                        <h:outputText value="#{project.title}"/>
+                            <h:outputLabel value="title : "/>
+                            <h:outputText value="#{project.title}"/>
                         </h:column>
+                        <h:column>
+                            <h:outputLabel value="Org : "/>
+                            <h:outputText value="#{project.organisation}"/>
+                        </h:column>                        
                     </h:dataTable>
 
                 </h:panelGroup>
