@@ -29,6 +29,15 @@ public class usersController implements Serializable {
     private List<Users> results;
     List<Users> usersList = new ArrayList<>();
     private Users currentUser;
+//    private String showErrorMessage;
+
+//    public String getShowErrorMessage() {
+//        return showErrorMessage;
+//    }
+//
+//    public void setShowErrorMessage(String showErrorMessage) {
+//        this.showErrorMessage = showErrorMessage;
+//    }
 
     /**
      * Creates a new instance of usersController
@@ -108,6 +117,7 @@ public class usersController implements Serializable {
 
         } catch (AuthenticationException e) {
             System.out.println("exception is " + e);
+//            this.showErrorMessage = e.getMessage();
             throw new Exception(e);
         }
 
@@ -122,7 +132,7 @@ public class usersController implements Serializable {
     }
 
     public String logout() {
-        users = new Users();
+        currentUser = new Users();
         return "/index?faces-redirect=true";
     }
 

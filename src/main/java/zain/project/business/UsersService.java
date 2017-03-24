@@ -29,7 +29,7 @@ public class UsersService {
             throw new BusinessException("Unable to create new user."
                     + "User already exist");
         }
-    }
+    }//validation exception
 
     public Users editUser(Users user) {
         return userFacade.edit(user);
