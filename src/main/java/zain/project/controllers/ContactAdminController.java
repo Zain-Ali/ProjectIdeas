@@ -58,30 +58,30 @@ public class ContactAdminController implements Serializable {
     public void setContactAdminList(List<ContactAdmin> contactAdminList) {
         this.contactAdminList = contactAdminList;
     }
-    
+
     public String createContact() {
         contactAdminService.createContact(contactAdmin);
         contactAdmin = new ContactAdmin();
         contactAdminList = contactAdminService.findAllContactAdmin();
         return "/index?faces-redirect=true";
     }
-    
+
     public String deleteContactAdmin(ContactAdmin contactAdmin) {
         contactAdminService.deleteContactAdmin(contactAdmin);
         contactAdminList = contactAdminService.findAllContactAdmin();
         return "/contact/listofmessages?faces-redirect=true";
     }
-    
-    public String editContactAdmin (ContactAdmin contactAdmin) {
+
+    public String editContactAdmin(ContactAdmin contactAdmin) {
         this.contactAdmin = new ContactAdmin();
         return "";
     }
-    
+
     public String goToCreateNewContactAdminPage() {
         contactAdmin = new ContactAdmin();
         return "/contact/contactadmin?faces-redirect=true";
     }
-    
+
     @PostConstruct
     public void init() {
         contactAdminList = contactAdminService.findAllContactAdmin();
