@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -29,8 +30,9 @@ public class Users implements Serializable {
     private String email;
     private String password;
 
-    @OneToOne(mappedBy = "appliedStudent")
-    private List<Project> project;
+    //@OneToOne(mappedBy = "appliedStudent")
+    @OneToMany(mappedBy = "appliedStudent")
+    private List<Project> project; //s
 
     @ManyToOne
     private Organisation organisation;

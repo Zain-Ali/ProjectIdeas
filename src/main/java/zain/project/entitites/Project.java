@@ -57,7 +57,8 @@ public class Project implements Serializable {
     @ManyToOne
     private Organisation organisation;
 
-    @OneToOne
+//    @OneToOne
+    @ManyToOne
     private Users appliedStudent;
 
     /**
