@@ -17,14 +17,24 @@
                     <h:outputLabel value="Your Account Information"/>
                     <br></br>
                     <h:outputLabel value="Name : " />
-                    <h:outputText value="#{usersController.users.firstname} #{usersController.users.lastName}"/>
+                    <h:outputText value="#{usersController.currentUser.firstname} #{usersController.currentUser.lastName}"/>
                     <br></br>
                     <h:outputLabel value="Email : "/>
-                    <h:outputText value="#{usersController.users.email}"/>
+                    <h:outputText value="#{usersController.currentUser.email}"/>
                     <br></br>
                     <h:outputLabel value="Type of User : "/>
-                    <h:outputText value="#{usersController.users.typeOfUser}"/>   
+                    <h:outputText value="#{usersController.currentUser.typeOfUser}"/>   
                     <br></br>
+                    #{usersController.users.project.size()}
+                    <h:dataTable class="table" value="#{usersController.currentUser.project}" var="project">
+                        <h:column>
+                            
+                        
+                        <h:outputLabel value="title : "/>
+                        <h:outputText value="#{project.title}"/>
+                        </h:column>
+                    </h:dataTable>
+
                 </h:panelGroup>
             </section>
         </ui:define>

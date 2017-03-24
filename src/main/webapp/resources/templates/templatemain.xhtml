@@ -29,35 +29,35 @@
                     </h:form>
                     <b:navLink value="View All Organisation" href="/ProjectIdeas/faces/organisation/listoforganisation.xhtml" ></b:navLink>                            
                 </b:dropMenu>
-                <b:navLink value="List of Users" href="/ProjectIdeas/faces/Users/listofUsers.xhtml" rendered="#{usersController.users.typeOfUser == 'Admin'}" ></b:navLink>                        
+                <b:navLink value="List of Users" href="/ProjectIdeas/faces/Users/listofUsers.xhtml" rendered="#{usersController.currentUser.typeOfUser == 'Admin'}" ></b:navLink>                        
                 <b:dropMenu value="Contact">
                     <h:form>
                         <h:commandLink value="Contact us" action="#{contactAdminController.goToCreateNewContactAdminPage()}"></h:commandLink>
                     </h:form>
-                    <b:navLink value="View Messages" href="/ProjectIdeas/faces/contact/listofmessages.xhtml" rendered="#{usersController.users.typeOfUser == 'Admin'}"></b:navLink>                            
+                    <b:navLink value="View Messages" href="/ProjectIdeas/faces/contact/listofmessages.xhtml" rendered="#{usersController.currentUser.typeOfUser == 'Admin'}"></b:navLink>                            
                 </b:dropMenu>                
             </b:navbarLinks>
 
             <h:form styleClass="navbar-form navbar-right">
-                <b:commandButton action ="#{usersController.goToLogInPage()}" value="Sign in" rendered="#{usersController.users.id == null}">
+                <b:commandButton action ="#{usersController.goToLogInPage()}" value="Sign in" rendered="#{usersController.currentUser.id == null}">
                     <f:param name="id" value="#{usersController.users.id}"/>
                 </b:commandButton>
             </h:form>   
 
             <h:form styleClass="navbar-form navbar-right">
-                <b:commandButton action="#{usersController.logout()}" value= "Sign out" rendered="#{usersController.users.id != null}">
+                <b:commandButton action="#{usersController.logout()}" value= "Sign out" rendered="#{usersController.currentUser.id != null}">
                     <f:param name="id" value="#{usersController.users.id}"/>
                 </b:commandButton>
             </h:form> 
             
             <h:form styleClass="navbar-form navbar-right">
-                 <b:commandButton action="#{usersController.goToMyAccountPage()}" value= "My Account" rendered="#{usersController.users.id != null}">
+                <b:commandButton action="#{usersController.goToMyAccountPage()}" value= "My Account" rendered="#{usersController.currentUser.id != null}">
                     <f:param name="id" value="#{usersController.users.id}"/>
                 </b:commandButton>
             </h:form>  
             
             <h:form styleClass="navbar-form navbar-right">
-                <b:commandButton action="#{usersController.goToRegisterPage()}" rendered="#{usersController.users.id == null}" value= "Sign up">
+                <b:commandButton action="#{usersController.goToRegisterPage()}" rendered="#{usersController.currentUser.id == null}" value= "Sign up">
                     <f:param name="id" value="#{usersController.users.id}"/>
                 </b:commandButton>
             </h:form>                     

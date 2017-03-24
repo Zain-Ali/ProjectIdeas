@@ -60,9 +60,11 @@ public class ProjectController implements Serializable {
     public String createProject(Users user) {
         if (apply) {
             project.setAppliedStudent(user);
+            user.getProject().add(project); //samething for org
+            user.setProject(user.getProject()); //samething for org
         }
         project.setProjectOwner(user);
-
+//        user.setOrganisation(organisation);
         try {
             projectService.createProject(project);
         } catch (BusinessException ex) {
