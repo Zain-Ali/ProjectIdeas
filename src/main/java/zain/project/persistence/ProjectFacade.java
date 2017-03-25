@@ -64,13 +64,7 @@ public class ProjectFacade extends AbstractFacade<Project> {
                 .getResultList();
         return resultsOfALLUnAssignedProjects;
     }
-    //above function still to do
-
-    public List<Project> findAllAssingedProjects() {
-        return null;
-    }
-    //above function still to do    
-
+ 
     /**
      *
      * @param user
@@ -85,31 +79,5 @@ public class ProjectFacade extends AbstractFacade<Project> {
 
         return resultsByProjectOwner;
     }
-    //above function still to do
 
-    /**
-     *
-     * @param studentUser
-     * @return a project assigned to a user function allow users to search for
-     * project already assigned to a student
-     */
-    public List<Project> findAUserAssignedProject(Users studentUser) {
-        List<Project> resultsForUserAssignedProejct;
-
-        resultsForUserAssignedProejct = em.createQuery("SELECT p FROM Project p WHERE p.id = :id", Project.class)
-                .setParameter("id", studentUser.getId())
-                .getResultList();
-        return resultsForUserAssignedProejct;
-    }
-    //above function still to do
-
-    public List<Project> findProjectByStatus(String status) {
-        return null;
-    }
-    //above function still to do
-
-    public List<Project> findAllProjectApproved() {
-        return null;
-    }
-    //above function still to do
 }

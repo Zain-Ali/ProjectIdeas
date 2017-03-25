@@ -22,18 +22,17 @@ public class ProjectService {
     public Project createProject(Project project) throws BusinessException {
         if (true) {
             projectFacade.create(project);
-            Calendar date =  Calendar.getInstance();
+            Calendar date = Calendar.getInstance();
             project.setLastUpdated(date);
         } else {
             throw new BusinessException("Unable to create new project.");
         }
         return project;
-
     }
 
     public void editProject(Project project, Users user) {
         projectFacade.edit(project);
-        Calendar date =  Calendar.getInstance();
+        Calendar date = Calendar.getInstance();
         project.setLastUpdated(date);
     }
 

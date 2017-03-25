@@ -12,6 +12,8 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import zain.project.business.ProjectService;
 import zain.project.business.exceptions.BusinessException;
 import zain.project.entitites.Project;
@@ -64,11 +66,18 @@ public class ProjectController implements Serializable {
             user.setProject(user.getProject()); //samething for org
         }
         project.setProjectOwner(user);
-//        user.setOrganisation(organisation);
+
         try {
             projectService.createProject(project);
-        } catch (BusinessException ex) {
-            Logger.getLogger(ProjectController.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        catch (BusinessException ex) {
+                        String message = "error while creating new project";
+            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Failed to create new project."
+                    + "If failed to create new project again. Please contact Admininstrator",
+                    ex.getMessage());
+            FacesContext.getCurrentInstance().addMessage(message, facesMessage);
+            Logger.getLogger(usersController.class.getName()).log(Level.SEVERE, null, ex);
+            return "";
         }
 
         project = new Project();
