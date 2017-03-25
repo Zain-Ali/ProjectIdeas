@@ -26,26 +26,28 @@
                     </div>                     
                     <div class="form-style-1">
                         <h:outputLabel value="Contact Number: "/>
-                        <h:inputTextarea value="#{contactAdminController.contactAdmin.contactNumber}"
-                                         required="true"
-                                         requiredMessage="Please enter your Contact Numbe"/>
+                        <h:inputText value="#{contactAdminController.contactAdmin.contactNumber}"
+                                     required="true"
+                                     requiredMessage="Please enter your Contact Numbe"/>
                     </div>  
                     <div class="form-style-1">
                         <h:outputLabel value="Short Title: "/>
-                        <h:inputText value="#{contactAdminController.contactAdmin.shortTitle}"/>
+                        <h:inputText value="#{contactAdminController.contactAdmin.shortTitle}"
+                                     required="true"
+                                     requiredMessage="Please enter your Contact Numbe"/>
                     </div> 
                     <div class="form-style-1">
                         <h:outputLabel value="Your Message: "/>
                         <h:inputTextarea value="#{contactAdminController.contactAdmin.message}"
                                          required="true"
-                                         requiredMessage="Please enter Anticipated Deliverables" />
+                                         requiredMessage="Please enter your message" />
                     </div> 
                     <div class="form-style-1">
                         <h:commandButton value= "Submit" actionListener="#{contactAdminController.createContact()}"/>
                     </div>    
                 </h:form>
             </section>  
-            
+
         </ui:define>
 
     </ui:composition>
