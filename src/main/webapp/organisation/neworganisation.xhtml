@@ -11,8 +11,8 @@
         <ui:define name="title">New Organisation</ui:define>
 
         <ui:define name="content">
-            <section>
-                <h:form class="space2">
+            <b:container class="space">
+                <h:form styleClass="form-signin">
                     <div class="form-style-1">
                         <h:outputLabel value="Organisation Name: "/>
                         <h:inputText value="#{organisationController.organisation.organisationName}"
@@ -69,7 +69,7 @@
                         <b:messages id="loginError"></b:messages>
                     </b:row>
                 </h:form>
-            </section>
+            </b:container>
         </ui:define>
     </ui:composition> 
 </html>

@@ -12,19 +12,10 @@
 
         <ui:define name="content">
             
-            <div class="searchBar">
-                <h:form>
-                    <b:inputText placeholder="Type something here..." value="#{projectController.searchProject}"/>
-                        <h:commandButton class="button" value="search" action="#{projectController.updateProjectList()}">
-                            <f:ajax event="keyup" render="projects" listener="#{projectController.updateProjectList()}" />
-                        </h:commandButton> 
-                </h:form>                
-            </div>
-
-            <h:panelGroup>
+            <h:panelGrid class="indexView">
                 <h:form class="space2">        
                     <b:dataTable id="projects" class="table" value="#{projectController.projectList}" 
-                                 var="project" searching="false"> 
+                                 var="project" searching="true"> 
                         <h:column>
                             <f:facet name="header">Ref #</f:facet>
                             <h:outputText value="#{project.id}"/>
@@ -37,14 +28,10 @@
                             <f:facet name="header">Project Owner</f:facet>
                             <h:outputText value="#{project.projectOwner.email}"/> 
                         </h:column>     
-                        <h:column >
+                        <h:column>
                             <f:facet name="header" >Date</f:facet>
                             <h:outputText value="#{projectController.convertCalendarToDate(project.lastUpdated)}">
                             </h:outputText>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">Status</f:facet>
-                            <h:outputText value="#{project.status}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">View Project</f:facet>
@@ -52,7 +39,7 @@
                         </h:column>
                     </b:dataTable> 
                 </h:form> 
-            </h:panelGroup>
+            </h:panelGrid>
         </ui:define>
     </ui:composition>
 </html>

@@ -45,7 +45,10 @@
                             <h:outputLabel value="Password: "/>
                             <h:inputSecret value="#{usersController.users.password}"
                                            required="true"
-                                           requiredMessage="Please enter a Password."/>
+                                           requiredMessage="Please enter a Password. "
+                                           validatorMessage="It must bewteeen 8 and 100 characters! ">
+                                <f:validateLength minimum="8" maximum="100" />
+                            </h:inputSecret>
                         </div>                    
                         <div class="form-style-1">
                             <h:outputLabel value="type: "/>
@@ -63,7 +66,7 @@
                             <h:commandButton value= "Update" rendered="#{usersController.users.id != null}"  action="#{usersController.backToIndex()}" />
                         </div>  
                         <b:row>
-                            <b:messages id="Signup"></b:messages>
+                            <b:messages id="registrationError"></b:messages>
                         </b:row>
                     </h:form>
                 </b:container>

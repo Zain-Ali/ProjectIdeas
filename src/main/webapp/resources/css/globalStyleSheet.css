@@ -104,15 +104,14 @@ body {
     top: 200px;   
 }
 
+.indexView {
+    margin-left: 130px;
+    width: 1000px;
+    margin-top: 40px;
+}
+
 
 .footer {
-/*    border-style: solid;
-    margin: auto;
-    padding: 2px;
-    width: 85%;
-    margin-top: 20px;
-    bottom: 25px;
-    margin-top: 10px;*/
    position:fixed;
    left:0px;
    bottom:10px;
