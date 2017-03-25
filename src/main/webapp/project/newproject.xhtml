@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui">
 
     <ui:composition template="./../resources/templates/templatemain.xhtml">
 
@@ -67,11 +68,14 @@
                         <h:commandButton value= "Submit" rendered="#{projectController.project.id == null}" action="#{projectController.createProject(usersController.users)}" />
                     </div>    
                     <div class="form-style-1">
-                        <h:commandButton value="Update" rendered="#{projectController.project.id != null}" action="#{projectController.backToIndex()}"/>
-                    </div>                      
+                        <b:commandButton ajax="true" value="Update" rendered="#{projectController.project.id != null}" action="#{projectController.backToIndex()}"/>
+                    </div>  
+                    <b:row>
+                        <b:messages id="Signup"></b:messages>
+                    </b:row>                    
                 </h:form>
             </section>  
-            
+
         </ui:define>
 
     </ui:composition>

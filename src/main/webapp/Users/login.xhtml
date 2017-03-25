@@ -35,6 +35,9 @@
                     <b:commandButton look="primary btn-block" action="#{usersController.login()}" value= "Login" icon="log-in" size="lg">
                         <f:param name="id" value="#{usersController.users.id}"/>
                     </b:commandButton>
+                    <b:row>
+                        <b:messages id="loginError"></b:messages>
+                    </b:row>
                 </h:form>
             </b:container>            
         </ui:define>
