@@ -113,11 +113,11 @@ body {
 
 .footer {
    position:fixed;
-   left:0px;
    bottom:10px;
    height:30px;
-   width:100%;
+   width:1000px;
    background:#999;
+   margin-left: 130px
 }
 
 
