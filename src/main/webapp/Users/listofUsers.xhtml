@@ -12,7 +12,7 @@
 
         <ui:define name="content">
             <section>
-                <h:panelGroup>
+                <h:panelGrid class="indexView">
                     <h:form class="space2">        
                         <b:dataTable class="table" value="#{usersController.usersList}" var="Users"> 
                             <h:column>
@@ -44,7 +44,7 @@
                             </h:column>
                         </b:dataTable> 
                     </h:form> 
-                </h:panelGroup>
+                </h:panelGrid>
             </section>           
         </ui:define>
 

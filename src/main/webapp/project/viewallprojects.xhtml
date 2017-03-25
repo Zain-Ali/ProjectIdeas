@@ -11,7 +11,7 @@
         <ui:define name="title">View all Projects</ui:define>
 
         <ui:define name="content">
-            <h:panelGroup>
+            <h:panelGrid class="indexView">
                 <h:form class="space2">        
                     <b:dataTable class="table" value="#{projectController.projectList}" var="project"> 
                         <h:column>
@@ -44,7 +44,7 @@
                         </h:column>
                     </b:dataTable> 
                 </h:form> 
-            </h:panelGroup>
+            </h:panelGrid>
         </ui:define>
         
     </ui:composition>
