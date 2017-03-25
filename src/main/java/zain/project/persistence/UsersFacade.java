@@ -63,7 +63,6 @@ public class UsersFacade extends AbstractFacade<Users> {
                 .getResultList();
         return findUserByEmailResults;
     }
-    //above function still to do
 
     /**
      *
@@ -78,9 +77,5 @@ public class UsersFacade extends AbstractFacade<Users> {
         return findAUserResults.getResultList();
     }
     //above function still to do
-
-    public List<Users> typeOfAUser(String search) {
-        return null;
-    }
-    //above function still to do
+    
 }

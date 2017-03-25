@@ -1,7 +1,7 @@
 package zain.project.business;
 
+import zain.project.business.exceptions.UserValidationException;
 import zain.project.business.exceptions.AuthenticationException;
-import zain.project.business.exceptions.BusinessException;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -22,20 +22,20 @@ public class UsersService {
         return userFacade.findAll();
     }
 
-    public void createUser(Users user) throws BusinessException {
+    public void createUser(Users user) throws UserValidationException {
         if (userFacade.findUserByEmailAddress(user.getEmail()).isEmpty()) {
             userFacade.create(user);
         } else {
-            throw new BusinessException("Unable to create new user."
-                    + "User already exist");
+            throw new UserValidationException("Unable to create new user."
+                    + "User with this email already exist");
         }
-    }//validation exception
+    }
 
     public Users editUser(Users user) {
         return userFacade.edit(user);
     }
-
-    public void deleteUser(Users user) {
+    
+    public void deleteUser(Users user)  {
         userFacade.remove(user);
     }
 
@@ -67,4 +67,5 @@ public class UsersService {
             }
         }
     }
+
 }

@@ -9,10 +9,11 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import zain.project.business.UsersService;
 import zain.project.business.exceptions.AuthenticationException;
-import zain.project.business.exceptions.BusinessException;
+import zain.project.business.exceptions.UserValidationException;
 import zain.project.entitites.Users;
 
 /**
@@ -29,15 +30,6 @@ public class usersController implements Serializable {
     private List<Users> results;
     List<Users> usersList = new ArrayList<>();
     private Users currentUser;
-//    private String showErrorMessage;
-
-//    public String getShowErrorMessage() {
-//        return showErrorMessage;
-//    }
-//
-//    public void setShowErrorMessage(String showErrorMessage) {
-//        this.showErrorMessage = showErrorMessage;
-//    }
 
     /**
      * Creates a new instance of usersController
@@ -62,22 +54,34 @@ public class usersController implements Serializable {
         this.users = users;
     }
 
+    /**
+     * Code reference taken from
+     * http://www.programcreek.com/java-api-examples/javax.faces.context.FacesContext
+     *
+     * @return
+     */
     public String createUsers() {
         try {
             usersService.createUser(users);
             users = new Users();
             usersList = usersService.finalAllUsers();
             return "/Users/login?faces-redirect=true";
-        } catch (BusinessException ex) {
+        } catch (UserValidationException ex) {
+            String message = "error while creating new user";
+            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Failed to regiser new user."
+                    + "If failed to register again. Please contact Admininstrator",
+                    ex.getMessage());
+            FacesContext.getCurrentInstance().addMessage(message, facesMessage);
             Logger.getLogger(usersController.class.getName()).log(Level.SEVERE, null, ex);
             return "";
         }
     }
 
-    public String deleteUsers(Users users) {
-        usersService.deleteUser(users);
+    public String deleteUsers(Users user) {
+        usersService.deleteUser(user);
         usersList = usersService.finalAllUsers();
         return "/Users/listofUsers?faces-redirect=true";
+
     }
 
     //to do
@@ -102,10 +106,7 @@ public class usersController implements Serializable {
     }
 
     /**
-     * http://www.programcreek.com/java-api-examples/javax.faces.context.FacesContext
-     *
-     * @return
-     * @throws java.lang.Exception
+     * @return @throws java.lang.Exception
      */
     public String login() throws Exception {
         try {
@@ -143,7 +144,7 @@ public class usersController implements Serializable {
     public String goToLogInPage() {
         return "/Users/login?faces-redirect=true";
     }
-    
+
     public String goToMyAccountPage() {
         return "/Users/myaccount?faces-redirect=true";
     }
