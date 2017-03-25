@@ -116,10 +116,16 @@ public class usersController implements Serializable {
             System.out.println("This is email " + passEmail + "This is password " + passPassword);
             currentUser = usersService.validateEmailAndPassword(passEmail, passPassword);
 
-        } catch (AuthenticationException e) {
-            System.out.println("exception is " + e);
-//            this.showErrorMessage = e.getMessage();
-            throw new Exception(e);
+        } 
+        catch (AuthenticationException ex) {
+            System.out.println("exception is " + ex);
+            String message = "error while loggin in";
+            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, " Failed to login. "
+                    + "Please check your email address or password. "
+                    + "or Please contact Admininstrator", ex.getMessage());
+            FacesContext.getCurrentInstance().addMessage(message, facesMessage);
+            Logger.getLogger(usersController.class.getName()).log(Level.SEVERE, null, ex);
+            return "";
         }
 
         if (currentUser != null) {
