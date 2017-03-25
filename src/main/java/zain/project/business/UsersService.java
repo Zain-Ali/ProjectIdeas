@@ -5,6 +5,7 @@ import zain.project.business.exceptions.AuthenticationException;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import zain.project.controllers.usersController;
 import zain.project.entitites.Users;
 import zain.project.persistence.UsersFacade;
 

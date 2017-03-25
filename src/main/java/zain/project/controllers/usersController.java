@@ -76,12 +76,20 @@ public class usersController implements Serializable {
             return "";
         }
     }
-
+    //check again and remove if else if cause problems
     public String deleteUsers(Users user) {
-        usersService.deleteUser(user);
-        usersList = usersService.finalAllUsers();
-        return "/Users/listofUsers?faces-redirect=true";
-
+        if (currentUser != user) {
+            usersService.deleteUser(user);
+            usersList = usersService.finalAllUsers();
+            return "/Users/listofUsers?faces-redirect=true";
+        } else {
+            String message = "error while deleting user";
+            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Failed to delete user.",
+                    "");
+            FacesContext.getCurrentInstance().addMessage(message, facesMessage);
+            Logger.getLogger(usersController.class.getName()).log(Level.SEVERE, null, "");
+            return "";
+        }
     }
 
     //to do
@@ -90,11 +98,19 @@ public class usersController implements Serializable {
         return "/Users/registeruser?faces-redirect=true";
     }
 
-    public String backToIndex()//update 
-    {
-        usersService.editUser(users);
-        this.setUsers(new Users());
-        return "/Users/listofUsers?faces-redirect=true";
+    public String backToIndex() { //update
+        if (users.equals(users)) {
+            usersService.editUser(users); //update
+            this.setUsers(new Users());
+            return "/Users/listofUsers?faces-redirect=true";
+        } else {
+            String message = "error while updating user information";
+            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Failed to update user.",
+                    "");
+            FacesContext.getCurrentInstance().addMessage(message, facesMessage);
+            Logger.getLogger(usersController.class.getName()).log(Level.SEVERE, null, "");
+            return "";
+        }
     }
 
     public Users getCurrentUser() {
@@ -116,8 +132,7 @@ public class usersController implements Serializable {
             System.out.println("This is email " + passEmail + "This is password " + passPassword);
             currentUser = usersService.validateEmailAndPassword(passEmail, passPassword);
 
-        } 
-        catch (AuthenticationException ex) {
+        } catch (AuthenticationException ex) {
             System.out.println("exception is " + ex);
             String message = "error while loggin in";
             FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, " Failed to login. "

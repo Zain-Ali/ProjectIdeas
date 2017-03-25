@@ -69,9 +69,8 @@ public class ProjectController implements Serializable {
 
         try {
             projectService.createProject(project);
-        } 
-        catch (BusinessException ex) {
-                        String message = "error while creating new project";
+        } catch (BusinessException ex) {
+            String message = "error while creating new project";
             FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Failed to create new project."
                     + "If failed to create new project again. Please contact Admininstrator",
                     ex.getMessage());
@@ -96,10 +95,20 @@ public class ProjectController implements Serializable {
         return "/project/newproject?faces-redirect=true";
     }
 
+    //check again and remove if else if cause problems
     public String backToIndex() { //update
-        projectService.editProject(project, user);
-        this.setProject(new Project());
-        return "/index?faces-redirect=true";
+        if (project.equals(project)) {
+            projectService.editProject(project, user);
+            this.setProject(new Project());
+            return "/index?faces-redirect=true";
+        } else {
+            String message = "error while updating project";
+            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Failed to update project."
+                    + " Please contact Admininstrator", "");
+            FacesContext.getCurrentInstance().addMessage(message, facesMessage);
+            Logger.getLogger(usersController.class.getName()).log(Level.SEVERE, null, "");
+            return "";
+        }
     }
 
     public String viewProject(Project project) {
@@ -131,8 +140,8 @@ public class ProjectController implements Serializable {
     public void updateProjectList() {
         projectList = projectService.findAProjectBySearch(searchProject);
     }
-    
-    public String convertCalendarToDate (Calendar calendar) {
+
+    public String convertCalendarToDate(Calendar calendar) {
         Date date = calendar.getTime();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
         return simpleDateFormat.format(date);
