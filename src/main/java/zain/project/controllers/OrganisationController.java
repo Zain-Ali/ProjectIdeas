@@ -3,11 +3,16 @@ package zain.project.controllers;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import zain.project.business.OrganisationService;
+import zain.project.business.exceptions.BusinessException;
 import zain.project.entitites.Organisation;
 
 /**
@@ -56,10 +61,21 @@ public class OrganisationController implements Serializable {
     }
 
     public String createOrganisation() {
+        try {
         organisationService.createOrganisation(organisation);
         organisation = new Organisation();
         organisationList = organisationService.findAllOrganisation();
         return "/organisation/listoforganisation?faces-redirect=true";
+        }
+        catch (BusinessException ex){
+            String message = "error while creating new organisation";
+            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Failed to create new organisation."
+                    + "If failed to create new organisation again. Please contact Admininstrator",
+                    ex.getMessage());
+            FacesContext.getCurrentInstance().addMessage(message, facesMessage);
+            Logger.getLogger(usersController.class.getName()).log(Level.SEVERE, null, ex);
+            return "";        
+        }
     }
 
     public String deleteOrganisation(Organisation organisation) {

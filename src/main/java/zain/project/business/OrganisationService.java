@@ -3,6 +3,7 @@ package zain.project.business;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
+import zain.project.business.exceptions.BusinessException;
 import zain.project.entitites.Organisation;
 import zain.project.persistence.OrganisationFacade;
 
@@ -24,8 +25,14 @@ public class OrganisationService {
         this.organisationFacade = organisationFacade;
     }
 
-    public Organisation createOrganisation(Organisation organisation) {
+    public Organisation createOrganisation(Organisation organisation) throws BusinessException {
+        if (true) {
         organisationFacade.create(organisation);
+        
+        }
+        else {
+            throw new BusinessException("Unable to create new organisation.");
+        }
         return organisation;
     }
 
