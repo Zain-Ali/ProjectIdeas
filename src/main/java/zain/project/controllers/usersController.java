@@ -154,12 +154,13 @@ public class usersController implements Serializable {
     }
 
     public String logout() {
-        currentUser = new Users();
+        currentUser = null;
+        users = new Users();
         return "/index?faces-redirect=true";
     }
 
     public String goToRegisterPage() {
-        return "/Users/registeruser?faces-redirect=true";
+        return "/Users/registeruser?faces-redirect=false";
     }
 
     public String goToLogInPage() {

@@ -57,7 +57,7 @@
             </h:form>  
             
             <h:form styleClass="navbar-form navbar-right">
-                <b:commandButton action="#{usersController.goToRegisterPage()}" rendered="#{usersController.currentUser.id == null}" value= "Sign up">
+                <b:commandButton action="#{usersController.goToRegisterPage()}" rendered="#{usersController.currentUser == null}" value= "Sign up">
                     <f:param name="id" value="#{usersController.users.id}"/>
                 </b:commandButton>
             </h:form>                     
