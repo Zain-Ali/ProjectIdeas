@@ -50,7 +50,7 @@
                     <h:form>
                         <h:commandButton value="Edit" rendered="#{usersController.users.typeOfUser == 'Admin' or usersController.users.typeOfUser == 'Staff' or usersController.users == projectController.project.projectOwner}" action="#{projectController.updateProject(projectController.project)}"/>
                         <h:commandButton value="Withdraw"  rendered="#{usersController.users.typeOfUser == 'Admin' or usersController.users.typeOfUser == 'Staff' or usersController.users == projectController.project.projectOwner}" action="#{projectController.deleteProject(projectController.project)}"/>                   
-                        <h:commandButton value="Apply" rendered="#{usersController.users.typeOfUser == 'Student'}"/>                   
+                        <h:commandButton value="Apply" rendered="#{usersController.users.typeOfUser == 'Student'}" action="#{projectController.apply}" />                   
                     </h:form>
 
                 </h:panelGrid>

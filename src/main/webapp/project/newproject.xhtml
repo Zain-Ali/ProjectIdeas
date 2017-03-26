@@ -52,18 +52,18 @@
                         </h:selectOneMenu>
                     </div>  
                     <div class="form-style-1">
-                        <h:outputText value="Apply for Project Idea "/>
-                        <h:selectBooleanCheckbox value="#{projectController.apply}">
-                            <f:param name="id" value="#{projectController.project.id}"/>
-                        </h:selectBooleanCheckbox>
-                    </div>
+                        <h:outputText value=  "Select User (Admin or Staff Only)"/>
+                        <h:selectOneMenu value="#{projectController.project.projectOwner}" rendered="#{usersController.users.typeOfUser == 'Admin' or usersController.users.typeOfUser == 'Staff'}">
+                            <f:selectItems value="#{usersController.usersList}" var="users" itemValue="#{users}" itemLabel="#{users.email}" />
+                        </h:selectOneMenu>   
+                    </div>                      
                     <div class="form-style-1">
                         <h:outputText value=  "Select organisation (Optional)"/>
                         <h:selectOneMenu value="#{projectController.project.organisation}" >
                             <f:selectItem itemValue="" itemLabel="No Organisation " />
                             <f:selectItems value="#{organisationController.organisationList}" var="organisation" itemValue="#{organisation}" itemLabel="#{organisation.organisationName}" />
                         </h:selectOneMenu>   
-                    </div>
+                    </div>                  
                     <div class="form-style-1">
                         <h:commandButton value= "Submit" rendered="#{projectController.project.id == null}" action="#{projectController.createProject(usersController.users)}" />
                     </div>    
