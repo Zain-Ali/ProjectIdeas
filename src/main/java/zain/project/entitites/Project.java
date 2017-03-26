@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -31,8 +33,7 @@ public class Project implements Serializable {
     @Column(nullable = false, length = 99)
     private String languages;
 
-    @ManyToOne
-    private Users projectOwner;
+
 
     @Column(nullable = false)
     private String aimsAndObjectives;
@@ -55,9 +56,13 @@ public class Project implements Serializable {
     @ManyToOne
     private Organisation organisation;
 
-//    @OneToOne
+
     @ManyToOne
     private Users appliedStudent;
+    
+    @ManyToOne
+    private Users projectOwner;
+    
 
     /**
      *

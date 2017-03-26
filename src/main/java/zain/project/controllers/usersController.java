@@ -26,6 +26,7 @@ public class usersController implements Serializable {
 
     @EJB
     private UsersService usersService;
+
     private Users users;
     private List<Users> results;
     List<Users> usersList = new ArrayList<>();
@@ -36,6 +37,14 @@ public class usersController implements Serializable {
      */
     public usersController() {
         this.users = new Users();
+    }
+    
+        public UsersService getUsersService() {
+        return usersService;
+    }
+
+    public void setUsersService(UsersService usersService) {
+        this.usersService = usersService;
     }
 
     public List<Users> getUsersList() {
@@ -76,13 +85,14 @@ public class usersController implements Serializable {
             return "";
         }
     }
+
     //check again and remove if else if cause problems
     public String deleteUsers(Users user) {
-        if (currentUser != user) {
+        try {
             usersService.deleteUser(user);
             usersList = usersService.finalAllUsers();
             return "/Users/listofUsers?faces-redirect=true";
-        } else {
+        } catch (UserValidationException ex) {
             String message = "error while deleting user";
             FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Failed to delete user.",
                     "");
@@ -94,7 +104,9 @@ public class usersController implements Serializable {
 
     //to do
     public String updateUsers(Users users) {
-        this.users = users;
+        this.users = usersService.refresh(users);
+        this.currentUser = usersService.refresh(currentUser);
+
         return "/Users/registeruser?faces-redirect=true";
     }
 
@@ -129,7 +141,6 @@ public class usersController implements Serializable {
             String passEmail = users.getEmail();
             String passPassword = users.getPassword();
 
-            System.out.println("This is email " + passEmail + "This is password " + passPassword);
             currentUser = usersService.validateEmailAndPassword(passEmail, passPassword);
 
         } catch (AuthenticationException ex) {
@@ -168,6 +179,8 @@ public class usersController implements Serializable {
     }
 
     public String goToMyAccountPage() {
+        users = usersService.refresh(users);
+        currentUser = usersService.refresh(currentUser);
         return "/Users/myaccount?faces-redirect=true";
     }
 

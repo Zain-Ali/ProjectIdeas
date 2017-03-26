@@ -79,5 +79,4 @@ public class ProjectFacade extends AbstractFacade<Project> {
 
         return resultsByProjectOwner;
     }
-
 }

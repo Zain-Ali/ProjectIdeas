@@ -56,12 +56,16 @@ public class UsersFacade extends AbstractFacade<Users> {
      * @return and find a specific user (each email is unique) For Register User
      * and Login
      */
-    public List findUserByEmailAddress(String email) {
+    public Users findUserByEmailAddress(String email) {
         List<Users> findUserByEmailResults = em
                 .createQuery("SELECT u FROM Users u WHERE u.email = :email", Users.class)
                 .setParameter("email", email)
                 .getResultList();
-        return findUserByEmailResults;
+
+        if(findUserByEmailResults.size() > 0)
+            return findUserByEmailResults.get(0);
+        else
+            return null;
     }
 
     /**
@@ -76,6 +80,5 @@ public class UsersFacade extends AbstractFacade<Users> {
         findAUserResults.setParameter("search", FinalSearch);
         return findAUserResults.getResultList();
     }
-    //above function still to do
-    
+        
 }

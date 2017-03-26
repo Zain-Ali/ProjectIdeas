@@ -2,7 +2,6 @@ package zain.project.controllers;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +14,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import zain.project.business.ProjectService;
+import zain.project.business.UsersService;
 import zain.project.business.exceptions.BusinessException;
 import zain.project.entitites.Project;
 import zain.project.entitites.Users;
@@ -29,18 +29,29 @@ public class ProjectController implements Serializable {
 
     @EJB
     private ProjectService projectService;
+
+    @EJB
+    private UsersService userService;
+
     private Project project;
-    private Users user;
+
+    private Users user; //current signed in user!!!!
 
     private boolean apply = false;
     private String searchProject = "";
-    List<Project> projectList = new ArrayList<>();
+    List<Project> projectList;
 
     /**
      * Creates a new instance of ProjectController
      */
     public ProjectController() {
+        super();
         this.project = new Project();
+    }
+
+    @PostConstruct
+    public void init() {
+        projectList = projectService.findAllProjects();
     }
 
     public List<Project> getProjectList() {
@@ -60,28 +71,39 @@ public class ProjectController implements Serializable {
     }
 
     public String createProject(Users user) {
-        if (apply) {
-            project.setAppliedStudent(user);
-            user.getProject().add(project); //samething for org
-            user.setProject(user.getProject()); //samething for org
+
+        if (user.getTypeOfUser().equals("Admin") || user.getTypeOfUser().equals("Staff")) {
+            return createProjectAsAdmin(user, project);
+        } else {
+            return createProjectAsStudent(user, project);
         }
-        project.setProjectOwner(user);
+
+    }
+
+    private String createProjectAsAdmin(Users user, Project project) {
 
         try {
-            projectService.createProject(project);
+            project.setProjectOwner(user);
+            project = projectService.createProject(project);
+            projectList.add(project);
         } catch (BusinessException ex) {
-            String message = "error while creating new project";
-            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Failed to create new project."
-                    + "If failed to create new project again. Please contact Admininstrator",
-                    ex.getMessage());
-            FacesContext.getCurrentInstance().addMessage(message, facesMessage);
-            Logger.getLogger(usersController.class.getName()).log(Level.SEVERE, null, ex);
-            return "";
+            printError("createProjectAsAdmin", "Failed to create project", "detail?");
+        }
+        return "/index?faces-redirect=false";
+    }
+
+    private String createProjectAsStudent(Users user, Project project) {
+
+        try {
+            project.setAppliedStudent(user);
+            project.setProjectOwner(userService.getOrCreateUnassingedAdmin());
+            project = projectService.createProject(project);
+            projectList.add(project);
+        } catch (BusinessException ex) {
+            printError("createProjectAsAdmin", "Failed to create project", "detail?");
         }
 
-        project = new Project();
-        projectList = projectService.findAllProjects();
-        return "/index?faces-redirect=true";
+        return "/index?faces-redirect=false";
     }
 
     public String deleteProject(Project project) {
@@ -95,7 +117,6 @@ public class ProjectController implements Serializable {
         return "/project/newproject?faces-redirect=true";
     }
 
-    //check again and remove if else if cause problems
     public String backToIndex() { //update
         if (project.equals(project)) {
             projectService.editProject(project, user);
@@ -147,9 +168,11 @@ public class ProjectController implements Serializable {
         return simpleDateFormat.format(date);
     }
 
-    @PostConstruct
-    public void init() {
-        projectList = projectService.findAllProjects();
+    private void printError(String logMsg, String msg, String detail) {
+        String message = logMsg;
+        FacesMessage facesMessage = new FacesMessage(
+                FacesMessage.SEVERITY_ERROR, msg, detail);
+        FacesContext.getCurrentInstance().addMessage(message, facesMessage);
     }
 
 }

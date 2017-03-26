@@ -30,8 +30,11 @@ public class Users implements Serializable {
     private String email;
     private String password;
 
-    @OneToMany(mappedBy = "appliedStudent")
-    private List<Project> project; //s
+    @OneToOne(mappedBy = "appliedStudent")
+    private Project appliedProject; //s
+
+    @OneToMany(mappedBy = "projectOwner")
+    private List<Project> ownedProjects; //s
 
     @ManyToOne
     private Organisation organisation;
@@ -68,6 +71,14 @@ public class Users implements Serializable {
      */
     public void setFirstname(String firstname) {
         this.firstname = firstname;
+    }
+
+    public Project getAppliedProject() {
+        return appliedProject;
+    }
+
+    public void setAppliedProject(Project appliedProject) {
+        this.appliedProject = appliedProject;
     }
 
     /**
@@ -167,8 +178,12 @@ public class Users implements Serializable {
      *
      * @return list of projects from Project Class
      */
-    public List<Project> getProject() {
-        return project;
+    public List<Project> getOwnedProjects() {
+        return ownedProjects;
+    }
+
+    public void clearOwnedProjects() {
+        ownedProjects.clear();
     }
 
     /**
@@ -176,10 +191,9 @@ public class Users implements Serializable {
      *
      * @param project
      */
-    public void setProject(List<Project> project) {
-        this.project = project;
+    public void addOwnedProject(Project project) {
+        this.ownedProjects.add(project);
     }
-    //(Note) delete above 2 if cause problem 
 
     /**
      *
