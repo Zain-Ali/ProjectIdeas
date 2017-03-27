@@ -152,5 +152,23 @@ public class UsersService {
             }
         }
     }
+    
+        public Users setupTestData() {
+        Users unassinged = null;
+        try { //pointless, user will be always valid
+
+            if (unassinged == null) {
+                unassinged = new Users();
+                unassinged.setFirstname("Admin");
+                unassinged.setLastName("Zain");
+                unassinged.setEmail("admin@zain.com");
+                unassinged.setPassword("W3lcome!!");
+                createUser(unassinged);
+            }
+        } catch (Exception ex) {
+//            throw new Exception (ex);
+        }
+        return unassinged;
+    }
 
 }
