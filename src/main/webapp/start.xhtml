@@ -7,6 +7,8 @@
     </h:head>
     <h:body>
         <h1>Webapp start page</h1>
+        <h2>
+            Please note: when editing any data, changes may not take effect until project is redeployed</h2>
         <table border="1" cellspacing="0" cellpadding="3">
             <tr valign="top">
                 <th align="left" scope="row">Webapp name </th>
@@ -33,29 +35,31 @@
         <h:form>
             <p> to starting using Project Ideas press 
                 the button</p> 
-                <h:commandButton value="Click Here" action="#{projectSetupController.setupTestData()}"> </h:commandButton>
-                <p>Email is: admin@zain.com </p>   
-                <p>Password is: W3lcome </p> 
+            <h:commandButton value="Click Here" action="#{projectSetupController.setupTestData()}"> </h:commandButton>
+            <p>Email is: admin@zain.com </p>   
+            <p>Password is: W3lcome </p> 
         </h:form>
 
-        <h2>WEB APP</h2>
-        <p>
-            <a href="/ProjectIdeas/">Users start here</a> 
-        </p>
-        <h2>Documentation</h2>
-        <p>
-            <a href="internal/report/report.docx">Internal documentation</a>
-        </p>
-        <p>
-            <a href="internal/javadocs/index.html">Javadocs</a>
-        </p>
-        <p>
-            <a href="internal/Requirements Specification By UP687776.docx">Requirements Specification documentation</a> 
-        </p>
-        <p>
-            <a href="internal/User Interaction By UP687776.docx">User Interaction documentation</a> 
-        </p>        
-
+        
+        <section class="indexView">
+            <h2>WEB APP</h2>
+            <p>
+                <a href="/ProjectIdeas/">Users start here</a> 
+            </p>
+            <h2>Documentation</h2>
+            <p>
+                <a href="internal/report/Main Report By UP687776.docx">Main Report</a>
+            </p>
+            <p>
+                <a href="internal/javadoc/index.html">Javadocs</a>
+            </p>
+            <p>
+                <a href="internal/Requirements Specification By UP687776.docx">Requirements Specification documentation</a> 
+            </p>
+            <p>
+                <a href="internal/User Interaction By UP687776.docx">User Interaction documentation</a> 
+            </p>        
+        </section>
     </h:body>
 </html>
 

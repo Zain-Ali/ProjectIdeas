@@ -27,7 +27,6 @@ public class Users implements Serializable {
     private Long id;
 
     private String firstname;
-
     @Column(nullable = false)
     private String lastName;
     private String typeOfUser;
