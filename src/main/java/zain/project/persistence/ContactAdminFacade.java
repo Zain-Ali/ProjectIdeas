@@ -12,7 +12,7 @@ import zain.project.entitites.ContactAdmin;
 
 /**
  *
- * @author zain
+ * @author Zain Ali (UP687776)
  */
 @Stateless
 public class ContactAdminFacade extends AbstractFacade<ContactAdmin> {

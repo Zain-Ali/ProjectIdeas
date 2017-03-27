@@ -14,7 +14,7 @@ import zain.project.entitites.Organisation;
 
 /**
  *
- * @author UP687776
+ * @author Zain Ali (UP687776)
  */
 @Stateless
 public class OrganisationFacade extends AbstractFacade<Organisation> {
@@ -40,7 +40,7 @@ public class OrganisationFacade extends AbstractFacade<Organisation> {
 
     /**
      *
-     * @param search
+     * @param search: search for organisation by organisation keyword
      * @return organisation function allow users to search for a Organisation by
      * the Organisation name
      */
@@ -50,5 +50,4 @@ public class OrganisationFacade extends AbstractFacade<Organisation> {
         results.setParameter("search", FinalSearch);
         return results.getResultList();
     }
-    //above function still to do
 }

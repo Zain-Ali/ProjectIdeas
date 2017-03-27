@@ -2,7 +2,7 @@ package zain.project.business.exceptions;
 
 /**
  *
- * @author zain
+ * @author Zain Ali (UP687776)
  */
 public class AuthenticationException extends Exception {
 

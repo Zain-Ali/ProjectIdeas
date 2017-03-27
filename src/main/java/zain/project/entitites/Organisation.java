@@ -7,8 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 /**
- *
- * @author UP687776
+ * Organisation entity class to represent Organisation within database and application
+ * @author Zain Ali (UP687776)
  */
 @Entity
 public class Organisation implements Serializable {
@@ -17,6 +17,7 @@ public class Organisation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String organisationName;
     private String postalAddress;
     private String postCode;
@@ -26,6 +27,7 @@ public class Organisation implements Serializable {
     private String emailAddress;
 
     /**
+     * get value of id and is auto generated
      *
      * @return id
      */
@@ -34,15 +36,16 @@ public class Organisation implements Serializable {
     }
 
     /**
-     * set id
+     * 
+     * @param id set value of id and is auto generated
      *
-     * @param id
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
+     * get value of organisation name
      *
      * @return organisation name
      */
@@ -51,15 +54,16 @@ public class Organisation implements Serializable {
     }
 
     /**
-     * set organisation name
+     * 
      *
-     * @param organisationName
+     * @param organisationName set value of organisation name
      */
     public void setOrganisationName(String organisationName) {
         this.organisationName = organisationName;
     }
 
     /**
+     * get value of postal address
      *
      * @return postal address
      */
@@ -68,15 +72,16 @@ public class Organisation implements Serializable {
     }
 
     /**
-     * set postal address
+     * 
      *
-     * @param postalAddress
+     * @param postalAddress set value of postal address
      */
     public void setPostalAddress(String postalAddress) {
         this.postalAddress = postalAddress;
     }
 
     /**
+     * get value of post code
      *
      * @return post code
      */
@@ -85,15 +90,16 @@ public class Organisation implements Serializable {
     }
 
     /**
-     * set post code
+     * 
      *
-     * @param postCode
+     * @param postCode set value of post code
      */
     public void setPostCode(String postCode) {
         this.postCode = postCode;
     }
 
     /**
+     * get value of Out Line Of What Your Organisation Does
      *
      * @return Out Line Of What Your Organisation Does
      */
@@ -102,15 +108,16 @@ public class Organisation implements Serializable {
     }
 
     /**
-     * set Out Line Of What Your Organisation Does
      *
-     * @param outLineOfWhatYourOrganisationDoes
+     *
+     * @param outLineOfWhatYourOrganisationDoes  set value of Out Line Of What Your Organisation Does
      */
     public void setOutLineOfWhatYourOrganisationDoes(String outLineOfWhatYourOrganisationDoes) {
         this.outLineOfWhatYourOrganisationDoes = outLineOfWhatYourOrganisationDoes;
     }
 
     /**
+     * get value of contact name
      *
      * @return contact name
      */
@@ -119,15 +126,16 @@ public class Organisation implements Serializable {
     }
 
     /**
-     * set contact name
+     * 
      *
-     * @param contactName
-     */
+     * @param contactName set value of contact name
+     */ 
     public void setContactName(String contactName) {
         this.contactName = contactName;
     }
 
     /**
+     * get value of contact number
      *
      * @return telephone number (contact number)
      */
@@ -136,15 +144,16 @@ public class Organisation implements Serializable {
     }
 
     /**
-     * set telephone number (contact number)
+     * 
      *
-     * @param telePhone
+     * @param telePhone set value of telephone number (contact number)
      */
     public void setTelePhone(int telePhone) {
         this.telePhone = telePhone;
     }
 
     /**
+     * get value of email address
      *
      * @return email address
      */
@@ -153,9 +162,9 @@ public class Organisation implements Serializable {
     }
 
     /**
-     * set email address
+     * 
      *
-     * @param emailAddress
+     * @param emailAddress set value of email address
      */
     public void setEmailAddress(String emailAddress) {
         this.emailAddress = emailAddress;

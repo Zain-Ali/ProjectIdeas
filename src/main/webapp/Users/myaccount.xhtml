@@ -12,34 +12,35 @@
         <ui:define name="title">My Account</ui:define>
 
         <ui:define name="content">
-            <section class="space2">
-                <h:panelGroup>
-                    <h:outputLabel value="Your Account Information"/>
-                    <br></br>
-                    <h:outputLabel value="Name : " />
-                    <h:outputText value="#{usersController.currentUser.firstname} #{usersController.currentUser.lastName}"/>
-                    <br></br>
-                    <h:outputLabel value="Email : "/>
-                    <h:outputText value="#{usersController.currentUser.email}"/>
-                    <br></br>
-                    <h:outputLabel value="Type of User : "/>
-                    <h:outputText value="#{usersController.currentUser.typeOfUser}"/>   
-                    <br></br>
-                    <h:outputLabel value="Number of project applied for : " />
-                    #{usersController.users.ownedProjects.size()}
-                    <h:dataTable class="table" value="#{usersController.currentUser.ownedProjects}" var="project">
-                        <h:column>
-                            <h:outputLabel value="title : "/>
-                            <h:outputText value="#{project.title}"/>
-                        </h:column>
-                        <h:column>
-                            <h:outputLabel value="Org : "/>
-                            <h:outputText value="#{project.organisation}"/>
-                        </h:column>                        
-                    </h:dataTable>
-
-                </h:panelGroup>
-            </section>
+            <article class="space2">
+                <section class="indexView">
+                    <h:panelGroup>
+                        <h:outputLabel value="Your Account Information"/>
+                        <br></br>
+                        <h:outputLabel value="Name : " />
+                        <h:outputText value="#{usersController.currentUser.firstname} #{usersController.currentUser.lastName}"/>
+                        <br></br>
+                        <h:outputLabel value="Email : "/>
+                        <h:outputText value="#{usersController.currentUser.email}"/>
+                        <br></br>
+                        <h:outputLabel value="Type of User : "/>
+                        <h:outputText value="#{usersController.currentUser.typeOfUser}"/>   
+                        <br></br>
+                        <h:outputLabel value="Number of project applied for : " />
+                        #{usersController.users.ownedProjects.size()}
+                        <h:dataTable class="table" value="#{usersController.currentUser.ownedProjects}" var="project">
+                            <h:column>
+                                <h:outputLabel value="title : "/>
+                                <h:outputText value="#{project.title}"/>
+                            </h:column>
+                            <h:column>
+                                <h:outputLabel value="Org : "/>
+                                <h:outputText value="#{project.organisation}"/>
+                            </h:column>                        
+                        </h:dataTable>
+                    </h:panelGroup>
+                </section>
+            </article>
         </ui:define>
 
     </ui:composition>

@@ -18,7 +18,7 @@ import zain.project.entitites.Users;
 
 /**
  *
- * @author zain
+ * @author Zain Ali (UP687776)
  */
 @Named(value = "usersController")
 @SessionScoped
@@ -38,36 +38,88 @@ public class usersController implements Serializable {
     public usersController() {
         this.users = new Users();
     }
-    
-        public UsersService getUsersService() {
+
+    @PostConstruct
+    public void init() {
+        usersList = usersService.finalAllUsers();
+    }
+
+    /**
+     * get user service
+     *
+     * @return user Service
+     */
+    public UsersService getUsersService() {
         return usersService;
     }
 
+    /**
+     * 
+     *
+     * @param usersService set user service to current
+     */
     public void setUsersService(UsersService usersService) {
         this.usersService = usersService;
     }
 
+    /**
+     * get value of users list from Users class
+     *
+     * @return users list
+     */
     public List<Users> getUsersList() {
         return usersList;
     }
 
+    /**
+     * 
+     *
+     * @param usersList set value of users list from Users class set users list to current
+     */
     public void setUsersList(List<Users> usersList) {
         this.usersList = usersList;
     }
 
+    /**
+     *
+     * @return users: return the user
+     */
     public Users getUsers() {
         return users;
     }
 
+    /**
+     * 
+     *
+     * @param users set value of user to current user
+     */
     public void setUsers(Users users) {
         this.users = users;
     }
 
     /**
-     * Code reference taken from
-     * http://www.programcreek.com/java-api-examples/javax.faces.context.FacesContext
+     * get the value of current user
      *
-     * @return
+     * @return current user
+     */
+    public Users getCurrentUser() {
+        return currentUser;
+    }
+
+    /**
+     *  
+     *
+     * @param currentUser set the value of currentuser to current who is logged in user
+     */
+    public void setCurrentUser(Users currentUser) {
+        this.currentUser = currentUser;
+    }
+
+    /**
+     * add new user to the database and application
+     *
+     * @return login if successful in creating new user, user will be redirected
+     * to login page else error message will be displayed
      */
     public String createUsers() {
         try {
@@ -86,55 +138,11 @@ public class usersController implements Serializable {
         }
     }
 
-    //check again and remove if else if cause problems
-    public String deleteUsers(Users user) {
-        try {
-            usersService.deleteUser(user);
-            usersList = usersService.finalAllUsers();
-            return "/Users/listofUsers?faces-redirect=true";
-        } catch (UserValidationException ex) {
-            String message = "error while deleting user";
-            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Failed to delete user.",
-                    "");
-            FacesContext.getCurrentInstance().addMessage(message, facesMessage);
-            Logger.getLogger(usersController.class.getName()).log(Level.SEVERE, null, "");
-            return "";
-        }
-    }
-
-    //to do
-    public String updateUsers(Users users) {
-        this.users = usersService.refresh(users);
-        this.currentUser = usersService.refresh(currentUser);
-
-        return "/Users/registeruser?faces-redirect=true";
-    }
-
-    public String backToIndex() { //update
-        if (users.equals(users)) {
-            usersService.editUser(users); //update
-            this.setUsers(new Users());
-            return "/Users/listofUsers?faces-redirect=true";
-        } else {
-            String message = "error while updating user information";
-            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Failed to update user.",
-                    "");
-            FacesContext.getCurrentInstance().addMessage(message, facesMessage);
-            Logger.getLogger(usersController.class.getName()).log(Level.SEVERE, null, "");
-            return "";
-        }
-    }
-
-    public Users getCurrentUser() {
-        return currentUser;
-    }
-
-    public void setCurrentUser(Users currentUser) {
-        this.currentUser = currentUser;
-    }
-
     /**
-     * @return @throws java.lang.Exception
+     * log in user if exist and use correct credentials
+     *
+     * @return current user and index page
+     * @throws Exception if fail to login
      */
     public String login() throws Exception {
         try {
@@ -164,35 +172,87 @@ public class usersController implements Serializable {
         return "/index?faces-redirect=true";
     }
 
+    /**
+     * @return index and forget current user
+     */
     public String logout() {
         currentUser = null;
         users = new Users();
         return "/index?faces-redirect=true";
     }
 
+    /**
+     * 
+     *
+     * @param users take current user to update page
+     * @return selected user information on register user page
+     */
+    public String updateUsers(Users users) {
+        this.users = usersService.refresh(users);
+        this.currentUser = usersService.refresh(currentUser);
+        return "/Users/registeruser?faces-redirect=true";
+    }
+
+    /**
+     *
+     * @return list of users with updated value of selected user if failed to
+     * update then error message will be displayed
+     * update
+     */
+    public String backToIndex() { 
+        usersService.editUser(users); 
+        this.setUsers(new Users());
+        return "/Users/listofUsers?faces-redirect=true";
+    }
+
+    /**
+     * @param user delete user
+     * @return delete selected user and return to list of users page
+     */
+    public String deleteUsers(Users user) {
+        try {
+            usersService.deleteUser(user);
+            usersList = usersService.finalAllUsers();
+            return "/Users/listofUsers?faces-redirect=true";
+        } catch (UserValidationException ex) {
+            String message = "error while deleting user";
+            FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Failed to delete user.",
+                    "");
+            FacesContext.getCurrentInstance().addMessage(message, facesMessage);
+            Logger.getLogger(usersController.class.getName()).log(Level.SEVERE, null, "");
+            return "";
+        }
+    }
+
+    /**
+     * @return register page
+     */
     public String goToRegisterPage() {
         return "/Users/registeruser?faces-redirect=false";
     }
 
+    /**
+     * 
+     * @return login page
+     */
     public String goToLogInPage() {
         return "/Users/login?faces-redirect=true";
     }
 
+    /**
+     * refresh users account to view update changes
+     * @return my account page
+     */
     public String goToMyAccountPage() {
         users = usersService.refresh(users);
         currentUser = usersService.refresh(currentUser);
         return "/Users/myaccount?faces-redirect=true";
     }
 
-    @PostConstruct
-    public void init() {
-        usersList = usersService.finalAllUsers();
-    }
-
     /**
      * https://docs.oracle.com/cd/E17802_01/j2ee/javaee/javaserverfaces/2.0/docs/api/javax/faces/context/FacesContext.html
      *
-     * @return
+     * @return faces context
      */
     public FacesContext getCurrentUserInstance() {
         return FacesContext.getCurrentInstance();

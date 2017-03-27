@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package zain.project.persistence;
 
 import java.util.List;
@@ -14,7 +9,7 @@ import zain.project.entitites.Users;
 
 /**
  *
- * @author UP687776
+ * @author Zain Ali (UP687776)
  */
 @Stateless
 public class UsersFacade extends AbstractFacade<Users> {
@@ -40,8 +35,8 @@ public class UsersFacade extends AbstractFacade<Users> {
 
     /**
      *
-     * @param email
-     * @param password
+     * @param email: looking for email of user when trying to login
+     * @param password: looking for password of user trying to login
      * @return login user using email and password
      */
     public List login(String email, String password) {
@@ -52,7 +47,7 @@ public class UsersFacade extends AbstractFacade<Users> {
     }
 
     /**
-     * @param email
+     * @param email email
      * @return and find a specific user (each email is unique) For Register User
      * and Login
      */
@@ -62,15 +57,16 @@ public class UsersFacade extends AbstractFacade<Users> {
                 .setParameter("email", email)
                 .getResultList();
 
-        if(findUserByEmailResults.size() > 0)
+        if (findUserByEmailResults.size() > 0) {
             return findUserByEmailResults.get(0);
-        else
+        } else {
             return null;
+        }
     }
 
     /**
      *
-     * @param search
+     * @param search search
      * @return return and search user by their email address function allow
      * users to search for a user by their email address
      */
@@ -80,5 +76,4 @@ public class UsersFacade extends AbstractFacade<Users> {
         findAUserResults.setParameter("search", FinalSearch);
         return findAUserResults.getResultList();
     }
-        
 }

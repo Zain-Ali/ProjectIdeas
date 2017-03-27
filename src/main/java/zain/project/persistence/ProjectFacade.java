@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package zain.project.persistence;
 
 import java.util.List;
@@ -15,7 +10,7 @@ import zain.project.entitites.Users;
 
 /**
  *
- * @author UP687776
+ * @author Zain Ali (UP687776)
  */
 @Stateless
 public class ProjectFacade extends AbstractFacade<Project> {
@@ -41,7 +36,7 @@ public class ProjectFacade extends AbstractFacade<Project> {
 
     /**
      *
-     * @param search
+     * @param search: type keyword title to search for a project
      * @return project function allow users to search for a project by the title
      */
     public List<Project> findAProjectBySearch(String search) {
@@ -64,10 +59,10 @@ public class ProjectFacade extends AbstractFacade<Project> {
                 .getResultList();
         return resultsOfALLUnAssignedProjects;
     }
- 
+
     /**
      *
-     * @param user
+     * @param user: find project by typing project owners name in search bar
      * @return all projects by owner name function find all projects by their
      * owner
      */

@@ -10,7 +10,7 @@ import javax.persistence.EntityManager;
 
 /**
  *
- * @author UP687776
+ * @author Zain Ali (UP687776)
  */
 public abstract class AbstractFacade<T> {
 
@@ -29,7 +29,7 @@ public abstract class AbstractFacade<T> {
     /**
      * Creates an Entity
      *
-     * @param entity
+     * @param entity entity
      */
     public void create(T entity) {
         getEntityManager().persist(entity);
@@ -38,7 +38,7 @@ public abstract class AbstractFacade<T> {
     /**
      * Edit an Entity
      *
-     * @param entity
+     * @param entity entity
      * @return entity
      */
     public T edit(T entity) {
@@ -46,9 +46,9 @@ public abstract class AbstractFacade<T> {
     }
 
     /**
-     * Remove an Entity
+     * 
      *
-     * @param entity
+     * @param entity Remove an Entity
      */
     public void remove(T entity) {
         getEntityManager().remove(getEntityManager().merge(entity));
@@ -56,7 +56,7 @@ public abstract class AbstractFacade<T> {
 
     /**
      *
-     * @param id
+     * @param id id
      * @return entity with ID
      */
     public T find(Object id) {
@@ -75,7 +75,7 @@ public abstract class AbstractFacade<T> {
 
     /**
      *
-     * @param range
+     * @param range range
      * @return and find range entity
      */
     public List<T> findRange(int[] range) {

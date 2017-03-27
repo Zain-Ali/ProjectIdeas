@@ -2,6 +2,7 @@ package zain.project.entitites;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,8 +13,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
+ * Users entity class, to represent an User within the database and application
  *
- * @author UP687776
+ * @author Zain Ali (UP687776)
  */
 @Entity
 @Table(name = "Users")
@@ -23,23 +25,26 @@ public class Users implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private String firstname;
+
+    @Column(nullable = false)
     private String lastName;
-    private String phoneNumber;
     private String typeOfUser;
     private String email;
     private String password;
 
     @OneToOne(mappedBy = "appliedStudent")
-    private Project appliedProject; //s
+    private Project appliedProject;
 
     @OneToMany(mappedBy = "projectOwner")
-    private List<Project> ownedProjects; //s
+    private List<Project> ownedProjects;
 
     @ManyToOne
     private Organisation organisation;
 
     /**
+     * get value of ID and is auto generated
      *
      * @return ID
      */
@@ -48,15 +53,16 @@ public class Users implements Serializable {
     }
 
     /**
-     * set new id
+     * set new value id and is auto generated
      *
-     * @param id
-     */
+     * @param id id
+     */ 
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
+     * Get value of fist name
      *
      * @return get first name
      */
@@ -67,21 +73,14 @@ public class Users implements Serializable {
     /**
      * set first name
      *
-     * @param firstname
+     * @param firstname fn
      */
     public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
 
-    public Project getAppliedProject() {
-        return appliedProject;
-    }
-
-    public void setAppliedProject(Project appliedProject) {
-        this.appliedProject = appliedProject;
-    }
-
     /**
+     * get value of last name
      *
      * @return last name
      */
@@ -92,30 +91,14 @@ public class Users implements Serializable {
     /**
      * set last name
      *
-     * @param lastName
+     * @param lastName ln
      */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
     /**
-     *
-     * @return get phone number
-     */
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    /**
-     * set phone number
-     *
-     * @param phoneNumber
-     */
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    /**
+     * get value of user type
      *
      * @return type of users (Admin, or Student, or Staff)
      */
@@ -126,7 +109,7 @@ public class Users implements Serializable {
     /**
      * set type of users (Admin, or Student, or Staff)
      *
-     * @param typeOfUser
+     * @param typeOfUser type of user
      */
     public void setTypeOfUser(String typeOfUser) {
         switch (typeOfUser) {
@@ -141,6 +124,7 @@ public class Users implements Serializable {
     }
 
     /**
+     * get value of email address
      *
      * @return email
      */
@@ -151,13 +135,14 @@ public class Users implements Serializable {
     /**
      * set email
      *
-     * @param email
+     * @param email email
      */
     public void setEmail(String email) {
         this.email = email;
     }
 
     /**
+     * get value of password
      *
      * @return password
      */
@@ -168,13 +153,14 @@ public class Users implements Serializable {
     /**
      * set password
      *
-     * @param password
+     * @param password password
      */
     public void setPassword(String password) {
         this.password = password;
     }
 
     /**
+     * get list of project owned by a user
      *
      * @return list of projects from Project Class
      */
@@ -182,6 +168,9 @@ public class Users implements Serializable {
         return ownedProjects;
     }
 
+    /**
+     * Clear owned project idea after idea is removed
+     */
     public void clearOwnedProjects() {
         ownedProjects.clear();
     }
@@ -189,13 +178,14 @@ public class Users implements Serializable {
     /**
      * set project from Project Class
      *
-     * @param project
+     * @param project project
      */
     public void addOwnedProject(Project project) {
         this.ownedProjects.add(project);
     }
 
     /**
+     * get value of organisation owned by user
      *
      * @return organisation
      */
@@ -204,12 +194,30 @@ public class Users implements Serializable {
     }
 
     /**
-     * set organisation
+     * set value of organisation
      *
-     * @param organisation
+     * @param organisation organisation
      */
     public void setOrganisation(Organisation organisation) {
         this.organisation = organisation;
+    }
+
+    /**
+     * get value of applied project by user
+     *
+     * @return applied project
+     */
+    public Project getAppliedProject() {
+        return appliedProject;
+    }
+
+    /**
+     * set value of applied project by user
+     *
+     * @param appliedProject appliedProject
+     */
+    public void setAppliedProject(Project appliedProject) {
+        this.appliedProject = appliedProject;
     }
 
     @Override
@@ -235,5 +243,4 @@ public class Users implements Serializable {
     public String toString() {
         return "zain.project.entitites.User[ id=" + id + " ]";
     }
-
 }

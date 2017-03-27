@@ -1,16 +1,16 @@
-
 package zain.project.business.exceptions;
 
 /**
  *
- * @author zain
+ * @author Zain Ali (UP687776)
  */
 public class UserValidationException extends Exception {
-    
+
     public UserValidationException() {
     }
-    
-    public UserValidationException(String string) {
+
+    public UserValidationException(String exception) {
+        super(exception);
     }
-    
+
 }

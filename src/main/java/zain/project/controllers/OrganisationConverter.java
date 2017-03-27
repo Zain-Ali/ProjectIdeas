@@ -10,7 +10,7 @@ import zain.project.persistence.OrganisationFacade;
 
 /**
  *
- * @author UP687776
+ * @author Zain Ali (UP687776)
  */
 
 /*The following Java code taken from*/
@@ -20,6 +20,13 @@ import zain.project.persistence.OrganisationFacade;
 @FacesConverter(forClass = Organisation.class)
 public class OrganisationConverter implements Converter {
 
+    /**
+     *
+     * @param context context
+     * @param component component
+     * @param value current value
+     * @return o
+     */
     @Override
     public Object getAsObject(FacesContext context, UIComponent component, String value) {
         FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -32,6 +39,13 @@ public class OrganisationConverter implements Converter {
         return o;
     }
 
+    /**
+     *
+     * @param context context
+     * @param component component
+     * @param value value
+     * @return org id
+     */
     @Override
     public String getAsString(FacesContext context, UIComponent component, Object value) {
         if (value instanceof Organisation) {
