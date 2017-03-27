@@ -13,28 +13,28 @@
     </h:head>
 
     <h:body>
-        <b:navBar brand="Project Ideas for MSc" brand-href="/ProjectIdeas/" inverse="true" fixed="top">
+        <b:navBar brand="Project Ideas for MSc" brand-href="/ProjectIdeas/index.xhtml" inverse="true" fixed="top">
             <b:navbarLinks>
 
                 <b:dropMenu value="Project Ideas">
                     <h:form>
                         <h:commandLink value="New Project Idea" action="#{projectController.goAndCreateNewProject()}" rendered="#{usersController.users.id != null}"></h:commandLink>
                     </h:form>
-                    <b:navLink value="View All Projects" href="/ProjectIdeas/faces/project/viewallprojects.xhtml" ></b:navLink>
+                    <b:navLink value="View All Projects" href="/ProjectIdeas/project/viewallprojects.xhtml" ></b:navLink>
                 </b:dropMenu>
 
                 <b:dropMenu value="Organisations">
                     <h:form>
                         <h:commandLink value="New Organisation" action="#{organisationController.goToCreateNewOrganisationPage()}" rendered="#{usersController.users.id != null}"></h:commandLink>
                     </h:form>
-                    <b:navLink value="View All Organisation" href="/ProjectIdeas/faces/organisation/listoforganisation.xhtml" ></b:navLink>                            
+                    <b:navLink value="View All Organisation" href="/ProjectIdeas/organisation/listoforganisation.xhtml" ></b:navLink>                            
                 </b:dropMenu>
-                <b:navLink value="List of Users" href="/ProjectIdeas/faces/Users/listofUsers.xhtml" rendered="#{usersController.currentUser.typeOfUser == 'Admin'}" ></b:navLink>                        
+                <b:navLink value="List of Users" href="/ProjectIdeas/Users/listofUsers.xhtml" rendered="#{usersController.currentUser.typeOfUser == 'Admin'}" ></b:navLink>                        
                 <b:dropMenu value="Contact">
                     <h:form>
                         <h:commandLink value="Contact us" action="#{contactAdminController.goToCreateNewContactAdminPage()}"></h:commandLink>
                     </h:form>
-                    <b:navLink value="View Messages" href="/ProjectIdeas/faces/contact/listofmessages.xhtml" rendered="#{usersController.currentUser.typeOfUser == 'Admin'}"></b:navLink>                            
+                    <b:navLink value="View Messages" href="/ProjectIdeas/contact/listofmessages.xhtml" rendered="#{usersController.currentUser.typeOfUser == 'Admin'}"></b:navLink>                            
                 </b:dropMenu>                
             </b:navbarLinks>
 
